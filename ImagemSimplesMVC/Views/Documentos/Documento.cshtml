@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Documento";
+}
+<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
+
+<h2>Documento</h2>
+<script>
+    function opendoc(text)
+    {
+        alert(text);
+        //var string = text;
+        //var x = string.replace("\\192.168.0.43\D$","C:");
+        //window.open(x,'_blank', 'fullscreen=yes');
+    }
+    function hover(e) {
+        console.log(e)
+    }
+</script>
+
+
+<div>
+    <ul id="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li>
+            <a href="#">O que Fazemos?</a>
+            <ul>
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Hospedagem</a></li>
+                <li><a href="#">SEO</a></li>
+                <li><a href="#">Sistemas</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#">Contato</a></li>
+    </ul>
+</div>
+
+@*<div>
+
+        @foreach (var item in Model.toList())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sobrenome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+            </tr>
+        }
+    </div>*@
+
+<div>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                @foreach (System.Data.DataColumn col in Model.Columns)
+                {
+                    <th>@col.Caption</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (System.Data.DataRow row in Model.Rows)
+            {
+                <tr id="tr" onclick="opendoc('@row["PATH_IMAGEM"]')" onmouseover="this.style.cursor='pointer'">
+                    @foreach (var cell in row.ItemArray)
+                    {
+                        <td>@cell.ToString()</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@*<div>
+        <asp:GridView runat="server" ID="griddocumentos" OnRowCreated="griddocumento_RowCreated"
+                      OnSelectedIndexChanged="OnSelectedIndexChanged" AllowPaging="True"
+                      AllowSorting="True" AutoGenerateColumns="false">
+            <Columns>
+                <asp:TemplateField HeaderText="ID_TESTE" SortExpression="FirstName" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="id" runat="server"
+                                   Text='<%# Bind("Model.ID") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="cli_codigo" SortExpression="FirstName" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="clie_codigo" runat="server"
+                                   Text='<%# Bind("Model.clie_codigo") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="serv_codigo" SortExpression="FirstName" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="serv_codigo" runat="server"
+                                   Text='<%# Bind("Model.serv_codigo") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="lote_codigo" SortExpression="FirstName" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="lote_codigo" runat="server"
+                                   Text='<%# Bind("Model.lote_codigo") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Imagem" SortExpression="FirstName" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="imagem" runat="server"
+                                   Text='<%# Bind("Model.Imagem") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nr. de Paginas" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="pagina" runat="server"
+                                   Text='<%# Bind("Model.pagina") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nr. do Processo" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="nrprocesso" runat="server"
+                                   Text='<%# Bind("Model.nrprocesso") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nr. do Projeto" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="nrprojeto" runat="server"
+                                   Text='<%# Bind("Model.nrprojeto") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nr. da Lei" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="NRLEI" runat="server"
+                                   Text='<%# Bind("Model.NRLEI") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Interessado" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="interessado" runat="server"
+                                   Text='<%# Bind("Model.interessado") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Assunto" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="assunto" runat="server"
+                                   Text='<%# Bind("Model.assunto") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="path_original" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="path_original" runat="server"
+                                   Text='<%# Bind("Model.path_original") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="path_imagem" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="path_imagem" runat="server"
+                                   Text='<%# Bind("Model.path_imagem") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="status" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="status" runat="server"
+                                   Text='<%# Bind("Model.status") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+            </Columns>
+        </asp:GridView>
+    </div>*@

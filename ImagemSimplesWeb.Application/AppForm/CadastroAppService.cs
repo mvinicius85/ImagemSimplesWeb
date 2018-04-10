@@ -1,0 +1,75 @@
+﻿using AutoMapper;
+using ImagemSimplesWeb.Application.Interface;
+using ImagemSimplesWeb.Application.ViewModels;
+using ImagemSimplesWeb.Documento.Domain.Entities.Documento;
+using ImagemSimplesWeb.Documento.Domain.Interfaces.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ImagemSimplesWeb.Application.AppForm
+{
+
+    public class CadastroAppService : ApplicationService, ICadastroAppService
+    {
+        private readonly IUser_CadastroService _cadastroservice;
+        private readonly IUser_MenuService _menuservice;
+        public CadastroAppService(IUser_CadastroService cadastroservice, IUser_MenuService menuservice,
+             Documento.Infra.Data.Interfaces.IUnitOfWork uow) : base(uow)
+        {
+            _cadastroservice = cadastroservice;
+            _menuservice = menuservice;
+        }
+
+        public string AlteraCategoria(User_MenuViewModel cat)
+        {
+            BeginDocumentoTransaction();
+            _menuservice.AlteraCategoria(Mapper.Map<USER_MENU1>(cat));
+            if (CommitDocumento() > 0)
+            {
+                return "S";
+            }
+            return "N";
+           
+        }
+
+        public List<User_MenuViewModel> BuscaMenu()
+        {
+            var menu = Mapper.Map<List<User_MenuViewModel>>(_cadastroservice.BuscarMenu());
+            return menu;
+        }
+
+        public List<User_CadastroViewModel> ListaCadastro()
+        {
+            var teste = Mapper.Map<List<User_CadastroViewModel>>(_cadastroservice.BuscarTodos());
+            return teste;
+        }
+
+        public List<User_MenuViewModel> ListaCategorias()
+        {
+            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias());
+        }
+
+        public User_MenuViewModel PesquisaCategoria(int id)
+        {
+            var cat = Mapper.Map<User_MenuViewModel>(_menuservice.BuscaCategoria(id));
+            return cat;
+        }
+
+        public frmCadCategoriaViewModel PreencheTela()
+        {
+            var form = new frmCadCategoriaViewModel();
+            form.Menus = Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias());
+            return form;
+        }
+
+        public bool ValidaLogin(string user, string senha)
+        {
+            var usuario = new USER_CADASTRO(user, senha);
+            return _cadastroservice.ValidarUsuario(usuario);
+        }
+    }
+}

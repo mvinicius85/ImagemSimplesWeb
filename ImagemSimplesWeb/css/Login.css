@@ -1,0 +1,50 @@
+﻿.LoginHeader {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    z-index: 15;
+    top: 30%;
+    left: 600px;
+    margin: -100px 0 0 -150px;
+    right: 365px;
+}
+
+    .LoginHeader img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+.LoginInfo {
+    border-radius: 3px;
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    z-index: 15;
+    top: 33%;
+    left: 453px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+    .LoginInfo ul {
+        list-style-type: none;
+        width: 282px;
+        margin-left: 8px;
+        Margin: 5;
+        padding: 0;
+    }
+
+        .LoginInfo ul li {
+            margin: 0 0 20px 0;
+            flex: 0 1 auto;
+        }
+
+.BtnLogin {
+    border-radius: 3px;
+    float: right;
+    background: linear-gradient(blue, darkblue);
+    color: white;
+}
+

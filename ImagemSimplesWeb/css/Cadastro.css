@@ -1,0 +1,13 @@
+﻿
+.divcadcategoria {
+    position: absolute;
+    top: 100px;
+}
+
+.cadCategoriaLabel {
+    text-align:end;
+}
+
+#cadCategoriaLabel {
+    align-content: flex-end;
+}
