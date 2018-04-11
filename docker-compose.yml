@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  imagemsimplesweb:
+    image: imagemsimplesweb
+    build:
+      context: .\ImagemSimplesWeb
+      dockerfile: Dockerfile

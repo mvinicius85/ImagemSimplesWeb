@@ -1,17 +1,56 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Documento.aspx.cs" Inherits="ImagemSimplesWeb.Documentos.Documento" EnableEventValidation="false"%>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Documento.aspx.cs" Inherits="ImagemSimplesWeb.Documentos.Documento" EnableEventValidation="false" %>
 
 
 <asp:Content ContentPlaceHolderID="CPH2" runat="server">
 
 
 
-    <div id="divmenu">
+    <div id="criamenu">
+        <ol class="tree">
+            <%foreach (var item in CriaMenu())
+                { %>
+            <li>
+                <label for="folder<%= item.id_Oper%>"><%= item.Descricao %></label>
+                <input type="checkbox" id="folder<%= item.id_Oper%>" />
+                <%if (item.submenu.Count > 0)
+                    {%>
+                <ol>
 
-        <asp:Menu ID="menu" runat="server" OnMenuItemClick="Menu_MenuItemClick">
-        </asp:Menu>
+                    <% foreach (var subitem in item.submenu)
+                        {%>
+
+                    <li>
+                        <label for="subfolder<%= subitem.id_Oper%>"><%= subitem.Descricao %></label>
+                        <input type="checkbox" id="subfolder<%= subitem.id_Oper%>" />
+
+                        <%if (subitem.submenu.Count > 0)
+                            {%>
+                        <ol>
+                            <% foreach (var cat in subitem.submenu)
+                                {%>
+
+                            <li>
+                                <label class="file"><%=cat.Descricao %> </label>
+
+                            </li>
+
+                            <%}%>
+                        </ol>
+                        <% } %>
+                        
+                    </li>
+
+                    <%}%>
+                </ol>
+                <%} %>
+            </li>
+            <%} %>
+        </ol>
     </div>
 
-    <div>
+
+
+    <div class="divDocumentos">
         <asp:GridView runat="server" ID="griddocumentos" OnRowCreated="griddocumento_RowCreated"
             OnSelectedIndexChanged="OnSelectedIndexChanged" AllowPaging="True"
             AutoGenerateColumns="false" OnPageIndexChanging="griddocumentos_PageIndexChanging">

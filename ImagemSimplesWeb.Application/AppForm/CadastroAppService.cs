@@ -39,7 +39,15 @@ namespace ImagemSimplesWeb.Application.AppForm
         public List<User_MenuViewModel> BuscaMenu()
         {
             var menu = Mapper.Map<List<User_MenuViewModel>>(_cadastroservice.BuscarMenu());
-            return menu;
+            foreach (var item in menu)
+            {
+                if (item.Dependencia > 0)
+                {
+                    menu.Where(y => y.id_Oper == item.Dependencia).FirstOrDefault().submenu.Add(item);
+                }
+            }
+            var final = menu.Where(x => x.Dependencia == 0).OrderBy(y => y.id_Oper).ToList();
+            return final;
         }
 
         public List<User_CadastroViewModel> ListaCadastro()
