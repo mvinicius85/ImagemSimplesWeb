@@ -12,5 +12,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
         List<USER_CADASTRO> BuscarTodos();
         bool ValidarUsuario(USER_CADASTRO user);
         List<USER_MENU1> BuscarMenu();
+        USER_CADASTRO RetornaUsuario(int id);
+        void AlteraUsuario(USER_CADASTRO user);
     }
 }

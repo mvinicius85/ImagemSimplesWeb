@@ -16,5 +16,9 @@ namespace ImagemSimplesWeb.Application.Interface
         frmCadCategoriaViewModel PreencheTela();
         User_MenuViewModel PesquisaCategoria(int id);
         string AlteraCategoria(User_MenuViewModel cat);
+        string RetornaCaminhoImgens(int idoper);
+        List<User_CadastroViewModel> ListaUsuarios();
+        User_CadastroViewModel RetornaUsuario(int id);
+        string AlterarUsuario(User_CadastroViewModel usuario);
     }
 }

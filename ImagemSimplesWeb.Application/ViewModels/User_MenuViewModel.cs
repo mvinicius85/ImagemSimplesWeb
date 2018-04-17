@@ -34,5 +34,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public string ExisteMDB { get; set; }
         public string PATHIMAGENS { get; set; }
         public List<User_MenuViewModel> submenu { get; set; }
+
+        public string link { get { return "Documento.aspx?idoper=" + this.id_Oper.ToString();  }}
     }
 }

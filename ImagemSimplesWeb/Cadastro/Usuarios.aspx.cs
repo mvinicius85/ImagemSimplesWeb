@@ -5,15 +5,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace ImagemSimplesWeb.Cadastro
 {
-    public partial class Categoria : System.Web.UI.Page
+    public partial class Usuarios : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             var login = Session["Login"];
@@ -26,18 +24,16 @@ namespace ImagemSimplesWeb.Cadastro
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
             var service = container.GetInstance<ICadastroAppService>();
-            var categorias = service.ListaCategorias();
-            GridCategorias.DataSource = categorias;
-            GridCategorias.DataBind();
+            var usuarios = service.ListaUsuarios();
+            GridUsuarios.DataSource = usuarios;
+            GridUsuarios.DataBind();
         }
 
         protected void BtnEdit_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton button = sender as ImageButton;
             var x = button.CommandArgument;
-            Response.Redirect("CadCategoria.aspx?id=" + x.ToString());
+            Response.Redirect("CadUsuario.aspx?id=" + x.ToString());
         }
-
-
     }
 }

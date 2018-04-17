@@ -1,6 +1,8 @@
 ﻿using ImagemSimplesWeb.Application.Interface;
+using ImagemSimplesWeb.Documento.Infra.Data.Contexto;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,6 +17,7 @@ namespace ImagemSimplesWeb
         {
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
             service = container.GetInstance<ICadastroAppService>();
         }
         protected void Page_Load(object sender, EventArgs e)

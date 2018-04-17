@@ -27,7 +27,8 @@
         <nav id="menu">
             <ul>
                 <li><a runat="server" href="~/Documentos/Documento">Documentos</a></li>
-                <li><a runat="server" href="~/Cadastro/Categoria">Categoria</a></li>
+                <li><a runat="server" href="~/Cadastro/Categoria">Categorias</a></li>
+                <li><a runat="server" href="~/Cadastro/Usuarios">Usuarios</a></li>
             </ul>
         </nav>
     </header>
@@ -84,6 +85,10 @@
             <asp:ContentPlaceHolder ID="Categoria" runat="server">
             </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="CadCategoria" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="Usuarios" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="CadUsuario" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <%--            <footer>

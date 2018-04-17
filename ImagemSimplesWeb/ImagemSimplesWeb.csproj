@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -142,7 +143,9 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Cadastro\CadCategoria.aspx" />
+    <Content Include="Cadastro\CadUsuario.aspx" />
     <Content Include="Cadastro\Categoria.aspx" />
+    <Content Include="Cadastro\Usuarios.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -288,12 +291,26 @@
     <Compile Include="Cadastro\CadCategoria.aspx.designer.cs">
       <DependentUpon>CadCategoria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastro\CadUsuario.aspx.cs">
+      <DependentUpon>CadUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastro\CadUsuario.aspx.designer.cs">
+      <DependentUpon>CadUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastro\Categoria.aspx.cs">
       <DependentUpon>Categoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Cadastro\Categoria.aspx.designer.cs">
       <DependentUpon>Categoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastro\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -374,6 +391,10 @@
     <ProjectReference Include="..\ImagemSimplesWeb.Application\ImagemSimplesWeb.Application.csproj">
       <Project>{81a111fb-55f1-4a2f-afe2-f4a30fc71a70}</Project>
       <Name>ImagemSimplesWeb.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImagemSimplesWeb.Documento.Infra.Data\ImagemSimplesWeb.Documento.Infra.Data.csproj">
+      <Project>{3D67704C-BB44-4772-9CA5-64038F9B4D05}</Project>
+      <Name>ImagemSimplesWeb.Documento.Infra.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImagemSimplesWeb.Infra.CrossCutting.Connections\ImagemSimplesWeb.Infra.CrossCutting.Connections.csproj">
       <Project>{066b6c94-680a-457f-9a5b-d43ba12ccd8c}</Project>

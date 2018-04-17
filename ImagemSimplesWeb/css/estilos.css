@@ -47,12 +47,15 @@
 
 .divDocumentos {
     position: absolute;
-    left: 30%;
+    left: 20%;
+    right: 5%;
 }
+
 
 #criamenu {
     position:absolute;
     left: 3%;
+
     margin: 0;
     padding: 0;
 }
@@ -85,7 +88,7 @@ ol.tree {
     }
 
         #criamenu li input + ol {
-            background: url("/Imagens/toggle-small-expand.png") 40px 0 no-repeat;
+            background: url(../Imagens/toggle-small-expand.png) 40px 0 no-repeat;
             margin: -0.938em 0 0 -44px; /* 15px */
             height: 1em;
         }
@@ -97,21 +100,21 @@ ol.tree {
             }
 
     #criamenu li label {
-        background: url("/Imagens/folder-horizontal.png") 15px 1px no-repeat;
+        background: url(../Imagens/folder-horizontal.png) 15px 1px no-repeat;
         cursor: pointer;
         display: block;
         padding-left: 37px;
     }
 
     #criamenu li label.file {
-        background: url("/Imagens/document.png") 15px 1px no-repeat;
+        background: url(../Imagens/document.png) 15px 1px no-repeat;
         cursor: pointer;
         display: block;
         padding-left: 37px;
     }
 
     #criamenu li input:checked + ol {
-        background: url("/Imagens/toggle-small.png") 40px 5px no-repeat;
+        background: url(../Imagens/toggle-small.png) 40px 5px no-repeat;
         margin: -1.25em 0 0 -44px; /* 20px */
         padding: 1.563em 0 0 80px;
         height: auto;

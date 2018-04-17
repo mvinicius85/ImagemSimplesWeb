@@ -8,6 +8,26 @@ namespace ImagemSimplesWeb.Application.ViewModels
 {
     public class User_CadastroViewModel
     {
+        public User_CadastroViewModel()
+        {
+
+        }
+        public User_CadastroViewModel(int _id, string _senha, string _cod, string _nome, string _depto, string _data,
+            string _dtini, string _tel1, string _tel2, string _tel3, string _email, bool _ativo)
+        {
+            id_user = _id;
+            Senha = _senha;
+            codigo = _cod;
+            Nome = _nome;
+            Depto = _depto;
+            Data = _data;
+            DataInicio = _dtini;
+            Tel1 = _tel1;
+            Tel2 = _tel2;
+            Tel3 = _tel3;
+            Email = _email;
+            ativo = _ativo;
+        }
         public int id_user { get; set; }
         public string codigo { get; set; }
         public string Nome { get; set; }

@@ -4,7 +4,6 @@
 <asp:Content ContentPlaceHolderID="CPH2" runat="server">
 
 
-
     <div id="criamenu">
         <ol class="tree">
             <%foreach (var item in CriaMenu())
@@ -30,7 +29,11 @@
                                 {%>
 
                             <li>
-                                <label class="file"><%=cat.Descricao %> </label>
+                                <a href="<%=cat.link%>">
+                                    <label class="file">
+                                        <%=cat.Descricao %>
+                                    </label>
+                                </a>
 
                             </li>
 
@@ -53,7 +56,8 @@
     <div class="divDocumentos">
         <asp:GridView runat="server" ID="griddocumentos" OnRowCreated="griddocumento_RowCreated"
             OnSelectedIndexChanged="OnSelectedIndexChanged" AllowPaging="True"
-            AutoGenerateColumns="false" OnPageIndexChanging="griddocumentos_PageIndexChanging">
+            AutoGenerateColumns="false" OnPageIndexChanging="griddocumentos_PageIndexChanging"
+            >
 
             <Columns>
                 <asp:TemplateField HeaderText="ID_TESTE" SortExpression="FirstName" Visible="false">
