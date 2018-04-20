@@ -12,14 +12,17 @@ namespace ImagemSimplesWeb.Core.Domain.Services
 {
     public class MdbFileService : IMdbFileService
     {
-        public DataTable RetornaArquivo(string path)
+        public DataTable RetornaArquivo(string path, string query)
         {
             string con = "Provider=Microsoft.Jet.OLEDB.4.0;"
         + "Data Source= " + path + " ;";
             var Myconnection = new OleDbConnection(con);
-
+            if (query.Length > 0 )
+            {
+                query = " where " + query;
+            }
             DataSet myDataSet = new DataSet();
-            OleDbCommand myAccessCommand = new OleDbCommand("select * from Indices", Myconnection);
+            OleDbCommand myAccessCommand = new OleDbCommand("select * from Indices " + query, Myconnection);
             OleDbDataAdapter myDataAdapter = new OleDbDataAdapter(myAccessCommand);
 
             // Open connection

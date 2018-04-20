@@ -21,10 +21,8 @@ namespace ImagemSimplesWeb.Documentos
     public partial class Documento : System.Web.UI.Page
     {
         public readonly List<User_MenuViewModel> menus = new List<User_MenuViewModel>();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
             var login = Session["Login"];
             if (login == null)
             {
@@ -35,27 +33,63 @@ namespace ImagemSimplesWeb.Documentos
             if (id > 0)
             {
                 MontaGrid(id);
+                PreencheGrid(id);
             }
         }
 
-
-
-        protected void Menu_MenuItemClick(object sender, MenuEventArgs e)
+        private void MontaGrid(int id)
         {
-            // Display the text of the menu item selected by the user.
-            Session["dir"] = e.Item.Value;
-            var item = (MenuItem)e.Item;
-            if (item.ChildItems.Count > 0)
+            if (griddocumentos.Columns.Count > 0)
             {
                 return;
             }
-            if (Session["dir"] == null)
+            var col1 = new BoundField();
+            col1.DataField = "imagem";
+            col1.HeaderText = "Imagem";
+            griddocumentos.Columns.Add(col1);
+
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            var menuservice = container.GetInstance<ICadastroAppService>();
+            var atrib = menuservice.ListarAtributos(id);
+
+            StringBuilder table = new StringBuilder();
+            foreach (var item in atrib)
             {
-                return;
+                var col2 = new BoundField();
+                col2.DataField = item.NomeAtributo;
+                col2.HeaderText = item.TituloAtributo;
+                griddocumentos.Columns.Add(col2);
+
+                table.Append("<tr>");
+                table.Append("<td>");
+                table.Append("<span>" + item.TituloAtributo + ": </span>");
+                table.Append("</td>");
+                table.Append("<td>");
+                table.Append("<input type='text' id='txt" + item.Ordem + "'>");
+                table.Append("</td>");
+                table.Append("</tr>");
             }
-            LoadGrid(Session["dir"].ToString());
+            TableSearch.Text = table.ToString();
 
         }
+
+        //protected void Menu_MenuItemClick(object sender, MenuEventArgs e)
+        //{
+        //    // Display the text of the menu item selected by the user.
+        //    Session["dir"] = e.Item.Value;
+        //    var item = (MenuItem)e.Item;
+        //    if (item.ChildItems.Count > 0)
+        //    {
+        //        return;
+        //    }
+        //    if (Session["dir"] == null)
+        //    {
+        //        return;
+        //    }
+        //    LoadGrid(Session["dir"].ToString());
+        //}
 
         protected void griddocumento_RowCreated(object sender, GridViewRowEventArgs e)
         {
@@ -64,17 +98,17 @@ namespace ImagemSimplesWeb.Documentos
                 e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
                 e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
                 e.Row.ToolTip = "Click to select row";
-               e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.griddocumentos, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.griddocumentos, "Select$" + e.Row.RowIndex);
             }
         }
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             int index = griddocumentos.SelectedRow.RowIndex;
-            string name = (griddocumentos.SelectedRow.FindControl("Imagem") as Label).Text;
-   
+            string name = griddocumentos.SelectedRow.Cells[0].Text;
+
             //Process.Start(Session["dir"].ToString() + "\\" + name);
-            string pdfPath = Server.MapPath(Session["dir"].ToString() + "\\" + name);
+            string pdfPath = Session["dir"].ToString() + "\\" + name;
             WebClient client = new WebClient();
             Byte[] buffer = client.DownloadData(pdfPath);
             Response.ContentType = "application/pdf";
@@ -90,14 +124,29 @@ namespace ImagemSimplesWeb.Documentos
 
         private void LoadGrid(string dir)
         {
+            string query = "";
+
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            var menuservice = container.GetInstance<ICadastroAppService>();
+            var atrib = menuservice.ListarAtributos(Convert.ToInt32(Request.QueryString["idoper"]));
+            foreach (var item in atrib)
+            {
+                var x = Request.QueryString[item.Ordem.ToString()];
+                if (!String.IsNullOrEmpty(x))
+                {
+                    query = query.Length > 0 ? query + " and " : "";
+                    query = query + item.NomeAtributo + " like '%" + x + "%' "; 
+                }
+            }
 
             var dirimp = new DirectoryInfo(dir);
             var listfiles = dirimp.GetFiles("*.mdb", SearchOption.AllDirectories);
-            var container = new SimpleInjector.Container();
-            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<ImagemSimplesWeb.Documento.Infra.Data.Contexto.Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            //Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            //container.GetInstance<ImagemSimplesWeb.Documento.Infra.Data.Contexto.Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
             var appservice = container.GetInstance<IArquivoAppService>();
-            var griddatasource = appservice.AbreArquivo(listfiles.FirstOrDefault().FullName);
+            var griddatasource = appservice.AbreArquivo(listfiles.FirstOrDefault().FullName, query);
             griddocumentos.DataSource = griddatasource;
             griddocumentos.DataBind();
         }
@@ -114,7 +163,7 @@ namespace ImagemSimplesWeb.Documentos
         }
 
 
-        public void MontaGrid(int idoper)
+        public void PreencheGrid(int idoper)
         {
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
@@ -123,11 +172,15 @@ namespace ImagemSimplesWeb.Documentos
             string pathmenu = menuserivce.RetornaCaminhoImgens(Convert.ToInt32(idoper));
             var appservice = container.GetInstance<IArquivoAppService>();
             Session["dir"] = pathmenu;
-            var dirimp = new DirectoryInfo(pathmenu);
-            var listfiles = dirimp.GetFiles("*.mdb", SearchOption.AllDirectories);
-            var griddatasource = appservice.AbreArquivo(listfiles.FirstOrDefault().FullName);
-            griddocumentos.DataSource = griddatasource;
-            griddocumentos.DataBind();
+            var query = "";
+            LoadGrid(pathmenu);
+            //var dirimp = new DirectoryInfo(pathmenu);
+            //var listfiles = dirimp.GetFiles("*.mdb", SearchOption.AllDirectories);
+            //var griddatasource = appservice.AbreArquivo(listfiles.FirstOrDefault().FullName);
+
+            //griddocumentos.DataSource = griddatasource;
+            //griddocumentos.DataBind();
+
         }
 
 

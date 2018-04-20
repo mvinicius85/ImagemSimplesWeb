@@ -52,6 +52,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _cadastrorepository.ObterTodos().ToList();
         }
 
+
         public USER_CADASTRO RetornaUsuario(int id)
         {
             return _cadastrorepository.ObterPorId(id);

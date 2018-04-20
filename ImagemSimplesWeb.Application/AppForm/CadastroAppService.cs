@@ -26,14 +26,23 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public string AlteraCategoria(User_MenuViewModel cat)
         {
-            BeginDocumentoTransaction();
-            _menuservice.AlteraCategoria(Mapper.Map<USER_MENU1>(cat));
-            if (CommitDocumento() > 0)
+            try
             {
-                return "S";
+                BeginDocumentoTransaction();
+                _menuservice.AlteraCategoria(Mapper.Map<USER_MENU1>(cat), Mapper.Map<List<USER_CAT_ATRIBUTOS>>(cat.Atributos));
+                if (CommitDocumento() > 0)
+                {
+                    return "S";
+                }
+                return "N";
+
             }
-            return "N";
-           
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+
+
         }
 
         public string AlterarUsuario(User_CadastroViewModel usuario)
@@ -54,7 +63,7 @@ namespace ImagemSimplesWeb.Application.AppForm
             {
                 if (!String.IsNullOrEmpty(item.PATHIMAGENS))
                 {
-                    item.PATHIMAGENS = item.PATHIMAGENS.Replace(@"\",@"\\");
+                    item.PATHIMAGENS = item.PATHIMAGENS.Replace(@"\", @"\\");
                 }
                 if (item.Dependencia > 0)
                 {
@@ -76,6 +85,11 @@ namespace ImagemSimplesWeb.Application.AppForm
             return Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias());
         }
 
+        public List<USER_CAT_ATRIBUTOSViewModel> ListarAtributos(int id)
+        {
+            return Mapper.Map<List<USER_CAT_ATRIBUTOSViewModel>>(_menuservice.RetornaAtributos(id));
+        }
+
         public List<User_CadastroViewModel> ListaUsuarios()
         {
             var usuarios = Mapper.Map<List<User_CadastroViewModel>>(_cadastroservice.BuscarTodos());
@@ -85,6 +99,7 @@ namespace ImagemSimplesWeb.Application.AppForm
         public User_MenuViewModel PesquisaCategoria(int id)
         {
             var cat = Mapper.Map<User_MenuViewModel>(_menuservice.BuscaCategoria(id));
+            cat.Atributos = Mapper.Map<List<USER_CAT_ATRIBUTOSViewModel>>(_menuservice.RetornaAtributos(cat.id_Oper));
             return cat;
         }
 

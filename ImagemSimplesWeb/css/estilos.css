@@ -48,7 +48,7 @@
 .divDocumentos {
     position: absolute;
     left: 20%;
-    right: 5%;
+    right: 3%;
 }
 
 
@@ -141,3 +141,20 @@ ol.tree {
         color: red !important;
     }*/
 
+.PanelPesquisa {
+    position: relative;
+    left: 12%;
+    background-color: #D9E5E3;
+    border: 10px solid #C2CCCA;
+    width: 89%;
+    box-sizing: border-box;
+    margin: 20px 40px;
+    padding: 20px;
+    display: none;
+}
+
+.btnShowDiv {
+    position: relative;
+    left: 98%
+    
+}

@@ -58,6 +58,42 @@ namespace ImagemSimplesWeb.Cadastro {
         protected global::System.Web.UI.WebControls.TextBox txtPathImagens;
         
         /// <summary>
+        /// gridAtributos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridAtributos;
+        
+        /// <summary>
+        /// txtNomeAtrib control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNomeAtrib;
+        
+        /// <summary>
+        /// txtTituloAtrib control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTituloAtrib;
+        
+        /// <summary>
+        /// BtnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAdd;
+        
+        /// <summary>
         /// btnSalvar control.
         /// </summary>
         /// <remarks>

@@ -39,6 +39,7 @@ namespace ImagemSimplesWeb.Infra.CrossCutting.IoC
             #region Repository
             container.Register<IUser_CadastroRepository, User_CadastroRepository>(Lifestyle.Scoped);
             container.Register<IUser_MenuRepository, User_MenuRepository>(Lifestyle.Scoped);
+            container.Register<IUser_Cat_AtributoRepository, User_Cat_AtributoRepository>(Lifestyle.Scoped);
             #endregion
 
 

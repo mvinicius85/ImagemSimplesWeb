@@ -11,6 +11,9 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
     {
         List<USER_MENU1> ListaCategorias();
         USER_MENU1 BuscaCategoria(int id);
-        void AlteraCategoria(USER_MENU1 cat);
+        void AlteraCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib);
+        void ExcluiAtributos(USER_MENU1 cat);
+        List<USER_CAT_ATRIBUTOS> RetornaAtributos(int id_Oper);
+
     }
 }

@@ -9,7 +9,7 @@ namespace ImagemSimplesWeb.Application.Interface
 {
     public interface IArquivoAppService
     {
-        DataTable AbreArquivo(string path);
+        DataTable AbreArquivo(string path, string query);
         bool ValidaMDB(string fullName);
         void UpdatePath(string file);
     }

@@ -17,9 +17,9 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             _mdbservice = mdbservice;
         }
-        public DataTable AbreArquivo(string path)
+        public DataTable AbreArquivo(string path, string query)
         {
-            var dt = _mdbservice.RetornaArquivo(path);
+            var dt = _mdbservice.RetornaArquivo(path, query);
             return dt;
         }
 
@@ -42,7 +42,7 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public bool ValidaMDB(string fullName)
         {
-            var dt = _mdbservice.RetornaArquivo(fullName);
+            var dt = _mdbservice.RetornaArquivo(fullName, "");
             if (dt.Columns["path_documento"] == null)
             {
                 return true;

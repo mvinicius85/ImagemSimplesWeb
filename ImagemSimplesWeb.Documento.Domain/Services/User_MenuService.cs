@@ -12,29 +12,56 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
     public class User_MenuService : IUser_MenuService
     {
         private readonly IUser_MenuRepository _menurepository;
-        public User_MenuService(IUser_MenuRepository menurepository)
+        private readonly IUser_Cat_AtributoRepository _atribrepository;
+        public User_MenuService(IUser_MenuRepository menurepository, IUser_Cat_AtributoRepository atribrepository)
         {
             _menurepository = menurepository;
+            _atribrepository = atribrepository;
         }
 
-        public void AlteraCategoria(USER_MENU1 cat)
+        public void AlteraCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib)
         {
+            int i = 1;
             var cat1 = _menurepository.ObterPorId(cat.id_Oper);
             cat1.Dependencia = cat.Dependencia;
             cat1.Descricao = cat.Descricao;
             cat1.ExisteMDB = cat.ExisteMDB;
             cat1.PATHIMAGENS = cat.PATHIMAGENS;
+            _atribrepository.ExcluirAtributos(cat1.id_Oper);
             _menurepository.Atualizar(cat1);
+            foreach (var item in atrib)
+            {
+                item.Ordem = i;
+                _atribrepository.Adicionar(item);
+                i = i + 1;
+            }
+        }
+
+        public void AlteraCategoria(USER_MENU1 cat)
+        {
+            throw new NotImplementedException();
         }
 
         public USER_MENU1 BuscaCategoria(int id)
         {
-            return _menurepository.ObterPorId(id);
+            var cat = _menurepository.ObterPorId(id);
+            //cat.Atributos = _atribrepository.Buscar(x => x.id_Oper == cat.id_Oper).ToList();
+            return cat;
+        }
+
+        public void ExcluiAtributos(USER_MENU1 cat)
+        {
+            _atribrepository.ExcluirAtributos(cat.id_Oper);
         }
 
         public List<USER_MENU1> ListaCategorias()
         {
             return _menurepository.ObterTodos().ToList();
+        }
+
+        public List<USER_CAT_ATRIBUTOS> RetornaAtributos(int id_Oper)
+        {
+            return _atribrepository.Buscar(x => x.id_Oper == id_Oper).ToList();
         }
     }
 }

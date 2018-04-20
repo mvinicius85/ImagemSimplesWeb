@@ -33,7 +33,7 @@ namespace ImagemSimplesWeb.Application.Tests
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             var teste = container.GetInstance<IArquivoAppService>();
-            var teste2 = teste.AbreArquivo(connectionName);
+            var teste2 = teste.AbreArquivo(connectionName, "");
 
             Process.Start(pathfile + teste2.Rows[4].ItemArray[4].ToString());
 

@@ -9,7 +9,7 @@ namespace ImagemSimplesWeb.Core.Domain.Interfaces.Services
 {
     public interface IMdbFileService
     {
-        DataTable RetornaArquivo(string path);
+        DataTable RetornaArquivo(string path, string query);
         void AlterarArquivo(string fullName);
 
         void UpdatePath(string fullName);

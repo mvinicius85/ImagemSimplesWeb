@@ -28,6 +28,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
         public DbSet<CAD_MASCARAS> CAD_MASCARAS { get; set; }
         public DbSet<USER_ATRIBUTOS> USER_ATRIBUTOS { get; set; }
         public DbSet<USER_CADASTRO> USER_CADASTRO { get; set; }
+        public DbSet<USER_CAT_ATRIBUTOS> USER_CAT_ATRIBUTOS { get; set; }
         public DbSet<USER_DOC_ATRIBUTOS> USER_DOC_ATRIBUTOS { get; set; }
         public DbSet<USER_DOC_RETIRADAS> USER_DOC_RETIRADAS { get; set; }
         public DbSet<USER_DOC_VINCULO> USER_DOC_VINCULO { get; set; }
@@ -46,6 +47,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new CAD_MASCARASMap());
             modelBuilder.Configurations.Add(new USER_ATRIBUTOSMap());
             modelBuilder.Configurations.Add(new USER_CADASTROMap());
+            modelBuilder.Configurations.Add(new USER_CAT_ATRIBUTOSMap());
             modelBuilder.Configurations.Add(new USER_DOC_ATRIBUTOSMap());
             modelBuilder.Configurations.Add(new USER_DOC_RETIRADASMap());
             modelBuilder.Configurations.Add(new USER_DOC_VINCULOMap());

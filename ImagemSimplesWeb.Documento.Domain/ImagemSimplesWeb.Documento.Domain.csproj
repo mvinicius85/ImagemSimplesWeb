@@ -109,6 +109,7 @@
     <Compile Include="Entities\Documento\CAD_MASCARAS.cs" />
     <Compile Include="Entities\Documento\USER_ATRIBUTOS.cs" />
     <Compile Include="Entities\Documento\USER_CADASTRO.cs" />
+    <Compile Include="Entities\Documento\USER_CAT_ATRIBUTOS.cs" />
     <Compile Include="Entities\Documento\USER_DOCUMENTOS.cs" />
     <Compile Include="Entities\Documento\USER_DOC_ATRIBUTOS.cs" />
     <Compile Include="Entities\Documento\USER_DOC_RETIRADAS.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Entities\Documento\USER_VINCULOS.cs" />
     <Compile Include="Entities\Documento\USER_VINCULOS_ATRI.cs" />
     <Compile Include="Interfaces\Repository\IUser_CadastroRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUser_Cat_AtributoRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_MenuRepository.cs" />
     <Compile Include="Interfaces\Services\IUser_CadastroService.cs" />
     <Compile Include="Interfaces\Services\IUser_MenuService.cs" />

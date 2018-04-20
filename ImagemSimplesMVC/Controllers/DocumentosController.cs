@@ -19,7 +19,7 @@ namespace ImagemSimplesMVC.Controllers
                 var container = new SimpleInjector.Container();
                 ImagemSimplesWeb.Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
                 var teste = container.GetInstance<IArquivoAppService>();
-                var teste2 = teste.AbreArquivo(path);
+                var teste2 = teste.AbreArquivo(path, "");
 
                 return View(teste2);
 

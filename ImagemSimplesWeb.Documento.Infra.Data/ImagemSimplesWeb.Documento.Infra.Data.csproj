@@ -113,6 +113,7 @@
     <Compile Include="EntityConfig\CAD_MASCARASMap.cs" />
     <Compile Include="EntityConfig\USER_ATRIBUTOSMap.cs" />
     <Compile Include="EntityConfig\USER_CADASTROMap.cs" />
+    <Compile Include="EntityConfig\USER_CAT_ATRIBUTOSMap.cs" />
     <Compile Include="EntityConfig\USER_DOCUMENTOSMap.cs" />
     <Compile Include="EntityConfig\USER_DOC_ATRIBUTOSMap.cs" />
     <Compile Include="EntityConfig\USER_DOC_RETIRADASMap.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\User_CadastroRepository.cs" />
+    <Compile Include="Repository\User_Cat_AtributoRepository.cs" />
     <Compile Include="Repository\User_MenuRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>

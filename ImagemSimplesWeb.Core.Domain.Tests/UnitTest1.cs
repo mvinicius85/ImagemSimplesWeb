@@ -19,10 +19,10 @@ namespace ImagemSimplesWeb.Core.Domain.Tests
               + "Data Source= " + path + " ;";
 
             var mdb = new MdbFileService();
-            var dt = mdb.RetornaArquivo(connectionName);
+            var dt = mdb.RetornaArquivo(connectionName, "");
 
 
-            Process.Start(pathfile + dt.Rows[4].ItemArray[4].ToString());
+            Process.Start(pathfile + dt.Rows[4].ItemArray[4].ToString(), "");
 
 
         }

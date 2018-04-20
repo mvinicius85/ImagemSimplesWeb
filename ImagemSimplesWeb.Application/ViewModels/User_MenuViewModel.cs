@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public string ExisteMDB { get; set; }
         public string PATHIMAGENS { get; set; }
         public List<User_MenuViewModel> submenu { get; set; }
-
+        public List<USER_CAT_ATRIBUTOSViewModel> Atributos { get; set; }
         public string link { get { return "Documento.aspx?idoper=" + this.id_Oper.ToString();  }}
     }
 }

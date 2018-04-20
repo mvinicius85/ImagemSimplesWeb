@@ -3,57 +3,110 @@
 <asp:Content ContentPlaceHolderID="CadCategoria" runat="server">
 
     <div class="divcadcategoria">
-        <table>
-            <tr>
-                <td class="cadCategoriaLabel">
-                    <asp:Label runat="server"  Text="Id: "></asp:Label>
-                </td>
-                <td>
-                    <asp:Label runat="server" ID="lblidCategoria"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="cadCategoriaLabel">
-                    <asp:Label runat="server" Text="Dependencia: "></asp:Label>
-                </td>
-                <td>
-                
-                    <asp:DropDownList runat="server" ID="ddlMenus"></asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="cadCategoriaLabel">
-                    <asp:Label runat="server" Text="Descrição: "></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="cadCategoriaLabel">
-                    <asp:Label runat="server"  Text="Existe MDB: "></asp:Label>
+        <div>
+            <table>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Id: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label runat="server" ID="lblidCategoria"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Dependencia: "></asp:Label>
+                    </td>
+                    <td>
 
-                </td>
-                <td>
-                    <asp:CheckBox runat="server" ID="chkExisteMDB" />
-                </td>
-            </tr>
-            <tr>
-                <td class="cadCategoriaLabel">
-                    <asp:Label runat="server"  Text="Caminho Imagens: "></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txtPathImagens"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td><asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" /></td>
-                <td><asp:Button runat="server" ID="btnLimpar" Text="Limpar" /></td>
-                <td><asp:Button runat="server" ID="btnCancelar" Text="Cancelar" /></td>
-            </tr>
-        </table>
+                        <asp:DropDownList runat="server" ID="ddlMenus"></asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Descrição: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Existe MDB: "></asp:Label>
+
+                    </td>
+                    <td>
+                        <asp:CheckBox runat="server" ID="chkExisteMDB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Caminho Imagens: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtPathImagens"></asp:TextBox>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <asp:GridView runat="server" ID="gridAtributos" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:TemplateField HeaderText="id" SortExpression="FirstName" Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="Id" runat="server"
+                                Text='<%# Bind("id_cat_atrib") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="idoper" SortExpression="FirstName" >
+                        <ItemTemplate>
+                            <asp:Label ID="Id_Oper" runat="server"
+                                Text='<%# Bind("id_oper") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Atributo" SortExpression="FirstName" >
+                        <ItemTemplate>
+                            <asp:Label ID="NomeAtributo" runat="server"
+                                Text='<%# Bind("NomeAtributo") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Titulo" SortExpression="FirstName">
+                        <ItemTemplate>
+                            <asp:Label ID="TituloAtributo" runat="server"
+                                Text='<%# Bind("TituloAtributo") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Excluir" SortExpression="FirstName">
+                        <ItemTemplate>
+                            <asp:ImageButton runat="server" ID="btnExcluirAtrib" OnClick="Unnamed_Click" CommandArgument='<%# Bind("NomeAtributo") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <table>
+                <tr>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtNomeAtrib"></asp:TextBox></td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtTituloAtrib"></asp:TextBox></td>
+                    <td>
+                        <asp:Button id="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" /></td>
+                    <td>
+                        <asp:Button runat="server" ID="btnLimpar" Text="Limpar" /></td>
+                    <td>
+                        <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" /></td>
+                </tr>
+            </table>
+        </div>
     </div>
-
-
 </asp:Content>
 

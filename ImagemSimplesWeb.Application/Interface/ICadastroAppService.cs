@@ -20,5 +20,6 @@ namespace ImagemSimplesWeb.Application.Interface
         List<User_CadastroViewModel> ListaUsuarios();
         User_CadastroViewModel RetornaUsuario(int id);
         string AlterarUsuario(User_CadastroViewModel usuario);
+        List<USER_CAT_ATRIBUTOSViewModel> ListarAtributos(int id);
     }
 }

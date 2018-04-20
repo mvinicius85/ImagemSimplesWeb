@@ -4,6 +4,7 @@ using ImagemSimplesWeb.Documento.Infra.Data.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -49,6 +50,11 @@ namespace ImagemSimplesWeb.Cadastro
                 chkExisteMDB.Checked = false;
             }
             txtPathImagens.Text = cat.PATHIMAGENS != null ? cat.PATHIMAGENS : "";
+            if (cat.Atributos.Count > 0 && gridAtributos.Rows.Count == 0)
+            {
+                gridAtributos.DataSource = cat.Atributos;
+                gridAtributos.DataBind();
+            }
         }
 
         private void MontaTela()
@@ -58,7 +64,7 @@ namespace ImagemSimplesWeb.Cadastro
             {
                 ddlMenus.Items.Add(new ListItem(item.Descricao, item.id_Oper.ToString()));
             }
-           
+
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
@@ -73,11 +79,75 @@ namespace ImagemSimplesWeb.Cadastro
                 Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString()
                 );
 
+            cat.Atributos = RetornaListaAtrib();
+
             var ret = service.AlteraCategoria(cat);
             if (ret == "S")
             {
                 Response.Redirect("Categoria.aspx");
             }
         }
+
+        protected void Unnamed_Click(object sender, ImageClickEventArgs e)
+        {
+            RemontaTela();
+            ImageButton button = sender as ImageButton;
+            var nomeatrib = button.CommandArgument;
+            var cat = new List<USER_CAT_ATRIBUTOSViewModel>();
+            foreach (GridViewRow row in gridAtributos.Rows)
+            {
+                var nome = (Label)row.Cells[2].Controls[1];
+                var header = (Label)row.Cells[3].Controls[1];
+                var item = new USER_CAT_ATRIBUTOSViewModel(
+                    Convert.ToInt32(lblidCategoria.Text),
+                    nome.Text, header.Text);
+                cat.Add(item);
+            }
+            cat.Remove(cat.Where(x => x.NomeAtributo == nomeatrib).FirstOrDefault());
+            gridAtributos.DataSource = cat.ToList();
+            gridAtributos.DataBind();
+        }
+
+        protected void BtnAdd_Click(object sender, EventArgs e)
+        {
+            RemontaTela();
+            var cat = RetornaListaAtrib();
+
+            var y = cat.Where(x => x.NomeAtributo == txtNomeAtrib.Text).FirstOrDefault();
+            if (y != null)
+            {
+                return;
+            }
+
+
+            cat.Add(new USER_CAT_ATRIBUTOSViewModel(Convert.ToInt32(lblidCategoria.Text), txtNomeAtrib.Text, txtTituloAtrib.Text));
+            gridAtributos.DataSource = cat.ToList();
+            gridAtributos.DataBind();
+        }
+
+        private List<USER_CAT_ATRIBUTOSViewModel> RetornaListaAtrib()
+        {
+            var cat = new List<USER_CAT_ATRIBUTOSViewModel>();
+            foreach (GridViewRow row in gridAtributos.Rows)
+            {
+                var nome = (Label)row.Cells[2].Controls[1];
+                var header = (Label)row.Cells[3].Controls[1];
+                var item = new USER_CAT_ATRIBUTOSViewModel(
+                    Convert.ToInt32(lblidCategoria.Text),
+                    nome.Text, header.Text);
+                cat.Add(item);
+            }
+            return cat;
+        }
+
+        private void RemontaTela()
+        {
+            ddlMenus.SelectedValue = Request.Form["ctl00$CadCategoria$ddlMenus"].ToString().TrimEnd(); 
+            txtDescricao.Text = Request.Form["ctl00$CadCategoria$txtDescricao"].ToString().TrimEnd(); 
+            chkExisteMDB.Checked = Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? true : false;
+            txtPathImagens.Text =  Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd(); 
+        }
+
+        
     }
 }
