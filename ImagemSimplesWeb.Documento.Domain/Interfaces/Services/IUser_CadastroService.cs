@@ -14,5 +14,6 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
         List<USER_MENU1> BuscarMenu();
         USER_CADASTRO RetornaUsuario(int id);
         void AlteraUsuario(USER_CADASTRO user);
+        void InserirUsuario(USER_CADASTRO usuario);
     }
 }

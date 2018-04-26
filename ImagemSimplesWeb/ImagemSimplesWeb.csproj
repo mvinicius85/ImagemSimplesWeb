@@ -171,6 +171,7 @@
     <Content Include="Imagens\saudesimpleslogo.png" />
     <Content Include="Imagens\toggle-small-expand.png" />
     <Content Include="Imagens\toggle-small.png" />
+    <Content Include="javascript\Principal.js" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="WebForm1.aspx" />

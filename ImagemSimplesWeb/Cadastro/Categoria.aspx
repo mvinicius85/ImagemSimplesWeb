@@ -1,10 +1,37 @@
 ﻿<%@ Page MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Categoria.aspx.cs" Inherits="ImagemSimplesWeb.Cadastro.Categoria" %>
 
 <asp:Content ContentPlaceHolderID="Categoria" runat="server">
-
+    <script>
+        function ShowDivPesquisa() {
+            var x = document.getElementById("DivPanelPesquisa");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+                //}
+            }
+        }
+    </script>
+    <button type="button" onclick="ShowDivPesquisa()" class="btnShowDiv">Click Me</button>
+    <div class="PanelPesquisa" id="DivPanelPesquisa">
+        <table>
+            <tr>
+                <td>
+                    <asp:Label runat="server">Descrição</asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:Button runat="server" ID="BtnPesquisar" Text="Pesquisar" OnClick="BtnPesquisar_Click" />
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <div class="divcategoria">
-        <asp:GridView ID="GridCategorias" runat="server" AllowPaging="True"
+        <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" />
+        <asp:GridView ID="GridCategorias" runat="server" AllowPaging="True" OnPageIndexChanging="GridCategorias_PageIndexChanging"
             AllowSorting="True" AutoGenerateColumns="false">
             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
@@ -16,68 +43,42 @@
             <SortedDescendingCellStyle BackColor="#D6DFDF" />
             <SortedDescendingHeaderStyle BackColor="#002876" />
             <Columns>
-                <asp:TemplateField HeaderText="ID_TESTE" SortExpression="FirstName" Visible="false">
+                <asp:TemplateField HeaderText="id_oper" SortExpression="FirstName">
                     <ItemTemplate>
-                        <asp:Label ID="id" runat="server"
+                        <asp:Label ID="id_oper" runat="server"
                             Text='<%# Bind("id_oper") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="cli_codigo" SortExpression="FirstName" Visible="false">
+                <asp:TemplateField HeaderText="Nivel" SortExpression="FirstName">
                     <ItemTemplate>
-                        <asp:Label ID="clie_codigo" runat="server"
-                            Text='<%# Bind("Dependencia") %>'></asp:Label>
+                        <asp:Label ID="Nivel" runat="server"
+                            Text='<%# Bind("Nivel") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="serv_codigo" SortExpression="FirstName" Visible="false">
+                <asp:TemplateField HeaderText="Descricao" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="serv_codigo" runat="server"
                             Text='<%# Bind("Descricao") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Imagem" SortExpression="FirstName" Visible="false">
+                <asp:TemplateField HeaderText="Existe MDB" SortExpression="FirstName">
                     <ItemTemplate>
-                        <asp:Label ID="imagem" runat="server"
-                            Text='<%# Bind("Codigo") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nr. de Paginas" SortExpression="FirstName">
-                    <ItemTemplate>
-                        <asp:Label ID="pagina" runat="server"
-                            Text='<%# Bind("Cod_ext") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nr. do Processo" SortExpression="FirstName">
-                    <ItemTemplate>
-                        <asp:Label ID="nrprocesso" runat="server"
-                            Text='<%# Bind("DataInclusao") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nr. do Projeto" SortExpression="FirstName">
-                    <ItemTemplate>
-                        <asp:Label ID="nrprojeto" runat="server"
-                            Text='<%# Bind("OperIncluiu") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nr. da Lei" SortExpression="FirstName">
-                    <ItemTemplate>
-                        <asp:Label ID="NRLEI" runat="server"
+                        <asp:Label ID="ExisteMDB" runat="server"
                             Text='<%# Bind("ExisteMDB") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-
-                <asp:TemplateField HeaderText="path_original" SortExpression="FirstName">
+                                <asp:TemplateField HeaderText="Caminho Imagens" SortExpression="FirstName">
                     <ItemTemplate>
-                        <asp:Label ID="path_original" runat="server"
+                        <asp:Label ID="PATHIMAGENS" runat="server"
                             Text='<%# Bind("PATHIMAGENS") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Width="40">
                     <ItemTemplate>
-                       <asp:ImageButton runat="server" id="BtnEdit" OnClick="BtnEdit_Click" CommandArgument='<%# Bind("id_Oper") %>' />
-
+                        <asp:ImageButton runat="server" ID="BtnEdit" OnClick="BtnEdit_Click" CommandArgument='<%# Bind("id_Oper") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-             
+
 
             </Columns>
         </asp:GridView>

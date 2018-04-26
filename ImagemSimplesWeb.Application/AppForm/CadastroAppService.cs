@@ -2,6 +2,7 @@
 using ImagemSimplesWeb.Application.Interface;
 using ImagemSimplesWeb.Application.ViewModels;
 using ImagemSimplesWeb.Documento.Domain.Entities.Documento;
+using ImagemSimplesWeb.Documento.Domain.Entities.DTO;
 using ImagemSimplesWeb.Documento.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,14 @@ namespace ImagemSimplesWeb.Application.AppForm
     {
         private readonly IUser_CadastroService _cadastroservice;
         private readonly IUser_MenuService _menuservice;
+        private readonly IUser_PermissoesService _permissoesservice;
         public CadastroAppService(IUser_CadastroService cadastroservice, IUser_MenuService menuservice,
+            IUser_PermissoesService permissoesservice,
              Documento.Infra.Data.Interfaces.IUnitOfWork uow) : base(uow)
         {
             _cadastroservice = cadastroservice;
             _menuservice = menuservice;
+            _permissoesservice = permissoesservice;
         }
 
         public string AlteraCategoria(User_MenuViewModel cat)
@@ -47,13 +51,21 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public string AlterarUsuario(User_CadastroViewModel usuario)
         {
-            BeginDocumentoTransaction();
-            _cadastroservice.AlteraUsuario(Mapper.Map<USER_CADASTRO>(usuario));
-            if (CommitDocumento() > 0)
+            try
             {
-                return "S";
+                BeginDocumentoTransaction();
+                _cadastroservice.AlteraUsuario(Mapper.Map<USER_CADASTRO>(usuario));
+                _permissoesservice.AtualizarAcessos(usuario.id_user, Mapper.Map<List<DTOAcessos>>(usuario.Acessos));
+                if (CommitDocumento() > 0)
+                {
+                    return "S";
+                }
+                return "N";
             }
-            return "N";
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
         }
 
         public List<User_MenuViewModel> BuscaMenu()
@@ -72,6 +84,48 @@ namespace ImagemSimplesWeb.Application.AppForm
             }
             var final = menu.Where(x => x.Dependencia == 0).OrderBy(y => y.id_Oper).ToList();
             return final;
+        }
+
+        public List<User_MenuViewModel> BuscarCategoria(string desc)
+        {
+            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(desc));
+        }
+
+        public string InserirCategoria(User_MenuViewModel cat)
+        {
+            try
+            {
+                BeginDocumentoTransaction();
+                _menuservice.InsereCategoria(Mapper.Map<USER_MENU1>(cat), Mapper.Map<List<USER_CAT_ATRIBUTOS>>(cat.Atributos));
+                if (CommitDocumento() > 0)
+                {
+                    return "S";
+                }
+                return "N";
+            }
+            catch (Exception ex)
+            {
+
+                return ex.GetBaseException().Message;
+            }
+        }
+
+        public string InserirUsuario(User_CadastroViewModel usuario)
+        {
+            try
+            {
+                BeginDocumentoTransaction();
+                _cadastroservice.InserirUsuario(Mapper.Map<USER_CADASTRO>(usuario));
+                if (CommitDocumento() > 0)
+                {
+                    return "S";
+                }
+                return "N";
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
         }
 
         public List<User_CadastroViewModel> ListaCadastro()
@@ -107,6 +161,7 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             var form = new frmCadCategoriaViewModel();
             form.Menus = Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias());
+            form.Menus.Add(new User_MenuViewModel(0, ""));
             return form;
         }
 
@@ -119,6 +174,7 @@ namespace ImagemSimplesWeb.Application.AppForm
         public User_CadastroViewModel RetornaUsuario(int id)
         {
             var usuario = Mapper.Map<User_CadastroViewModel>(_cadastroservice.RetornaUsuario(id));
+            usuario.Acessos = Mapper.Map<List<AcessosViewModel>>(_permissoesservice.RetornaAcessos(id));
             return usuario;
         }
 

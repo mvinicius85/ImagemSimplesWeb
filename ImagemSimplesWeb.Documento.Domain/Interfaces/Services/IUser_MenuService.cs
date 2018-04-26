@@ -14,6 +14,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
         void AlteraCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib);
         void ExcluiAtributos(USER_MENU1 cat);
         List<USER_CAT_ATRIBUTOS> RetornaAtributos(int id_Oper);
-
+        List<USER_MENU1> RetornaCategorias(string desc);
+        void InsereCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib);
     }
 }

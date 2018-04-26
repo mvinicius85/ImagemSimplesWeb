@@ -44,5 +44,6 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public string nomepc { get; set; }
         public string secao { get; set; }
         public Nullable<bool> ativo { get; set; }
+        public List<AcessosViewModel> Acessos { get; set; }
     }
 }

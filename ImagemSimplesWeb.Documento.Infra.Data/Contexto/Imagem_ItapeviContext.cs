@@ -36,6 +36,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
         public DbSet<USER_LIBERAREQ> USER_LIBERAREQ { get; set; }
         public DbSet<USER_MENU1> USER_MENU1 { get; set; }
         public DbSet<USER_MENUIMAGEM> USER_MENUIMAGEM { get; set; }
+        public DbSet<USER_PERMISSOES> USER_PERMISSOES { get; set; }
         public DbSet<USER_OPERACOES> USER_OPERACOES { get; set; }
         public DbSet<USER_QTDE_ESCOPO> USER_QTDE_ESCOPO { get; set; }
         public DbSet<USER_VALIDACOES> USER_VALIDACOES { get; set; }
@@ -56,6 +57,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new USER_MENU1Map());
             modelBuilder.Configurations.Add(new USER_MENUIMAGEMMap());
             modelBuilder.Configurations.Add(new USER_OPERACOESMap());
+            modelBuilder.Configurations.Add(new USER_PERMISSOESMap());
             modelBuilder.Configurations.Add(new USER_QTDE_ESCOPOMap());
             modelBuilder.Configurations.Add(new USER_VALIDACOESMap());
             modelBuilder.Configurations.Add(new USER_VINCULOSMap());

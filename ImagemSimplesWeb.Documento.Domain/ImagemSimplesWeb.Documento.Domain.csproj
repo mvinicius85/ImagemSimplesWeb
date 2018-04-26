@@ -118,18 +118,24 @@
     <Compile Include="Entities\Documento\USER_MENU1.cs" />
     <Compile Include="Entities\Documento\USER_MENUIMAGEM.cs" />
     <Compile Include="Entities\Documento\USER_OPERACOES.cs" />
+    <Compile Include="Entities\Documento\USER_PERMISSOES.cs" />
     <Compile Include="Entities\Documento\USER_QTDE_ESCOPO.cs" />
     <Compile Include="Entities\Documento\USER_VALIDACOES.cs" />
     <Compile Include="Entities\Documento\USER_VINCULOS.cs" />
     <Compile Include="Entities\Documento\USER_VINCULOS_ATRI.cs" />
+    <Compile Include="Entities\DTO\DTOAcessoPermissoes.cs" />
+    <Compile Include="Entities\DTO\DTOAcessos.cs" />
     <Compile Include="Interfaces\Repository\IUser_CadastroRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_Cat_AtributoRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_MenuRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUser_PermissoesRepository.cs" />
     <Compile Include="Interfaces\Services\IUser_CadastroService.cs" />
     <Compile Include="Interfaces\Services\IUser_MenuService.cs" />
+    <Compile Include="Interfaces\Services\IUser_PermissoesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\User_CadastroService.cs" />
     <Compile Include="Services\User_MenuService.cs" />
+    <Compile Include="Services\User_PermissoesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

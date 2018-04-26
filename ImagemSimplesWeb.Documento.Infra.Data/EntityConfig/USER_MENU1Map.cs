@@ -14,7 +14,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 
             // Properties
             this.Property(t => t.id_Oper)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             this.Property(t => t.Descricao)
                 .IsFixedLength()
@@ -35,6 +35,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.Descricao).HasColumnName("Descricao");
             this.Property(t => t.Codigo).HasColumnName("Codigo");
             this.Property(t => t.Cod_Ext).HasColumnName("Cod_Ext");
+            this.Property(t => t.Nivel).HasColumnName("Nivel");
             this.Property(t => t.DataInclusao).HasColumnName("DataInclusao");
             this.Property(t => t.DataAlteracao).HasColumnName("DataAlteracao");
             this.Property(t => t.Empresa).HasColumnName("Empresa");

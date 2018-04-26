@@ -7,6 +7,7 @@
 
 
     <div class="divcategoria">
+                <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" />
         <asp:GridView ID="GridUsuarios" runat="server" AllowPaging="True"
             AllowSorting="True" AutoGenerateColumns="false">
             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />

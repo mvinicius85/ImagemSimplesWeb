@@ -6,6 +6,7 @@
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Cadastro.css" />
+    <link rel="archives" type="text/javascript" href="~/javascript/Principal.js">
     <%--<link rel="archives" type="text/javascript" href="~/javascript/menudocumentos.js">--%>
 
 

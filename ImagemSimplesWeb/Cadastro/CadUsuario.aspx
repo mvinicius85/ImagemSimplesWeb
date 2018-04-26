@@ -27,6 +27,11 @@
                 <td>
 
                     <asp:TextBox runat="server" ID="txtSenha"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                        ControlToValidate="txtSenha"
+                        ErrorMessage="*"
+                        ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -36,6 +41,11 @@
                 <td>
 
                     <asp:TextBox runat="server" ID="txtNome"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                        ControlToValidate="txtNome"
+                        ErrorMessage="*"
+                        ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -61,7 +71,6 @@
                     <asp:Label runat="server" Text="DataInicio: "></asp:Label>
                 </td>
                 <td>
-
                     <asp:TextBox runat="server" ID="txtDtInicio"></asp:TextBox>
                 </td>
             </tr>
@@ -99,6 +108,11 @@
                 <td>
 
                     <asp:TextBox runat="server" ID="txtEmail"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                        ControlToValidate="txtEmail"
+                        ErrorMessage="*"
+                        ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -110,5 +124,52 @@
                     <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" /></td>
             </tr>
         </table>
+    </div>
+    <div>
+        <asp:GridView ID="GridAcessos" runat="server" AllowPaging="False"
+            AllowSorting="True" AutoGenerateColumns="false">
+            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+            <RowStyle BackColor="White" ForeColor="#003399" />
+            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+            <SortedAscendingCellStyle BackColor="#EDF6F6" />
+            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
+            <SortedDescendingCellStyle BackColor="#D6DFDF" />
+            <SortedDescendingHeaderStyle BackColor="#002876" />
+            <Columns>
+                <asp:TemplateField HeaderText="ID" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="Id_Oper" runat="server"
+                            Text='<%# Bind("Id_Oper") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Descricao" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="Descricao" runat="server"
+                            Text='<%# Bind("Descricao") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nivel" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="Nivel" runat="server"
+                            Text='<%# Bind("Nivel") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <%--                <asp:TemplateField HeaderText="Acesso" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:CheckBox ID="Acesso" runat="server"
+                            Text='<%# Bind("Acesso") %>'></asp:CheckBox>
+                    </ItemTemplate>
+                </asp:TemplateField>--%>
+                <asp:TemplateField HeaderStyle-Width="40">
+                    <ItemTemplate>
+                        <asp:ImageButton runat="server" ID="BtnExcluir" OnClick="BtnExcluir_Click" CommandArgument='<%# Bind("id_oper") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:DropDownList runat="server" ID="ddlMenus"></asp:DropDownList>
+        <asp:Button ID="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click"/>
     </div>
 </asp:Content>

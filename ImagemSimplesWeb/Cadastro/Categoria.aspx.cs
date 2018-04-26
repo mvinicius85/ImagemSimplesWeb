@@ -38,6 +38,33 @@ namespace ImagemSimplesWeb.Cadastro
             Response.Redirect("CadCategoria.aspx?id=" + x.ToString());
         }
 
+        protected void BtnPesquisar_Click(object sender, EventArgs e)
+        {
+            GridCategorias.PageIndex = 1;
+            Session["descMenu"] = Request.Form["ctl00$Categoria$txtDescricao"].ToString();
+            RecarregarGrid();
+        }
+        void RecarregarGrid()
+        {
+            var desc = Session["descMenu"] == null ? "" : Session["descMenu"];
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            var service = container.GetInstance<ICadastroAppService>();
+            var categorias = service.BuscarCategoria(desc.ToString());
+            GridCategorias.DataSource = categorias;
+            GridCategorias.DataBind();
+        }
 
+        protected void GridCategorias_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridCategorias.PageIndex = e.NewPageIndex;
+            RecarregarGrid();
+        }
+
+        protected void btnIncluir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CadCategoria.aspx");
+        }
     }
 }

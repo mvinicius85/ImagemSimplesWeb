@@ -24,21 +24,21 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
         public void AlteraUsuario(USER_CADASTRO user)
         {
             var user1 = _cadastrorepository.ObterPorId(user.id_user);
-            user1.codigo = user.codigo.TrimEnd().TrimStart();
-            user1.Senha = user.Senha.TrimEnd().TrimStart();
-            user1.Nome = user.Nome.TrimEnd().TrimStart();
-            user1.Depto = user.Depto.TrimEnd().TrimStart();
-            user1.Assinatura = user.Assinatura.TrimEnd().TrimStart();
+            user1.codigo = user.codigo?.TrimEnd().TrimStart();
+            user1.Senha = user.Senha?.TrimEnd().TrimStart();
+            user1.Nome = user.Nome?.TrimEnd().TrimStart();
+            user1.Depto = user.Depto?.TrimEnd().TrimStart();
+            user1.Assinatura = user.Assinatura?.TrimEnd().TrimStart();
             user1.ativo = user.ativo;
-            user1.Data = user.Data.TrimEnd().TrimStart();
-            user1.DataInicio = user.DataInicio.TrimEnd().TrimStart();
-            user1.Email = user.Email.TrimEnd().TrimStart();
+            user1.Data = user.Data?.TrimEnd().TrimStart();
+            user1.DataInicio = user.DataInicio?.TrimEnd().TrimStart();
+            user1.Email = user.Email?.TrimEnd().TrimStart();
             user1.LiberaRequisicao = user.LiberaRequisicao;
-            user1.nomepc = user.nomepc.TrimEnd().TrimStart();
-            user1.secao = user.secao.TrimEnd().TrimStart();
-            user1.Tel1 = user.Tel1.TrimEnd().TrimStart();
-            user1.Tel2 = user.Tel2.TrimEnd().TrimStart();
-            user1.Tel3 = user.Tel3.TrimEnd().TrimStart();
+            user1.nomepc = user.nomepc?.TrimEnd().TrimStart();
+            user1.secao = user.secao?.TrimEnd().TrimStart();
+            user1.Tel1 = user.Tel1?.TrimEnd().TrimStart();
+            user1.Tel2 = user.Tel2?.TrimEnd().TrimStart();
+            user1.Tel3 = user.Tel3?.TrimEnd().TrimStart();
             _cadastrorepository.Atualizar(user1);
         }
 
@@ -52,6 +52,10 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _cadastrorepository.ObterTodos().ToList();
         }
 
+        public void InserirUsuario(USER_CADASTRO usuario)
+        {
+            _cadastrorepository.Adicionar(usuario);
+        }
 
         public USER_CADASTRO RetornaUsuario(int id)
         {

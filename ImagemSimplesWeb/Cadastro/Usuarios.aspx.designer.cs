@@ -13,6 +13,15 @@ namespace ImagemSimplesWeb.Cadastro {
     public partial class Usuarios {
         
         /// <summary>
+        /// btnIncluir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIncluir;
+        
+        /// <summary>
         /// GridUsuarios control.
         /// </summary>
         /// <remarks>

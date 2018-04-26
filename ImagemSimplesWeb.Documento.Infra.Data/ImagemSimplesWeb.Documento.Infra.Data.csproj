@@ -122,6 +122,7 @@
     <Compile Include="EntityConfig\USER_MENU1Map.cs" />
     <Compile Include="EntityConfig\USER_MENUIMAGEMMap.cs" />
     <Compile Include="EntityConfig\USER_OPERACOESMap.cs" />
+    <Compile Include="EntityConfig\USER_PERMISSOESMap.cs" />
     <Compile Include="EntityConfig\USER_QTDE_ESCOPOMap.cs" />
     <Compile Include="EntityConfig\USER_VALIDACOESMap.cs" />
     <Compile Include="EntityConfig\USER_VINCULOSMap.cs" />
@@ -132,13 +133,13 @@
     <Compile Include="Repository\User_CadastroRepository.cs" />
     <Compile Include="Repository\User_Cat_AtributoRepository.cs" />
     <Compile Include="Repository\User_MenuRepository.cs" />
+    <Compile Include="Repository\User_PermissoesRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ImagemSimplesWeb.Core.Domain\ImagemSimplesWeb.Core.Domain.csproj">
       <Project>{389c27d8-f803-4dde-a173-0ae0614519a6}</Project>

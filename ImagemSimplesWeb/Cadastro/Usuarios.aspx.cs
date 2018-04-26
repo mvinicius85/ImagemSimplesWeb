@@ -35,5 +35,15 @@ namespace ImagemSimplesWeb.Cadastro
             var x = button.CommandArgument;
             Response.Redirect("CadUsuario.aspx?id=" + x.ToString());
         }
+
+        protected void btnIncluir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CadUsuario.aspx");
+        }
+
+        protected void BtnExcluir_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
     }
 }

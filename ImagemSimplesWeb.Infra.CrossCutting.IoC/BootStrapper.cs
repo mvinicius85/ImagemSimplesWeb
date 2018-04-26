@@ -33,13 +33,14 @@ namespace ImagemSimplesWeb.Infra.CrossCutting.IoC
             container.Register<IUser_CadastroService, User_CadastroService>(Lifestyle.Scoped);
             container.Register<IMdbFileService, MdbFileService>(Lifestyle.Scoped);
             container.Register<IUser_MenuService, User_MenuService>(Lifestyle.Scoped);
-
+            container.Register<IUser_PermissoesService, User_PermissoesService>(Lifestyle.Scoped);
             #endregion
 
             #region Repository
             container.Register<IUser_CadastroRepository, User_CadastroRepository>(Lifestyle.Scoped);
             container.Register<IUser_MenuRepository, User_MenuRepository>(Lifestyle.Scoped);
             container.Register<IUser_Cat_AtributoRepository, User_Cat_AtributoRepository>(Lifestyle.Scoped);
+            container.Register<IUser_PermissoesRepository, User_PermissoesRepository>(Lifestyle.Scoped);
             #endregion
 
 

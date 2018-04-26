@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ImagemSimplesWeb.Application.ViewModels;
 using ImagemSimplesWeb.Documento.Domain.Entities.Documento;
+using ImagemSimplesWeb.Documento.Domain.Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ImagemSimplesWeb.Application.AutoMapper
         {
             CreateMap<User_CadastroViewModel, USER_CADASTRO>();
             CreateMap<User_MenuViewModel, USER_MENU1>();
+            CreateMap<AcessosViewModel, DTOAcessos>();
         }
     }
 

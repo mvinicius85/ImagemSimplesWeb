@@ -28,6 +28,24 @@
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                            ControlToValidate="txtDescricao"
+                            ErrorMessage="*Campo Obrigatorio"
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Nível: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtNivel"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                            ControlToValidate="txtNivel"
+                            ErrorMessage="*Campo Obrigatorio"
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -58,13 +76,13 @@
                                 Text='<%# Bind("id_cat_atrib") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="idoper" SortExpression="FirstName" >
+                    <asp:TemplateField HeaderText="idoper" SortExpression="FirstName">
                         <ItemTemplate>
                             <asp:Label ID="Id_Oper" runat="server"
                                 Text='<%# Bind("id_oper") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Atributo" SortExpression="FirstName" >
+                    <asp:TemplateField HeaderText="Atributo" SortExpression="FirstName">
                         <ItemTemplate>
                             <asp:Label ID="NomeAtributo" runat="server"
                                 Text='<%# Bind("NomeAtributo") %>'></asp:Label>
@@ -90,7 +108,7 @@
                     <td>
                         <asp:TextBox runat="server" ID="txtTituloAtrib"></asp:TextBox></td>
                     <td>
-                        <asp:Button id="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click" />
+                        <asp:Button ID="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click" />
                     </td>
                 </tr>
             </table>

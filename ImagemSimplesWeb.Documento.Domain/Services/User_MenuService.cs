@@ -25,6 +25,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             var cat1 = _menurepository.ObterPorId(cat.id_Oper);
             cat1.Dependencia = cat.Dependencia;
             cat1.Descricao = cat.Descricao;
+            cat1.Nivel = cat.Nivel;
             cat1.ExisteMDB = cat.ExisteMDB;
             cat1.PATHIMAGENS = cat.PATHIMAGENS;
             _atribrepository.ExcluirAtributos(cat1.id_Oper);
@@ -39,7 +40,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
 
         public void AlteraCategoria(USER_MENU1 cat)
         {
-            throw new NotImplementedException();
+            _menurepository.Adicionar(cat);
         }
 
         public USER_MENU1 BuscaCategoria(int id)
@@ -54,6 +55,19 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             _atribrepository.ExcluirAtributos(cat.id_Oper);
         }
 
+        public void InsereCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib)
+        {
+            int i = 1;
+            var cat2 = _menurepository.Adicionar(cat);
+            foreach (var item in atrib)
+            {
+                item.Ordem = i;
+                item.id_Oper = cat2.id_Oper;
+                _atribrepository.Adicionar(item);
+                i = i + 1;
+            }
+        }
+
         public List<USER_MENU1> ListaCategorias()
         {
             return _menurepository.ObterTodos().ToList();
@@ -62,6 +76,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
         public List<USER_CAT_ATRIBUTOS> RetornaAtributos(int id_Oper)
         {
             return _atribrepository.Buscar(x => x.id_Oper == id_Oper).ToList();
+        }
+
+        public List<USER_MENU1> RetornaCategorias(string desc)
+        {
+            return _menurepository.Buscar(x => x.Descricao.Contains(desc)).ToList();
         }
     }
 }
