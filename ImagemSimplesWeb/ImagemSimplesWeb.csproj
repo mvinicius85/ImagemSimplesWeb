@@ -166,6 +166,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagens\cotia_icon.png" />
+    <Content Include="Imagens\cotia_logo.png" />
     <Content Include="Imagens\document.png" />
     <Content Include="Imagens\folder-horizontal.png" />
     <Content Include="Imagens\saudesimpleslogo.png" />

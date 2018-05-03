@@ -22,16 +22,22 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body class="body">
 
-    <header>
-        <nav id="menu">
-            <ul>
-                <li><a runat="server" href="~/Documentos/Documento">Documentos</a></li>
-                <li><a runat="server" href="~/Cadastro/Categoria">Categorias</a></li>
-                <li><a runat="server" href="~/Cadastro/Usuarios">Usuarios</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="MasterHeader">
+            <img src="../Imagens/cotia_icon.png">
+            <img src="../Imagens/cotia_logo.png">
+        </div>
+        <div class="MasterDiv">
+            <nav id="menu">
+                <ul>
+                    <li><a runat="server" href="~/Documentos/Documento">Documentos</a></li>
+                    <li><a runat="server" href="~/Cadastro/Categoria">Categorias</a></li>
+                    <li><a runat="server" href="~/Cadastro/Usuarios">Usuarios</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <form runat="server">
 
