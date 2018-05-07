@@ -117,26 +117,18 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" /></td>
+                    <asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" CssClass="BtnPesquisar"/></td>
                 <td>
-                    <asp:Button runat="server" ID="btnLimpar" Text="Limpar" /></td>
+                    <asp:Button runat="server" ID="btnLimpar" Text="Limpar" CssClass="BtnPesquisar"/></td>
                 <td>
-                    <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" /></td>
+                    <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" CssClass="BtnPesquisar" OnClick="btnCancelar_Click"/></td>
             </tr>
         </table>
     </div>
     <div>
         <asp:GridView ID="GridAcessos" runat="server" AllowPaging="False"
-            AllowSorting="True" AutoGenerateColumns="false">
-            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-            <RowStyle BackColor="White" ForeColor="#003399" />
-            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-            <SortedAscendingCellStyle BackColor="#EDF6F6" />
-            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-            <SortedDescendingCellStyle BackColor="#D6DFDF" />
-            <SortedDescendingHeaderStyle BackColor="#002876" />
+            AllowSorting="True" AutoGenerateColumns="false" CssClass="GridCadastro">
+
             <Columns>
                 <asp:TemplateField HeaderText="ID" SortExpression="FirstName">
                     <ItemTemplate>
@@ -164,12 +156,12 @@
                 </asp:TemplateField>--%>
                 <asp:TemplateField HeaderStyle-Width="40">
                     <ItemTemplate>
-                        <asp:ImageButton runat="server" ID="BtnExcluir" OnClick="BtnExcluir_Click" CommandArgument='<%# Bind("id_oper") %>' />
+                        <asp:ImageButton runat="server" ImageUrl="~/Imagens/icons8-cancel-16.png" ID="BtnExcluir" OnClick="BtnExcluir_Click" CommandArgument='<%# Bind("id_oper") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:DropDownList runat="server" ID="ddlMenus"></asp:DropDownList>
-        <asp:Button ID="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click"/>
+        <asp:Button ID="BtnAdd" runat="server" Text="Adicionar" OnClick="BtnAdd_Click" CssClass="BtnPesquisar"/>
     </div>
 </asp:Content>

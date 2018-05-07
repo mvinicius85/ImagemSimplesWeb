@@ -40,6 +40,8 @@ namespace ImagemSimplesWeb.Cadastro
         {
             if (id == 0)
             {
+                ddlMenus.Enabled = false;
+                BtnAdd.Enabled = false;
                 return;
             }
             var usuario = service.RetornaUsuario(id);
@@ -175,6 +177,11 @@ namespace ImagemSimplesWeb.Cadastro
             }
             GridAcessos.DataSource = acessos;
             GridAcessos.DataBind();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cadastro/Usuarios.aspx");
         }
     }
 }

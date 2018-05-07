@@ -10,5 +10,6 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
 {
     public interface IUser_CadastroRepository : IRepository<USER_CADASTRO>
     {
+        List<USER_CADASTRO> FiltrarUsuarios(USER_CADASTRO filtro);
     }
 }

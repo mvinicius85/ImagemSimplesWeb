@@ -26,6 +26,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             cat1.Dependencia = cat.Dependencia;
             cat1.Descricao = cat.Descricao;
             cat1.Nivel = cat.Nivel;
+            cat1.NOME = cat.NOME;
             cat1.ExisteMDB = cat.ExisteMDB;
             cat1.PATHIMAGENS = cat.PATHIMAGENS;
             _atribrepository.ExcluirAtributos(cat1.id_Oper);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
@@ -30,5 +31,27 @@ namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
         public string nomepc { get; set; }
         public string secao { get; set; }
         public Nullable<bool> ativo { get; set; }
+
+        public string MontaSwhere()
+        {
+            StringBuilder swhere = new StringBuilder();
+            if (!String.IsNullOrEmpty(this.Nome))
+            {
+                swhere.Append(" Nome like '%" + this.Nome + "%'");
+            }
+            if (!String.IsNullOrEmpty(this.Depto))
+            {
+                if (swhere.Length > 1)
+                {
+                    swhere.Append(" and ");
+                }
+                swhere.Append(" Depto like '" + this.Depto + "'");
+            }
+            if (swhere.Length > 0)
+            {
+                return " where " + swhere.ToString();
+            }
+            return "";
+        }
     }
 }

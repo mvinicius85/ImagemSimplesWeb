@@ -19,5 +19,6 @@ namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
         public Nullable<int> OperAlterou { get; set; }
         public string ExisteMDB { get; set; }
         public string PATHIMAGENS { get; set; }
+        public string NOME { get; set; }
     }
 }

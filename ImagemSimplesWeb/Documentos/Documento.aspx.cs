@@ -95,10 +95,11 @@ namespace ImagemSimplesWeb.Documentos
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
+                e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';";
                 e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
-                e.Row.ToolTip = "Click to select row";
-                e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.griddocumentos, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Clique na linha para abrir o documento.";
+                // e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.griddocumentos, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = "openFile(this)";
             }
         }
 
@@ -183,6 +184,12 @@ namespace ImagemSimplesWeb.Documentos
 
         }
 
+        [WebMethod(EnableSession = true)]
+        public static string getPath()
+        {
+            return HttpContext.Current.Session["dir"].ToString();
+            //return "TESTE OK!";
+        }
 
     }
 }

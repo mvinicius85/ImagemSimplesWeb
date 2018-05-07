@@ -12,36 +12,30 @@
             }
         }
     </script>
-    <button type="button" onclick="ShowDivPesquisa()" class="btnShowDiv">Click Me</button>
-    <div class="PanelPesquisa" id="DivPanelPesquisa">
-        <table>
-            <tr>
-                <td>
-                    <asp:Label runat="server">Descrição</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:Button runat="server" ID="BtnPesquisar" Text="Pesquisar" OnClick="BtnPesquisar_Click" />
-                </td>
-            </tr>
-        </table>
-    </div>
-
     <div class="divcategoria">
-        <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" />
-        <asp:GridView ID="GridCategorias" runat="server" AllowPaging="True" OnPageIndexChanging="GridCategorias_PageIndexChanging"
-            AllowSorting="True" AutoGenerateColumns="false">
-            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-            <RowStyle BackColor="White" ForeColor="#003399" />
-            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-            <SortedAscendingCellStyle BackColor="#EDF6F6" />
-            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-            <SortedDescendingCellStyle BackColor="#D6DFDF" />
-            <SortedDescendingHeaderStyle BackColor="#002876" />
+        <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" CssClass="btnIncluir" />
+        <button type="button" onclick="ShowDivPesquisa()" class="btnShowDiv">Filtro</button>
+        <div class="PanelPesquisa" id="DivPanelPesquisa">
+            <table>
+                <tr>
+                    <td>
+                        <asp:Label runat="server">Descrição</asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:Button runat="server" ID="BtnPesquisar" CssClass="BtnPesquisar" Text="Pesquisar" OnClick="BtnPesquisar_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <asp:GridView ID="GridCategorias" runat="server" CssClass="GridCadastro" AllowPaging="True" OnPageIndexChanging="GridCategorias_PageIndexChanging"
+            AutoGenerateColumns="false">
+
             <Columns>
                 <asp:TemplateField HeaderText="id_oper" SortExpression="FirstName">
                     <ItemTemplate>
@@ -55,9 +49,15 @@
                             Text='<%# Bind("Nivel") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nome" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:Label ID="Nome" runat="server"
+                            Text='<%# Bind("Nome") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Descricao" SortExpression="FirstName">
                     <ItemTemplate>
-                        <asp:Label ID="serv_codigo" runat="server"
+                        <asp:Label ID="Descricao" runat="server"
                             Text='<%# Bind("Descricao") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -67,7 +67,7 @@
                             Text='<%# Bind("ExisteMDB") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Caminho Imagens" SortExpression="FirstName">
+                <asp:TemplateField HeaderText="Caminho Imagens" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="PATHIMAGENS" runat="server"
                             Text='<%# Bind("PATHIMAGENS") %>'></asp:Label>
@@ -75,7 +75,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Width="40">
                     <ItemTemplate>
-                        <asp:ImageButton runat="server" ID="BtnEdit" OnClick="BtnEdit_Click" CommandArgument='<%# Bind("id_Oper") %>' />
+                        <asp:ImageButton runat="server" ToolTip="Editar" ImageUrl="~/Imagens/icons8-no-edit-40.png" ID="BtnEdit" OnClick="BtnEdit_Click" CommandArgument='<%# Bind("id_Oper")  %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
 

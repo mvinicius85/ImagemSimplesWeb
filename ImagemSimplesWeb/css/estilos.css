@@ -212,12 +212,6 @@ ol.tree {
     display: none;
 }
 
-    .PanelPesquisa button {
-        background-color: #0098A6;
-        color: white;
-        border: hidden;
-    }
-
     .PanelPesquisa table td {
         border: none;
     }
@@ -241,4 +235,35 @@ ol.tree {
     display: inline-block;
     font-size: 11px;
     margin: 4px 2px;
+}
+
+.BtnPesquisar {
+    background-color: #0098A6;
+    color: white;
+    border: hidden;
+}
+
+#btnLogout:hover {
+    cursor: pointer;
+}
+
+
+#btnLogout {
+    display: block;
+    max-width: 230px;
+    max-height: 95px;
+    width: auto;
+    height: auto;
+}
+
+.divLogout {
+    position: absolute;
+    right: 1%;
+    top: 20%;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #F0F4F5;
+    color: #0098A6;
+    padding: 10px;
+ 
 }

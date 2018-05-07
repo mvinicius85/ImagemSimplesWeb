@@ -48,6 +48,7 @@ namespace ImagemSimplesWeb.Cadastro
             lblidCategoria.Text = cat.id_Oper.ToString();
             ddlMenus.SelectedValue = cat.Dependencia.ToString();
             txtDescricao.Text = cat.Descricao.ToString();
+            txtNome.Text = cat.Nome.ToString();
             txtNivel.Text = cat.Nivel;
             if (!String.IsNullOrEmpty(cat.ExisteMDB))
             {
@@ -82,6 +83,7 @@ namespace ImagemSimplesWeb.Cadastro
             var cat = new User_MenuViewModel(
                 Convert.ToInt32(lblidCategoria.Text == "" ? "0" : lblidCategoria.Text),
                 Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlMenus"]),
+                Request.Form["ctl00$CadCategoria$txtNome"].ToString(),
                 Request.Form["ctl00$CadCategoria$txtDescricao"].ToString(),
                 Request.Form["ctl00$CadCategoria$txtNivel"].ToString(),
                 Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? "SIM" : "NÃO",
@@ -159,12 +161,16 @@ namespace ImagemSimplesWeb.Cadastro
         private void RemontaTela()
         {
             ddlMenus.SelectedValue = Request.Form["ctl00$CadCategoria$ddlMenus"].ToString().TrimEnd(); 
+            txtNome.Text = Request.Form["ctl00$CadCategoria$txtNome"].ToString().TrimEnd();
             txtDescricao.Text = Request.Form["ctl00$CadCategoria$txtDescricao"].ToString().TrimEnd();
             txtNivel.Text = Request.Form["ctl00$CadCategoria$txtNivel"].ToString().TrimEnd();
             chkExisteMDB.Checked = Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? true : false;
             txtPathImagens.Text =  Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd(); 
         }
 
-        
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cadastro/Categoria.aspx");
+        }
     }
 }

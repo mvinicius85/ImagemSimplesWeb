@@ -1,44 +1,82 @@
 ﻿<%@ Page MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Usuarios.aspx.cs" Inherits="ImagemSimplesWeb.Cadastro.Usuarios" %>
 
 <asp:Content ContentPlaceHolderID="Usuarios" runat="server">
+    <script>
+        function ShowDivPesquisa() {
+            var x = document.getElementById("DivPanelPesquisa");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+                //}
+            }
+        }
+    </script>
 
     <div>
     </div>
 
 
     <div class="divcategoria">
-                <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" />
+        <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" CssClass="btnIncluir" />
+        <button type="button" onclick="ShowDivPesquisa()" class="btnShowDiv">Filtro</button>
+        <div class="PanelPesquisa" id="DivPanelPesquisa">
+            <table>
+                <tr>
+                    <td>
+                        <asp:Label runat="server">Nome</asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtNome"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label runat="server">Departamento</asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtDepartamento"></asp:TextBox>
+                    </td>
+                </tr>
+                      <tr>
+                    <td>
+                        <asp:Label runat="server">Nome</asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="TextBox1"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button runat="server" ID="BtnPesquisar" CssClass="BtnPesquisar" Text="Pesquisar" OnClick="BtnPesquisar_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
         <asp:GridView ID="GridUsuarios" runat="server" AllowPaging="True"
-            AllowSorting="True" AutoGenerateColumns="false">
-            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-            <RowStyle BackColor="White" ForeColor="#003399" />
-            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-            <SortedAscendingCellStyle BackColor="#EDF6F6" />
-            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-            <SortedDescendingCellStyle BackColor="#D6DFDF" />
-            <SortedDescendingHeaderStyle BackColor="#002876" />
+            CssClass="GridCadastro" OnPageIndexChanging="GridUsuarios_PageIndexChanging"
+            AutoGenerateColumns="false">
+
             <Columns>
-                <asp:TemplateField HeaderText="ID" SortExpression="FirstName" >
+                <asp:TemplateField HeaderText="ID" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="id_user" runat="server"
                             Text='<%# Bind("id_user") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Codigo" SortExpression="FirstName" >
+                <asp:TemplateField HeaderText="Codigo" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="clie_codigo" runat="server"
                             Text='<%# Bind("codigo") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nome" SortExpression="FirstName" >
+                <asp:TemplateField HeaderText="Nome" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="Nome" runat="server"
                             Text='<%# Bind("Nome") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Depto" SortExpression="FirstName" >
+                <asp:TemplateField HeaderText="Depto" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="Depto" runat="server"
                             Text='<%# Bind("Depto") %>'></asp:Label>
@@ -56,7 +94,7 @@
                             Text='<%# Bind("DataInicio") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Tel. 1" SortExpression="FirstName" >
+                <asp:TemplateField HeaderText="Tel. 1" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="Tel1" runat="server"
                             Text='<%# Bind("Tel1") %>'></asp:Label>
@@ -81,15 +119,15 @@
                             Text='<%# Bind("Email") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ativo" SortExpression="FirstName" >
+                <asp:TemplateField HeaderText="ativo" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:CheckBox ID="ativo" runat="server" Enabled="false"
-                             Checked='<%# Bind("ativo") %>'></asp:CheckBox>
+                            Checked='<%# Bind("ativo") %>'></asp:CheckBox>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Width="40">
                     <ItemTemplate>
-                        <asp:ImageButton runat="server" ID="BtnEdit" OnClick="BtnEdit_Click" CommandArgument='<%# Bind("id_User") %>' />
+                        <asp:ImageButton runat="server" ToolTip="Editar" ImageUrl="~/Imagens/icons8-no-edit-40.png" ID="BtnEdit" OnClick="BtnEdit_Click" CommandArgument='<%# Bind("id_User") %>' />
 
                     </ItemTemplate>
                 </asp:TemplateField>

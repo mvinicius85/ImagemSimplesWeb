@@ -28,6 +28,11 @@ namespace ImagemSimplesWeb.Application.ViewModels
             Email = _email;
             ativo = _ativo;
         }
+        public User_CadastroViewModel(string _nome, string _departamento)
+        {
+            Nome = _nome;
+            Depto = _departamento;
+        }
         public int id_user { get; set; }
         public string codigo { get; set; }
         public string Nome { get; set; }

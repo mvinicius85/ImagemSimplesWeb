@@ -5,9 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="~/css/Login.css" />
+       <%-- <link rel="shortcut icon" type="image/x-icon" href="/Imagens/favicon.ico" />--%>
 
 
-    <title></title>
+    <title>Imagem Simples</title>
     <style type="text/css">
         .txtLogin {}
     </style>

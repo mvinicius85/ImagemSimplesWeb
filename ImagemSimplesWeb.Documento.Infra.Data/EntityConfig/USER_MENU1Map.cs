@@ -28,6 +28,9 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .IsFixedLength()
                 .HasMaxLength(10);
 
+            this.Property(t => t.NOME)
+                .HasMaxLength(20);
+
             // Table & Column Mappings
             this.ToTable("USER_MENU1");
             this.Property(t => t.id_Oper).HasColumnName("id_Oper");
@@ -44,6 +47,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.OperAlterou).HasColumnName("OperAlterou");
             this.Property(t => t.ExisteMDB).HasColumnName("ExisteMDB");
             this.Property(t => t.PATHIMAGENS).HasColumnName("PATHIMAGENS");
+            this.Property(t => t.NOME).HasColumnName("NOME");
 
         }
     }

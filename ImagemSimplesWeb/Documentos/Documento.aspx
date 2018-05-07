@@ -47,6 +47,22 @@
                 }
                 return relevantChildren;
             }
+
+            function openFile(row) {
+                var cell = row.cells[0];
+                var pdfname = cell.textContent;
+                $.ajax({
+                    type: "POST",
+                    url: 'Documento.aspx/getPath',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    success: function (data) {
+
+                        window.open(data.d + '\\' + pdfname,'_blank');
+                    }
+                });
+            }
+
         </script>
 
         <aside>
@@ -56,7 +72,7 @@
                         <%foreach (var item in CriaMenu())
                             { %>
                         <li>
-                            <label for="folder<%= item.id_Oper%>"><%= item.Descricao %></label>
+                            <label for="folder<%= item.id_Oper%>"><%= item.Nome %></label>
                             <input type="checkbox" id="folder<%= item.id_Oper%>" />
                             <%if (item.submenu.Count > 0)
                                 {%>
@@ -66,7 +82,7 @@
                                     {%>
 
                                 <li>
-                                    <label for="subfolder<%= subitem.id_Oper%>"><%= subitem.Descricao %></label>
+                                    <label for="subfolder<%= subitem.id_Oper%>"><%= subitem.Nome %></label>
                                     <input type="checkbox" id="subfolder<%= subitem.id_Oper%>" />
 
                                     <%if (subitem.submenu.Count > 0)
@@ -78,7 +94,7 @@
                                         <li>
                                             <a href="<%=cat.link%>">
                                                 <label class="file">
-                                                    <%=cat.Descricao %>
+                                                    <%=cat.Nome %>
                                                 </label>
                                             </a>
 

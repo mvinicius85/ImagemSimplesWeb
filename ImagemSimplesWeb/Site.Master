@@ -4,9 +4,11 @@
 
 <html lang="en">
 <head runat="server">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Cadastro.css" />
     <link rel="archives" type="text/javascript" href="~/javascript/Principal.js">
+    <link rel="shortcut icon" type="image/x-icon" href="/Imagens/favicon.ico" />
     <%--<link rel="archives" type="text/javascript" href="~/javascript/menudocumentos.js">--%>
 
 
@@ -20,14 +22,32 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <title>Imagem Simples</title>
 </head>
 <body class="body">
+    <script>
+        function Logout() {
+            $.ajax({
+                type: "POST",
+                url: '../Logout.aspx/logout',
+                contentType: 'application/json; charset=utf-8',
+                success: function () {
+                    window.location = "../login.aspx"
+                }
+            });
+        }
+    </script>
 
     <header class="header">
         <div class="MasterHeader">
             <img src="../Imagens/cotia_icon.png">
             <img src="../Imagens/cotia_logo.png">
+
+            <div class="divLogout">
+                <p><% = Session["Login"].ToString()%></p>
+                <img src="../Imagens/icons8-shutdown-20.png" onclick="Logout()" id="btnLogout" />
+            </div>
+
         </div>
         <div class="MasterDiv">
             <nav id="menu">
@@ -97,7 +117,7 @@
             </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="CadUsuario" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+           
             <%--            <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>--%>

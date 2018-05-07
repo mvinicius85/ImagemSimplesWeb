@@ -91,6 +91,12 @@ namespace ImagemSimplesWeb.Application.AppForm
             return Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(desc));
         }
 
+        public List<User_CadastroViewModel> FiltrarUsuarios(User_CadastroViewModel filtro)
+        {
+            var usuarios = Mapper.Map<List<User_CadastroViewModel>>(_cadastroservice.FiltrarUsuarios(Mapper.Map<USER_CADASTRO>(filtro)));
+            return usuarios;
+        }
+
         public string InserirCategoria(User_MenuViewModel cat)
         {
             try

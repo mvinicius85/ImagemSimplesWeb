@@ -15,5 +15,6 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
         USER_CADASTRO RetornaUsuario(int id);
         void AlteraUsuario(USER_CADASTRO user);
         void InserirUsuario(USER_CADASTRO usuario);
+        List<USER_CADASTRO> FiltrarUsuarios(USER_CADASTRO filtro);
     }
 }

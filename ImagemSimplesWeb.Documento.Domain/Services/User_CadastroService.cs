@@ -52,6 +52,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _cadastrorepository.ObterTodos().ToList();
         }
 
+        public List<USER_CADASTRO> FiltrarUsuarios(USER_CADASTRO filtro)
+        {
+            return _cadastrorepository.FiltrarUsuarios(filtro);
+        }
+
         public void InserirUsuario(USER_CADASTRO usuario)
         {
             _cadastrorepository.Adicionar(usuario);

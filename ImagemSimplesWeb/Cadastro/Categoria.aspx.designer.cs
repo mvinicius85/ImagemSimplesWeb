@@ -13,6 +13,15 @@ namespace ImagemSimplesWeb.Cadastro {
     public partial class Categoria {
         
         /// <summary>
+        /// btnIncluir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIncluir;
+        
+        /// <summary>
         /// txtDescricao control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace ImagemSimplesWeb.Cadastro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnPesquisar;
-        
-        /// <summary>
-        /// btnIncluir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIncluir;
         
         /// <summary>
         /// GridCategorias control.

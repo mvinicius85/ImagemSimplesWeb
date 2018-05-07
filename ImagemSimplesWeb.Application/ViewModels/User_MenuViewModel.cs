@@ -9,10 +9,12 @@ namespace ImagemSimplesWeb.Application.ViewModels
 {
     public class User_MenuViewModel
     {
-        public User_MenuViewModel(int _idop, int _iddep, string _desc, string _nivel, string _mdb, string _path)
+        public User_MenuViewModel(int _idop, int _iddep, string _nome, string _desc, 
+            string _nivel, string _mdb, string _path)
         {
             id_Oper = _idop;
             Dependencia = _iddep;
+            Nome = _nome;
             Descricao = _desc;
             Nivel = _nivel;
             ExisteMDB = _mdb;
@@ -42,6 +44,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public Nullable<int> OperAlterou { get; set; }
         public string ExisteMDB { get; set; }
         public string PATHIMAGENS { get; set; }
+        public string Nome { get; set; }
         public List<User_MenuViewModel> submenu { get; set; }
         public List<USER_CAT_ATRIBUTOSViewModel> Atributos { get; set; }
         public string link { get { return "Documento.aspx?idoper=" + this.id_Oper.ToString();  }}

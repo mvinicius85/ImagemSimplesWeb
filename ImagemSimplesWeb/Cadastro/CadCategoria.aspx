@@ -24,6 +24,19 @@
                 </tr>
                 <tr>
                     <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Nome: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="txtNome" MaxLength="20"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                            ControlToValidate="txtNome"
+                            ErrorMessage="*Campo Obrigatorio"
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
                         <asp:Label runat="server" Text="Descrição: "></asp:Label>
                     </td>
                     <td>
@@ -68,7 +81,7 @@
             </table>
         </div>
         <div>
-            <asp:GridView runat="server" ID="gridAtributos" AutoGenerateColumns="false">
+            <asp:GridView runat="server" ID="gridAtributos" AutoGenerateColumns="false" CssClass="GridCadastro">
                 <Columns>
                     <asp:TemplateField HeaderText="id" SortExpression="FirstName" Visible="false">
                         <ItemTemplate>
@@ -96,7 +109,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Excluir" SortExpression="FirstName">
                         <ItemTemplate>
-                            <asp:ImageButton runat="server" ID="btnExcluirAtrib" OnClick="Unnamed_Click" CommandArgument='<%# Bind("NomeAtributo") %>' />
+                            <asp:ImageButton runat="server" ToolTip="Excluir" ImageUrl="~/Imagens/icons8-cancel-16.png" ID="btnExcluirAtrib" OnClick="Unnamed_Click" CommandArgument='<%# Bind("NomeAtributo") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -108,7 +121,7 @@
                     <td>
                         <asp:TextBox runat="server" ID="txtTituloAtrib"></asp:TextBox></td>
                     <td>
-                        <asp:Button ID="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click" />
+                        <asp:Button ID="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click" CssClass="BtnPesquisar" />
                     </td>
                 </tr>
             </table>
@@ -117,11 +130,11 @@
             <table>
                 <tr>
                     <td>
-                        <asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" /></td>
+                        <asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" CssClass="BtnPesquisar" /></td>
                     <td>
-                        <asp:Button runat="server" ID="btnLimpar" Text="Limpar" /></td>
+                        <asp:Button runat="server" ID="btnLimpar" Text="Limpar" CssClass="BtnPesquisar" /></td>
                     <td>
-                        <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" /></td>
+                        <asp:Button runat="server" ID="btnCancelar" Text="Cancelar" CssClass="BtnPesquisar" OnClick="btnCancelar_Click" /></td>
                 </tr>
             </table>
         </div>

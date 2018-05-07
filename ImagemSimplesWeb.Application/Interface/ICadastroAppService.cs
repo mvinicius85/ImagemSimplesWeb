@@ -24,5 +24,6 @@ namespace ImagemSimplesWeb.Application.Interface
         List<User_MenuViewModel> BuscarCategoria(string desc);
         string InserirCategoria(User_MenuViewModel cat);
         string InserirUsuario(User_CadastroViewModel usuario);
+        List<User_CadastroViewModel> FiltrarUsuarios(User_CadastroViewModel filtro);
     }
 }

@@ -40,7 +40,7 @@ namespace ImagemSimplesWeb.Cadastro
 
         protected void BtnPesquisar_Click(object sender, EventArgs e)
         {
-            GridCategorias.PageIndex = 1;
+            GridCategorias.PageIndex = 0;
             Session["descMenu"] = Request.Form["ctl00$Categoria$txtDescricao"].ToString();
             RecarregarGrid();
         }

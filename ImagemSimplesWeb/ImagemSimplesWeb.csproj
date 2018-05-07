@@ -170,11 +170,17 @@
     <Content Include="Imagens\cotia_logo.png" />
     <Content Include="Imagens\document.png" />
     <Content Include="Imagens\folder-horizontal.png" />
+    <Content Include="Imagens\icons8-cancel-16.png" />
+    <Content Include="Imagens\icons8-no-edit-40.png" />
+    <Content Include="Imagens\icons8-shutdown-20.png" />
+    <Content Include="Imagens\icons8-shutdown-40.png" />
+    <Content Include="Imagens\favicon.ico" />
     <Content Include="Imagens\saudesimpleslogo.png" />
     <Content Include="Imagens\toggle-small-expand.png" />
     <Content Include="Imagens\toggle-small.png" />
     <Content Include="javascript\Principal.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="WebForm1.aspx" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\01_94.PDF" />
@@ -345,6 +351,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
