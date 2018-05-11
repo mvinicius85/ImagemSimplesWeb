@@ -14,6 +14,16 @@
                 }
             }
 
+            function ShowDivPreview() {
+                var x = document.getElementById("DivPanelPreview");
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                } else {
+                    x.style.display = "block";
+                    //}
+                }
+            }
+
             function PesquisarDocs(parent, getChildrensChildren) {
                 var txt = "";
                 var link;
@@ -57,8 +67,25 @@
                     contentType: 'application/json; charset=utf-8',
                     dataType: "json",
                     success: function (data) {
+                        //window.open(data.d + '\\' + pdfname, '_blank');
+                        var pdf = document.getElementById('pdfFrame');
+                        pdf.src = data.d + '\\' + pdfname;
+                    }
+                });
+            }
 
-                        window.open(data.d + '\\' + pdfname,'_blank');
+            function openPdfNewTab(row) {
+                 var cell = row.cells[0];
+                var pdfname = cell.textContent;
+                $.ajax({
+                    type: "POST",
+                    url: 'Documento.aspx/getPath',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    success: function (data) {
+                        window.open(data.d + '\\' + pdfname, '_blank');
+                        //var pdf = document.getElementById('pdfFrame');
+                        //pdf.src = data.d + '\\' + pdfname;
                     }
                 });
             }
@@ -120,6 +147,7 @@
         <main>
             <div class="mainclass">
                 <button type="button" onclick="ShowDivPesquisa()" class="btnShowDiv">Filtros</button>
+                <button type="button" onclick="ShowDivPreview()" class="btnShowDiv">Pre-Visualizar</button>
 
                 <div class="PanelPesquisa" id="DivPanelPesquisa">
                     <table>
@@ -133,12 +161,18 @@
                         </tr>
                     </table>
                 </div>
+                <div class="PanelPdf" id="DivPanelPreview">
+                    <iframe id="pdfFrame" src=""></iframe>
+                </div>
                 <div class="divDocumentos">
                     <asp:GridView runat="server" ID="griddocumentos" OnRowCreated="griddocumento_RowCreated"
                         OnSelectedIndexChanged="OnSelectedIndexChanged" AllowPaging="True"
                         AutoGenerateColumns="false" OnPageIndexChanging="griddocumentos_PageIndexChanging">
                     </asp:GridView>
                 </div>
+
+
+                <asp:Label runat="server" ID="txtMsgAcessoProibido" Text="" CssClass="MsgErro"></asp:Label>
             </div>
         </main>
     </div>

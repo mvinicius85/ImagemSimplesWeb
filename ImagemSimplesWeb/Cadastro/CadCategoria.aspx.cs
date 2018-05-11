@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -69,6 +70,13 @@ namespace ImagemSimplesWeb.Cadastro
         private void MontaTela()
         {
             var frmcadcategoria = service.PreencheTela();
+
+            var user = service.RetornaUsuario(Session["Login"].ToString());
+            if (!user.Modulos.Any(x => x.id_modulo == 1))
+            {
+                Response.Redirect("~/AcessoNegado.aspx");
+            }
+
             foreach (var item in frmcadcategoria.Menus.OrderBy(x => x.id_Oper).ToList())
             {
                 ddlMenus.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
@@ -171,6 +179,17 @@ namespace ImagemSimplesWeb.Cadastro
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Cadastro/Categoria.aspx");
+        }
+
+        [WebMethod]
+        public static bool ValidaDependencia(string codcategoria)
+        {
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            var service = container.GetInstance<ICadastroAppService>();
+            var retorno = service.ValidaCategoria(codcategoria);
+            return retorno;
         }
     }
 }

@@ -2,6 +2,30 @@
 
 <asp:Content ContentPlaceHolderID="CadCategoria" runat="server">
 
+    <script>
+        function ValidaMenu(valor) {
+            $.ajax({
+                type: 'POST',
+                url: 'CadCategoria.aspx/ValidaDependencia',
+                data: '{codcategoria:' + valor.value + '}',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.d) {
+                        var msg = document.getElementById('txtMsgErro');
+                        msg.textContent = "";
+                    } else {
+                        var msg = document.getElementById('txtMsgErro');
+                        msg.textContent = "*Esta categoria ja dependências, por favor seleciona outra. ";
+                    }
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+    </script>
+
     <div class="divcadcategoria">
         <div>
             <table>
@@ -19,7 +43,10 @@
                     </td>
                     <td>
 
-                        <asp:DropDownList runat="server" ID="ddlMenus"></asp:DropDownList>
+                        <asp:DropDownList runat="server" ID="ddlMenus" onchange="ValidaMenu(this)"></asp:DropDownList>
+                    </td>
+                    <td>
+                        <label id="txtMsgErro" class="MsgErro"></label>
                     </td>
                 </tr>
                 <tr>

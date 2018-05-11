@@ -13,9 +13,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
     public class User_PermissoesService : IUser_PermissoesService
     {
         private readonly IUser_PermissoesRepository _permissoesrepository;
-        public User_PermissoesService(IUser_PermissoesRepository permissoesrepository)
+        private readonly IUser_Cadastro_ModulosRepository _cadmodulosrepository;
+        public User_PermissoesService(IUser_PermissoesRepository permissoesrepository, IUser_Cadastro_ModulosRepository cadmodulosrepository)
         {
             _permissoesrepository = permissoesrepository;
+            _cadmodulosrepository = cadmodulosrepository;
         }
 
         public void AtualizarAcessos(int id_user, List<DTOAcessos> acessos)
@@ -28,9 +30,32 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             }
         }
 
+        public void AtualizarModulos(int id_user, List<USER_MODULOS> list)
+        {
+            _cadmodulosrepository.ExcluirModulos(id_user);
+            foreach (var item in list)
+            {
+                _cadmodulosrepository.Adicionar(new USER_CADASTRO_MODULOS(id_user, item.id_modulo));
+            }
+        }
+
+        public void InserirModulos(List<USER_MODULOS> list, int id_user)
+        {
+            foreach (var item in list)
+            {
+                _cadmodulosrepository.Adicionar(new USER_CADASTRO_MODULOS(id_user,item.id_modulo));
+            }
+
+        }
+
         public List<DTOAcessos> RetornaAcessos(int id_user)
         {
             return _permissoesrepository.RetornaAcessos(id_user);
+        }
+
+        public List<USER_MODULOS> RetornaModulos(int id)
+        {
+            return _permissoesrepository.RetornaModulos(id);
         }
     }
 }

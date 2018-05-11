@@ -145,7 +145,7 @@ ol.tree {
     }
 
         #criamenu li input + ol {
-            background: url(../Imagens/toggle-small-expand.png) 40px 0 no-repeat;
+            background: url(../Imagens/toggle-small-expand.png) 40px -9px no-repeat;
             margin: -0.938em 0 0 -44px; /* 15px */
             height: 1em;
         }
@@ -171,7 +171,7 @@ ol.tree {
         }
 
     #criamenu li input:checked + ol {
-        background: url(../Imagens/toggle-small.png) 40px 5px no-repeat;
+        background: url(../Imagens/toggle-small.png) 40px -9px no-repeat;
         margin: -1.25em 0 0 -44px; /* 20px */
         padding: 1.563em 0 0 80px;
         height: auto;
@@ -267,3 +267,27 @@ ol.tree {
     padding: 10px;
  
 }
+
+.DivAcessoNegado p{
+    text-align:center;
+    color:red;
+}
+
+.PanelPdf {
+    position: relative;
+    left: 12%;
+    background-color: #F0F4F5;
+    border: 5px solid #0098A6;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    left: 5%;
+    width: 89%;
+    box-sizing: border-box;
+    margin: 20px 40px;
+    padding: 20px;
+    display: none;
+}
+
+    .PanelPdf iframe {
+        width: 100%;
+        height: 400px;
+    }

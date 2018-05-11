@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AcessoNegado.aspx" />
     <Content Include="Cadastro\CadCategoria.aspx" />
     <Content Include="Cadastro\CadUsuario.aspx" />
     <Content Include="Cadastro\Categoria.aspx" />
@@ -182,6 +183,8 @@
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\pdfobject.js" />
+    <Content Include="Scripts\pdfobject.min.js" />
     <Content Include="WebForm1.aspx" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\01_94.PDF" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\02_94.PDF" />
@@ -284,6 +287,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcessoNegado.aspx.cs">
+      <DependentUpon>AcessoNegado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcessoNegado.aspx.designer.cs">
+      <DependentUpon>AcessoNegado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

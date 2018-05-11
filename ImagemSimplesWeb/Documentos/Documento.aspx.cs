@@ -43,6 +43,7 @@ namespace ImagemSimplesWeb.Documentos
             {
                 return;
             }
+            
             var col1 = new BoundField();
             col1.DataField = "imagem";
             col1.HeaderText = "Imagem";
@@ -100,6 +101,7 @@ namespace ImagemSimplesWeb.Documentos
                 e.Row.ToolTip = "Clique na linha para abrir o documento.";
                 // e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.griddocumentos, "Select$" + e.Row.RowIndex);
                 e.Row.Attributes["onclick"] = "openFile(this)";
+                e.Row.Attributes["ondblclick"] = "openPdfNewTab(this)";
             }
         }
 
@@ -169,7 +171,16 @@ namespace ImagemSimplesWeb.Documentos
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+
             var menuserivce = container.GetInstance<ICadastroAppService>();
+            var user = menuserivce.RetornaUsuario(Session["login"].ToString());
+
+            if (!user.Acessos.Any(x => x.id_oper == idoper))
+            {
+                txtMsgAcessoProibido.Text = "Você não possui acesso a esta categoria.";
+                return;
+            }
+
             string pathmenu = menuserivce.RetornaCaminhoImgens(Convert.ToInt32(idoper));
             var appservice = container.GetInstance<IArquivoAppService>();
             Session["dir"] = pathmenu;
@@ -188,7 +199,6 @@ namespace ImagemSimplesWeb.Documentos
         public static string getPath()
         {
             return HttpContext.Current.Session["dir"].ToString();
-            //return "TESTE OK!";
         }
 
     }

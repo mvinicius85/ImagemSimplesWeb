@@ -56,6 +56,7 @@ namespace ImagemSimplesWeb.Application.AppForm
                 BeginDocumentoTransaction();
                 _cadastroservice.AlteraUsuario(Mapper.Map<USER_CADASTRO>(usuario));
                 _permissoesservice.AtualizarAcessos(usuario.id_user, Mapper.Map<List<DTOAcessos>>(usuario.Acessos));
+                _permissoesservice.AtualizarModulos(usuario.id_user, Mapper.Map<List<USER_MODULOS>>(usuario.Modulos));
                 if (CommitDocumento() > 0)
                 {
                     return "S";
@@ -122,6 +123,7 @@ namespace ImagemSimplesWeb.Application.AppForm
             {
                 BeginDocumentoTransaction();
                 _cadastroservice.InserirUsuario(Mapper.Map<USER_CADASTRO>(usuario));
+                _permissoesservice.InserirModulos(Mapper.Map<List<USER_MODULOS>>(usuario.Modulos), usuario.id_user);
                 if (CommitDocumento() > 0)
                 {
                     return "S";
@@ -181,7 +183,31 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             var usuario = Mapper.Map<User_CadastroViewModel>(_cadastroservice.RetornaUsuario(id));
             usuario.Acessos = Mapper.Map<List<AcessosViewModel>>(_permissoesservice.RetornaAcessos(id));
+            usuario.Modulos = Mapper.Map<List<User_ModulosViewModel>>(_permissoesservice.RetornaModulos(id));
             return usuario;
+        }
+
+        public User_CadastroViewModel RetornaUsuario(string login)
+        {
+            var usuario = Mapper.Map<User_CadastroViewModel>(_cadastroservice.RetornaUsuario(login));
+            usuario.Acessos = Mapper.Map<List<AcessosViewModel>>(_permissoesservice.RetornaAcessos(usuario.id_user));
+            usuario.Modulos = Mapper.Map<List<User_ModulosViewModel>>(_permissoesservice.RetornaModulos(usuario.id_user));
+            return usuario;
+        }
+
+        public bool ValidaCategoria(string codcategoria)
+        {
+            var categoria = Mapper.Map<User_MenuViewModel>(_menuservice.BuscaCategoria(Convert.ToInt32(codcategoria)));
+            if (categoria.Dependencia == 0)
+            {
+                return true;
+            }
+            var subcategoria = Mapper.Map<User_MenuViewModel>(_menuservice.BuscaCategoria(Convert.ToInt32(categoria.Dependencia)));
+            if (subcategoria.Dependencia == 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool ValidaLogin(string user, string senha)

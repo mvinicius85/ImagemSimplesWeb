@@ -19,11 +19,14 @@ namespace ImagemSimplesWeb.Application.Interface
         string RetornaCaminhoImgens(int idoper);
         List<User_CadastroViewModel> ListaUsuarios();
         User_CadastroViewModel RetornaUsuario(int id);
+        User_CadastroViewModel RetornaUsuario(string login);
         string AlterarUsuario(User_CadastroViewModel usuario);
         List<USER_CAT_ATRIBUTOSViewModel> ListarAtributos(int id);
         List<User_MenuViewModel> BuscarCategoria(string desc);
         string InserirCategoria(User_MenuViewModel cat);
         string InserirUsuario(User_CadastroViewModel usuario);
         List<User_CadastroViewModel> FiltrarUsuarios(User_CadastroViewModel filtro);
+        bool ValidaCategoria(string codcategoria);
+
     }
 }

@@ -5,46 +5,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="~/css/Login.css" />
-       <%-- <link rel="shortcut icon" type="image/x-icon" href="/Imagens/favicon.ico" />--%>
+    <%-- <link rel="shortcut icon" type="image/x-icon" href="/Imagens/favicon.ico" />--%>
 
 
     <title>Imagem Simples</title>
     <style type="text/css">
-        .txtLogin {}
+        .txtLogin {
+        }
     </style>
 </head>
 <body>
 
-
-    <div class="LoginHeader">
-        <div class="ImageLogo">
-           <asp:Image runat="server" ImageUrl="~/Imagens/saudesimpleslogo.png"/>
+    <div class="mainLogin">
+        <div class="LoginHeader">
+            <div class="ImageLogo">
+                <asp:Image runat="server" ImageUrl="~/Imagens/saudesimpleslogo.png" />
+            </div>
         </div>
-    </div>
-    <div class="LoginInfo">
         <form id="formLogin" runat="server">
             <div class="Login">
-                <ul>
-                    <li>
-                       
-                            <asp:Label runat="server" CssClass="lblLogin" Text="Login "></asp:Label><br />
 
-                        <asp:TextBox runat="server" cssClass="txtDadosLogin" ID="txtLogin" Width="100%"></asp:TextBox>
-                    </li>
-                    <li>
-                 
-                            <asp:Label runat="server" CssClass="lblLogin" Text="Senha "></asp:Label><br />
 
-                        <asp:TextBox runat="server" cssClass="txtDadosLogin" ID="txtSenha" TextMode="Password" Width="100%"></asp:TextBox>
-                    </li>
-                    <li class="BtnLogin">
-                        <asp:Button ID="btnLogin" runat="server" Text="Entrar" OnClick="btnLogin_Click" CssClass="BtnLogin" />
+                <%--                       <asp:Label runat="server" CssClass="lblLogin" Text="Login "></asp:Label><br />--%>
 
-                    </li>
+                <asp:TextBox runat="server" placeholder="Nome de Usuario" CssClass="txtDadosLogin" ID="txtLogin" Width="100%"></asp:TextBox>
+                <br />
 
-                </ul>
+                <%--                            <asp:Label runat="server" CssClass="lblLogin" Text="Senha "></asp:Label><br />--%>
+
+                <asp:TextBox runat="server" placeholder="Senha" CssClass="txtDadosLogin" ID="txtSenha" TextMode="Password" Width="100%"></asp:TextBox>
+
+                <div>
+                    <asp:Button ID="btnLogin" runat="server" Text="Entrar" OnClick="btnLogin_Click" CssClass="BtnLogin" />
+
+                </div>
             </div>
         </form>
+
     </div>
+    <div class="loginBottom">
+        <p>OM30 - Todos os direitos reservados</p>
+        <p>Imagem Simples</p>
+
+    </div>
+
+
 </body>
 </html>

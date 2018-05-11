@@ -67,6 +67,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _cadastrorepository.ObterPorId(id);
         }
 
+        public USER_CADASTRO RetornaUsuario(string login)
+        {
+            return _cadastrorepository.Buscar(x => x.Nome == login).FirstOrDefault();
+        }
+
         public bool ValidarUsuario(USER_CADASTRO user)
         {
             if (!_cadastrorepository.Buscar(x => x.Nome == user.Nome).Any())

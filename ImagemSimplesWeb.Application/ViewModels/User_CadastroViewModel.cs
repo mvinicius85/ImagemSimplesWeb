@@ -27,6 +27,8 @@ namespace ImagemSimplesWeb.Application.ViewModels
             Tel3 = _tel3;
             Email = _email;
             ativo = _ativo;
+
+            Modulos = new List<User_ModulosViewModel>();
         }
         public User_CadastroViewModel(string _nome, string _departamento)
         {
@@ -50,5 +52,6 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public string secao { get; set; }
         public Nullable<bool> ativo { get; set; }
         public List<AcessosViewModel> Acessos { get; set; }
+        public List<User_ModulosViewModel> Modulos { get; set; }
     }
 }

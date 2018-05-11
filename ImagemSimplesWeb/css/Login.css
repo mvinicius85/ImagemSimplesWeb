@@ -1,50 +1,81 @@
-﻿.LoginHeader {
-    position: absolute;
-    width: 300px;
-    height: 150px;
-    z-index: 15;
-    top: 30%;
-    left: 600px;
-    margin: -100px 0 0 -150px;
-    right: 365px;
+﻿body {
+    background-color: #009DB0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-    .LoginHeader img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-.LoginInfo {
-    border-radius: 3px;
-    position: absolute;
-    width: 300px;
-    height: 250px;
-    z-index: 15;
-    top: 33%;
-    left: 453px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: lightgray;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+.mainLogin {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    position: relative;
+    top: 50px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
 }
 
-    .LoginInfo ul {
-        list-style-type: none;
-        width: 282px;
-        margin-left: 8px;
-        Margin: 5;
-        padding: 0;
-    }
 
-        .LoginInfo ul li {
-            margin: 0 0 20px 0;
-            flex: 0 1 auto;
-        }
+
+
+.LoginHeader img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#formLogin {
+    max-width: 100%;
+    margin: 0 0 20px 0;
+    flex: 0 1 auto;
+}
+
+.txtDadosLogin {
+    border: hidden;
+    border-bottom: gray;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 20px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #969595;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #C7C6C6;
+    opacity: 1; /* Firefox */
+}
+
 
 .BtnLogin {
+    margin-top: 20px;
+    height: 50px;
+    font-size: 20px;
     border-radius: 3px;
-    float: right;
-    background: linear-gradient(blue, darkblue);
+    border: hidden;
+    text-align: center;
+    background: #00BCDA;
     color: white;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
+
+    .BtnLogin:hover {
+        cursor: pointer;
+    }
+
+
+.loginBottom {
+    position: relative;
+    top: 20px;
+    padding: 40px;
+    font-size: 14px;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

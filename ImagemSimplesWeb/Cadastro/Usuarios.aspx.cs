@@ -26,6 +26,13 @@ namespace ImagemSimplesWeb.Cadastro
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
             var service = container.GetInstance<ICadastroAppService>();
+
+            var user = service.RetornaUsuario(Session["Login"].ToString());
+            if (!user.Modulos.Any(x => x.id_modulo == 2))
+            {
+                Response.Redirect("~/AcessoNegado.aspx");
+            }
+
             var usuarios = service.ListaUsuarios();
             GridUsuarios.DataSource = usuarios;
             GridUsuarios.DataBind();

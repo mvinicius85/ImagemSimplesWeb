@@ -40,5 +40,17 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 
             return acessos;
         }
+
+        public List<USER_MODULOS> RetornaModulos(int id_user)
+        {
+            var con = Db.Database.Connection;
+
+            var sql = @"SELECT m.id_modulo 'id_modulo', m.nome_modulo 'nome_modulo'
+                        FROM USER_MODULOS m INNER JOIN USER_CADASTRO_MODULOS cm ON m.id_modulo = cm.id_modulo
+                        WHERE cm.id_user = @id_user";
+            var modulos = con.Query<USER_MODULOS>(sql, new { id_user = id_user }).ToList();
+
+            return modulos;
+        }
     }
 }

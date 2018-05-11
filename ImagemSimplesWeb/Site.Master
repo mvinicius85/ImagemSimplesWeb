@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head runat="server">
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Cadastro.css" />
     <link rel="archives" type="text/javascript" href="~/javascript/Principal.js">
@@ -117,7 +117,9 @@
             </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="CadUsuario" runat="server">
             </asp:ContentPlaceHolder>
-           
+            <asp:ContentPlaceHolder ID="AcessoNegado" runat="server">
+            </asp:ContentPlaceHolder>
+
             <%--            <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>--%>

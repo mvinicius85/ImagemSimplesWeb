@@ -109,6 +109,7 @@
     <Compile Include="Entities\Documento\CAD_MASCARAS.cs" />
     <Compile Include="Entities\Documento\USER_ATRIBUTOS.cs" />
     <Compile Include="Entities\Documento\USER_CADASTRO.cs" />
+    <Compile Include="Entities\Documento\USER_CADASTRO_MODULOS.cs" />
     <Compile Include="Entities\Documento\USER_CAT_ATRIBUTOS.cs" />
     <Compile Include="Entities\Documento\USER_DOCUMENTOS.cs" />
     <Compile Include="Entities\Documento\USER_DOC_ATRIBUTOS.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Entities\Documento\USER_LIBERAREQ.cs" />
     <Compile Include="Entities\Documento\USER_MENU1.cs" />
     <Compile Include="Entities\Documento\USER_MENUIMAGEM.cs" />
+    <Compile Include="Entities\Documento\USER_MODULOS.cs" />
     <Compile Include="Entities\Documento\USER_OPERACOES.cs" />
     <Compile Include="Entities\Documento\USER_PERMISSOES.cs" />
     <Compile Include="Entities\Documento\USER_QTDE_ESCOPO.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="Entities\DTO\DTOAcessoPermissoes.cs" />
     <Compile Include="Entities\DTO\DTOAcessos.cs" />
     <Compile Include="Interfaces\Repository\IUser_CadastroRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUser_Cadastro_ModulosRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_Cat_AtributoRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_MenuRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_PermissoesRepository.cs" />

@@ -22,6 +22,8 @@ namespace ImagemSimplesWeb.Cadastro
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
             service = container.GetInstance<ICadastroAppService>();
+
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,6 +34,13 @@ namespace ImagemSimplesWeb.Cadastro
             {
                 Response.Redirect("~/login.aspx");
             }
+
+            var user = service.RetornaUsuario(Session["Login"].ToString());
+            if (!user.Modulos.Any(x => x.id_modulo == 2))
+            {
+                Response.Redirect("~/AcessoNegado.aspx");
+            }
+
             id = Convert.ToInt32(Request.QueryString["id"]);
             PreencheTela();
         }
@@ -62,6 +71,18 @@ namespace ImagemSimplesWeb.Cadastro
                 GridAcessos.DataBind();
             }
 
+            foreach (var mod in usuario.Modulos)
+            {
+                if (mod.id_modulo == 1)
+                {
+                    chkCategorias.Checked = true;
+                }
+                if (mod.id_modulo == 2)
+                {
+                    chkUsuarios.Checked = true;
+                }
+            }
+
 
             var frmcadcategoria = service.PreencheTela();
             foreach (var item in frmcadcategoria.Menus.OrderBy(x => x.Nivel).ToList())
@@ -85,6 +106,17 @@ namespace ImagemSimplesWeb.Cadastro
                 Request.Form["ctl00$CadUsuario$txtTelRes"].ToString(),
                 Request.Form["ctl00$CadUsuario$txtTelCel"].ToString(),
                 Request.Form["ctl00$CadUsuario$txtEmail"].ToString(), true);
+
+            if (Request.Form["ctl00$CadUsuario$chkUsuarios"] != null)
+            {
+                usuario.Modulos.Add(new User_ModulosViewModel(2, "Usuarios"));
+            }
+
+            if (Request.Form["ctl00$CadUsuario$chkCategorias"] != null)
+            {
+                usuario.Modulos.Add(new User_ModulosViewModel(1, "Categorias"));
+            }
+
             string ret = "";
             if (usuario.id_user == 0)
             {

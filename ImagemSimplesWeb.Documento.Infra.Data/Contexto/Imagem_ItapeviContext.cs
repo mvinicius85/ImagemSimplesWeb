@@ -28,6 +28,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
         public DbSet<CAD_MASCARAS> CAD_MASCARAS { get; set; }
         public DbSet<USER_ATRIBUTOS> USER_ATRIBUTOS { get; set; }
         public DbSet<USER_CADASTRO> USER_CADASTRO { get; set; }
+        public DbSet<USER_CADASTRO_MODULOS> USER_CADASTRO_MODULOS { get; set; }
         public DbSet<USER_CAT_ATRIBUTOS> USER_CAT_ATRIBUTOS { get; set; }
         public DbSet<USER_DOC_ATRIBUTOS> USER_DOC_ATRIBUTOS { get; set; }
         public DbSet<USER_DOC_RETIRADAS> USER_DOC_RETIRADAS { get; set; }
@@ -36,6 +37,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
         public DbSet<USER_LIBERAREQ> USER_LIBERAREQ { get; set; }
         public DbSet<USER_MENU1> USER_MENU1 { get; set; }
         public DbSet<USER_MENUIMAGEM> USER_MENUIMAGEM { get; set; }
+        public DbSet<USER_MODULOS> USER_MODULOS { get; set; }
         public DbSet<USER_PERMISSOES> USER_PERMISSOES { get; set; }
         public DbSet<USER_OPERACOES> USER_OPERACOES { get; set; }
         public DbSet<USER_QTDE_ESCOPO> USER_QTDE_ESCOPO { get; set; }
@@ -48,6 +50,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new CAD_MASCARASMap());
             modelBuilder.Configurations.Add(new USER_ATRIBUTOSMap());
             modelBuilder.Configurations.Add(new USER_CADASTROMap());
+            modelBuilder.Configurations.Add(new USER_CADASTRO_MODULOSMap());
             modelBuilder.Configurations.Add(new USER_CAT_ATRIBUTOSMap());
             modelBuilder.Configurations.Add(new USER_DOC_ATRIBUTOSMap());
             modelBuilder.Configurations.Add(new USER_DOC_RETIRADASMap());
@@ -56,6 +59,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new USER_LIBERAREQMap());
             modelBuilder.Configurations.Add(new USER_MENU1Map());
             modelBuilder.Configurations.Add(new USER_MENUIMAGEMMap());
+            modelBuilder.Configurations.Add(new USER_MODULOSMap());
             modelBuilder.Configurations.Add(new USER_OPERACOESMap());
             modelBuilder.Configurations.Add(new USER_PERMISSOESMap());
             modelBuilder.Configurations.Add(new USER_QTDE_ESCOPOMap());

@@ -83,3 +83,23 @@ body select {
     .GridCadastro tr td table td {
         border: hidden;
     }
+
+
+.MsgErro {
+    border: hidden;
+    color: red;
+    background-color: #FFFFFF;
+}
+
+.TableUsuarios {
+    float: left;
+}
+
+.Modulos {
+    float: right;
+    position: relative;
+}
+
+    .Modulos ol {
+        list-style-type: none;
+    }
