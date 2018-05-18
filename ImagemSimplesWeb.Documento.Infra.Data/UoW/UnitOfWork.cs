@@ -1,4 +1,5 @@
-﻿using ImagemSimplesWeb.Documento.Infra.Data.Contexto;
+﻿using ImagemSimplesWeb.Documento.Domain.Entities.Documento;
+using ImagemSimplesWeb.Documento.Infra.Data.Contexto;
 using ImagemSimplesWeb.Documento.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.UoW
 
         public UnitOfWork(Imagem_ItapeviContext context)
         {
-            _context = context;            
+            _context = context;
         }
 
         public void BeginTransaction()
@@ -29,15 +30,15 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.UoW
 
         private void DetachAllEntities()
         {
-      
+
 
             var result = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)_context).ObjectContext;
 
-             var objs=    result.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged);
+            var objs = result.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged);
 
             foreach (var entity in objs)
             {
-                _context.Entry(entity.Entity).State =EntityState.Detached;
+                _context.Entry(entity.Entity).State = EntityState.Detached;
             }
         }
 
@@ -76,8 +77,8 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.UoW
 
         public int Commit()
         {
-                        
-           return  _context.SaveChanges();
+
+            return _context.SaveChanges();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -113,5 +114,6 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.UoW
 
             return keyNames;
         }
+
     }
 }

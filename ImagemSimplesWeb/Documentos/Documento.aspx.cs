@@ -51,7 +51,7 @@ namespace ImagemSimplesWeb.Documentos
 
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
             var menuservice = container.GetInstance<ICadastroAppService>();
             var atrib = menuservice.ListarAtributos(id);
 
@@ -131,7 +131,7 @@ namespace ImagemSimplesWeb.Documentos
 
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
             var menuservice = container.GetInstance<ICadastroAppService>();
             var atrib = menuservice.ListarAtributos(Convert.ToInt32(Request.QueryString["idoper"]));
             foreach (var item in atrib)
@@ -144,7 +144,7 @@ namespace ImagemSimplesWeb.Documentos
                 }
             }
 
-            var dirimp = new DirectoryInfo(dir);
+            var dirimp = new DirectoryInfo(ConfigurationManager.AppSettings["LocalDir"].ToString() + dir);
             var listfiles = dirimp.GetFiles("*.mdb", SearchOption.AllDirectories);
             //Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             //container.GetInstance<ImagemSimplesWeb.Documento.Infra.Data.Contexto.Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
@@ -158,7 +158,7 @@ namespace ImagemSimplesWeb.Documentos
         {
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
             var appcadastro = container.GetInstance<ICadastroAppService>();
             var menus = appcadastro.BuscaMenu();
             menus = menus.OrderByDescending(x => x.id_Oper).ToList();
@@ -170,7 +170,7 @@ namespace ImagemSimplesWeb.Documentos
         {
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
 
             var menuserivce = container.GetInstance<ICadastroAppService>();
             var user = menuserivce.RetornaUsuario(Session["login"].ToString());

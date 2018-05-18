@@ -21,29 +21,32 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
         }
 
         public Imagem_ItapeviContext()
-           : base("Data Source=OM30NBRH98KVVC\\SQLEXPRESS;Initial Catalog=Imagem_Itapevi;Persist Security Info=True;User ID=sa; Password=password123;MultipleActiveResultSets=True;App=ImagemSimplesWeb")
+           : base("PgProdutos")
         {
         }
 
-        public DbSet<CAD_MASCARAS> CAD_MASCARAS { get; set; }
-        public DbSet<USER_ATRIBUTOS> USER_ATRIBUTOS { get; set; }
-        public DbSet<USER_CADASTRO> USER_CADASTRO { get; set; }
-        public DbSet<USER_CADASTRO_MODULOS> USER_CADASTRO_MODULOS { get; set; }
-        public DbSet<USER_CAT_ATRIBUTOS> USER_CAT_ATRIBUTOS { get; set; }
-        public DbSet<USER_DOC_ATRIBUTOS> USER_DOC_ATRIBUTOS { get; set; }
-        public DbSet<USER_DOC_RETIRADAS> USER_DOC_RETIRADAS { get; set; }
-        public DbSet<USER_DOC_VINCULO> USER_DOC_VINCULO { get; set; }
-        public DbSet<USER_DOCUMENTOS> USER_DOCUMENTOS { get; set; }
-        public DbSet<USER_LIBERAREQ> USER_LIBERAREQ { get; set; }
-        public DbSet<USER_MENU1> USER_MENU1 { get; set; }
-        public DbSet<USER_MENUIMAGEM> USER_MENUIMAGEM { get; set; }
-        public DbSet<USER_MODULOS> USER_MODULOS { get; set; }
-        public DbSet<USER_PERMISSOES> USER_PERMISSOES { get; set; }
-        public DbSet<USER_OPERACOES> USER_OPERACOES { get; set; }
-        public DbSet<USER_QTDE_ESCOPO> USER_QTDE_ESCOPO { get; set; }
-        public DbSet<USER_VALIDACOES> USER_VALIDACOES { get; set; }
-        public DbSet<USER_VINCULOS> USER_VINCULOS { get; set; }
-        public DbSet<USER_VINCULOS_ATRI> USER_VINCULOS_ATRI { get; set; }
+        public DbSet<cad_mascaras> CAD_MASCARAS { get; set; }
+        public DbSet<user_atributos> USER_ATRIBUTOS { get; set; }
+        public DbSet<user_cadastro> USER_CADASTRO { get; set; }
+        public DbSet<user_cadastro_modulos> USER_CADASTRO_MODULOS { get; set; }
+        public DbSet<user_cat_atributos> USER_CAT_ATRIBUTOS { get; set; }
+        public DbSet<user_doc_atributos> USER_DOC_ATRIBUTOS { get; set; }
+        public DbSet<user_doc_retiradas> USER_DOC_RETIRADAS { get; set; }
+        public DbSet<user_doc_vinculo> USER_DOC_VINCULO { get; set; }
+        public DbSet<user_documentos> USER_DOCUMENTOS { get; set; }
+        public DbSet<user_liberareq> USER_LIBERAREQ { get; set; }
+        public DbSet<user_menu1> USER_MENU1 { get; set; }
+        public DbSet<user_menuimagem> USER_MENUIMAGEM { get; set; }
+        public DbSet<user_modulos> USER_MODULOS { get; set; }
+        public DbSet<user_permissoes> USER_PERMISSOES { get; set; }
+        public DbSet<user_operacoes> USER_OPERACOES { get; set; }
+        public DbSet<user_qtde_escopo> USER_QTDE_ESCOPO { get; set; }
+        public DbSet<user_validacoes> USER_VALIDACOES { get; set; }
+        public DbSet<user_vinculos> USER_VINCULOS { get; set; }
+        public DbSet<user_vinculos_atri> USER_VINCULOS_ATRI { get; set; }
+        public DbSet<user_documentos_atributos> user_documentos_atributos { get; set; }
+        public DbSet<user_documentos_imagem> user_documentos_imagem { get; set; }
+        public DbSet<user_status_documento> user_status_documento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -66,6 +69,9 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new USER_VALIDACOESMap());
             modelBuilder.Configurations.Add(new USER_VINCULOSMap());
             modelBuilder.Configurations.Add(new USER_VINCULOS_ATRIMap());
+            modelBuilder.Configurations.Add(new user_documentos_atributosMap());
+            modelBuilder.Configurations.Add(new user_documentos_imagemMap());
+            modelBuilder.Configurations.Add(new user_status_documentoMap());
         }
 
         public override int SaveChanges()

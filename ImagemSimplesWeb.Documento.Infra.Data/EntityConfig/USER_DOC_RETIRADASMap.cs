@@ -5,12 +5,12 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_DOC_RETIRADASMap : EntityTypeConfiguration<USER_DOC_RETIRADAS>
+    public class USER_DOC_RETIRADASMap : EntityTypeConfiguration<user_doc_retiradas>
     {
         public USER_DOC_RETIRADASMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.id, t.documento, t.Solicitante, t.Dataretirada, t.Datadevolucao, t.status, t.id_user });
+            this.HasKey(t => new { t.id, t.documento, t.solicitante, t.dataretirada, t.datadevolucao, t.status, t.id_user });
 
             // Properties
             this.Property(t => t.id)
@@ -20,7 +20,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(250);
 
-            this.Property(t => t.Solicitante)
+            this.Property(t => t.solicitante)
                 .IsRequired()
                 .HasMaxLength(180);
 
@@ -34,17 +34,17 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("USER_DOC_RETIRADAS");
+            this.ToTable("user_doc_retiradas");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.documento).HasColumnName("documento");
-            this.Property(t => t.Solicitante).HasColumnName("Solicitante");
+            this.Property(t => t.solicitante).HasColumnName("solicitante");
             this.Property(t => t.cpf_rg).HasColumnName("cpf_rg");
-            this.Property(t => t.Dataretirada).HasColumnName("Dataretirada");
-            this.Property(t => t.Datadevolucao).HasColumnName("Datadevolucao");
+            this.Property(t => t.dataretirada).HasColumnName("dataretirada");
+            this.Property(t => t.datadevolucao).HasColumnName("datadevolucao");
             this.Property(t => t.id_entregador).HasColumnName("id_entregador");
             this.Property(t => t.id_recebedor).HasColumnName("id_recebedor");
             this.Property(t => t.status).HasColumnName("status");
-            this.Property(t => t.Data).HasColumnName("Data");
+            this.Property(t => t.data).HasColumnName("data");
             this.Property(t => t.id_user).HasColumnName("id_user");
         }
     }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
-    public partial class USER_ATRIBUTOS
+    public partial class user_atributos
     {
         public int id { get; set; }
-        public string Nome { get; set; }
-        public string Tamanho { get; set; }
-        public string Tipo { get; set; }
-        public Nullable<bool> Uso { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
+        public string nome { get; set; }
+        public string tamanho { get; set; }
+        public string tipo { get; set; }
+        public Nullable<bool> uso { get; set; }
+        public Nullable<System.DateTime> data { get; set; }
         public int id_user { get; set; }
     }
 }

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
-    public partial class USER_OPERACOES
+    public partial class user_operacoes
     {
         public int id { get; set; }
-        public int id_Oper { get; set; }
-        public string Descricao { get; set; }
-        public Nullable<int> Visualizar { get; set; }
-        public Nullable<int> Indexar { get; set; }
-        public Nullable<int> Conferir { get; set; }
-        public Nullable<int> Configurar { get; set; }
-        public Nullable<int> Mover { get; set; }
-        public Nullable<int> Perfil { get; set; }
-        public Nullable<int> Ferramentas { get; set; }
-        public Nullable<int> Relatorios { get; set; }
+        public int id_oper { get; set; }
+        public string descricao { get; set; }
+        public Nullable<int> visualizar { get; set; }
+        public Nullable<int> indexar { get; set; }
+        public Nullable<int> conferir { get; set; }
+        public Nullable<int> configurar { get; set; }
+        public Nullable<int> mover { get; set; }
+        public Nullable<int> perfil { get; set; }
+        public Nullable<int> ferramentas { get; set; }
+        public Nullable<int> relatorios { get; set; }
         public Nullable<int> livre1 { get; set; }
-        public Nullable<System.DateTime> DataInclusao { get; set; }
-        public Nullable<System.DateTime> DataAlteracao { get; set; }
-        public Nullable<int> OperIncluiu { get; set; }
-        public Nullable<int> OperAlterou { get; set; }
+        public Nullable<System.DateTime> datainclusao { get; set; }
+        public Nullable<System.DateTime> dataalteracao { get; set; }
+        public Nullable<int> operincluiu { get; set; }
+        public Nullable<int> operalterou { get; set; }
         public Nullable<int> cont_docs { get; set; }
     }
 }

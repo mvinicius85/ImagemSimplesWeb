@@ -23,6 +23,7 @@ namespace ImagemSimplesWeb.Application.Interface
         string AlterarUsuario(User_CadastroViewModel usuario);
         List<USER_CAT_ATRIBUTOSViewModel> ListarAtributos(int id);
         List<User_MenuViewModel> BuscarCategoria(string desc);
+        List<User_MenuViewModel> CategoriasDocumentos();
         string InserirCategoria(User_MenuViewModel cat);
         string InserirUsuario(User_CadastroViewModel usuario);
         List<User_CadastroViewModel> FiltrarUsuarios(User_CadastroViewModel filtro);

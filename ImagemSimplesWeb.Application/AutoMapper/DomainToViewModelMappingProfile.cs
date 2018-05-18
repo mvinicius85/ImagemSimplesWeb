@@ -14,9 +14,12 @@ namespace ImagemSimplesWeb.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<USER_CADASTRO, User_CadastroViewModel>();
-            CreateMap<USER_MENU1, User_MenuViewModel>();
+            CreateMap<user_cadastro, User_CadastroViewModel>();
+            CreateMap<user_menu1, User_MenuViewModel>();
             CreateMap<DTOAcessos, AcessosViewModel>();
+            CreateMap<user_documentos_imagem, User_Documentos_ImagemViewModel>();
+            CreateMap<user_documentos_atributos, User_Documentos_AtributosViewModel>();
+            CreateMap<user_status_documento, User_Status_DocumentoViewModel>();
         }
     }
 }

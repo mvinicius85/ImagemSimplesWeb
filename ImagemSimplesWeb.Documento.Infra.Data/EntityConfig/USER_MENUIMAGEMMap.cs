@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_MENUIMAGEMMap : EntityTypeConfiguration<USER_MENUIMAGEM>
+    public class USER_MENUIMAGEMMap : EntityTypeConfiguration<user_menuimagem>
     {
         public USER_MENUIMAGEMMap()
         {
@@ -16,11 +16,11 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Documento)
+            this.Property(t => t.documento)
                 .IsFixedLength()
                 .HasMaxLength(150);
 
-            this.Property(t => t.Pasta)
+            this.Property(t => t.pasta)
                 .IsFixedLength()
                 .HasMaxLength(250);
 
@@ -29,17 +29,17 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .HasMaxLength(250);
 
             // Table & Column Mappings
-            this.ToTable("USER_MENUIMAGEM");
+            this.ToTable("user_menuimagem");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.id_doc).HasColumnName("id_doc");
-            this.Property(t => t.Data).HasColumnName("Data");
-            this.Property(t => t.Documento).HasColumnName("Documento");
-            this.Property(t => t.Pasta).HasColumnName("Pasta");
+            this.Property(t => t.data).HasColumnName("data");
+            this.Property(t => t.documento).HasColumnName("documento");
+            this.Property(t => t.pasta).HasColumnName("pasta");
             this.Property(t => t.imagem).HasColumnName("imagem");
-            this.Property(t => t.DataInclusao).HasColumnName("DataInclusao");
-            this.Property(t => t.DataAlteracao).HasColumnName("DataAlteracao");
-            this.Property(t => t.OperIncluiu).HasColumnName("OperIncluiu");
-            this.Property(t => t.OperAlterou).HasColumnName("OperAlterou");
+            this.Property(t => t.datainclusao).HasColumnName("datainclusao");
+            this.Property(t => t.dataalteracao).HasColumnName("dataalteracao");
+            this.Property(t => t.operincluiu).HasColumnName("operincluiu");
+            this.Property(t => t.operalterou).HasColumnName("operalterou");
         }
     }
 }

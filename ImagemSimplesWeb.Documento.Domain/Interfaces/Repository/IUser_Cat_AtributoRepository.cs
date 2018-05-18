@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
 {
-    public interface IUser_Cat_AtributoRepository : IRepository<USER_CAT_ATRIBUTOS>
+    public interface IUser_Cat_AtributoRepository : IRepository<user_cat_atributos>
     {
         int ExcluirAtributos(int id_oper);
     }

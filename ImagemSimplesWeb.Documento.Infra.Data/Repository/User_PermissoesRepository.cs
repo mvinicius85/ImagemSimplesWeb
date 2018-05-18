@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 {
-    public class User_PermissoesRepository : Repository<USER_PERMISSOES>, IUser_PermissoesRepository
+    public class User_PermissoesRepository : Repository<user_permissoes>, IUser_PermissoesRepository
     {
         public User_PermissoesRepository(Imagem_ItapeviContext context) : base(context)
         {
@@ -20,35 +20,40 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 
         public int ExcluiAcessos(int id_user)
         {
+
+            string iduser = id_user.ToString();
+
             var con = Db.Database.Connection;
 
-            var sql = "DELETE FROM USER_PERMISSOES WHERE id_user = @id_user";
+            var sql = "DELETE FROM dbo.user_permissoes WHERE id_user = @iduser";
 
-            var rows = con.Execute(sql, new { id_user = id_user }, null, 0, null);
+            var rows = con.Execute(sql, new { iduser = iduser }, null, 0, null);
 
             return rows;
         }
 
         public List<DTOAcessos> RetornaAcessos(int id_user)
         {
+            string iduser = id_user.ToString();
             var con = Db.Database.Connection;
 
-            var sql = @"SELECT  um.id_oper, um.Descricao, um.Nivel FROM USER_MENU1 um
-                        INNER JOIN USER_PERMISSOES up ON up.id_oper = um.id_Oper
-                        WHERE up.id_user = @id_user AND up.Acesso = 1";
-            var acessos = con.Query<DTOAcessos>(sql, new { id_user = id_user }).ToList();
+            var sql = @"SELECT  um.id_oper AS id_oper, um.descricao AS descricao, um.nivel AS nivel 
+                        FROM dbo.user_menu1 um
+                        INNER JOIN dbo.user_permissoes up ON up.id_oper = um.id_oper
+                        WHERE up.id_user = @iduser AND up.acesso = true";
+            var acessos = con.Query<DTOAcessos>(sql, new { iduser = iduser }).ToList();
 
             return acessos;
         }
 
-        public List<USER_MODULOS> RetornaModulos(int id_user)
+        public List<user_modulos> RetornaModulos(int id_user)
         {
             var con = Db.Database.Connection;
 
-            var sql = @"SELECT m.id_modulo 'id_modulo', m.nome_modulo 'nome_modulo'
-                        FROM USER_MODULOS m INNER JOIN USER_CADASTRO_MODULOS cm ON m.id_modulo = cm.id_modulo
+            var sql = @"SELECT m.id_modulo as id_modulo, m.nome_modulo as nome_modulo
+                        FROM dbo.user_modulos m INNER JOIN dbo.user_cadastro_modulos cm ON m.id_modulo = cm.id_modulo
                         WHERE cm.id_user = @id_user";
-            var modulos = con.Query<USER_MODULOS>(sql, new { id_user = id_user }).ToList();
+            var modulos = con.Query<user_modulos>(sql, new { id_user = id_user }).ToList();
 
             return modulos;
         }

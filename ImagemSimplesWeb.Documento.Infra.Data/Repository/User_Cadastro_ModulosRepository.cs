@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 {
-    public class User_Cadastro_ModulosRepository : Repository<USER_CADASTRO_MODULOS>, IUser_Cadastro_ModulosRepository
+    public class User_Cadastro_ModulosRepository : Repository<user_cadastro_modulos>, IUser_Cadastro_ModulosRepository
     {
         public User_Cadastro_ModulosRepository(Imagem_ItapeviContext context) : base(context)
         {
@@ -21,7 +21,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
         {
             var con = Db.Database.Connection;
 
-            var sql = "DELETE FROM USER_CADASTRO_MODULOS WHERE id_user = @id_user";
+            var sql = "DELETE FROM dbo.user_cadastro_modulos WHERE id_user = @id_user";
 
             var rows = con.Execute(sql, new { id_user = id_user }, null, 0, null);
 

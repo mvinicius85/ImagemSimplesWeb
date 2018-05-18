@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 {
-    public class User_CadastroRepository : Repository<USER_CADASTRO>, IUser_CadastroRepository
+    public class User_CadastroRepository : Repository<user_cadastro>, IUser_CadastroRepository
     {
         public User_CadastroRepository(Imagem_ItapeviContext context) : base(context)
         {
 
         }
 
-        public List<USER_CADASTRO> FiltrarUsuarios(USER_CADASTRO filtro)
+        public List<user_cadastro> FiltrarUsuarios(user_cadastro filtro)
         {
             var con = Db.Database.Connection;
 
             var sql = @"Select * from USER_CADASTRO " + filtro.MontaSwhere();
-            var nfes = con.Query<USER_CADASTRO>(sql, filtro).ToList();
+            var nfes = con.Query<user_cadastro>(sql, filtro).ToList();
 
             return nfes.OrderBy(x => x.id_user).ToList();
         }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 {
-    public class User_Cat_AtributoRepository : Repository<USER_CAT_ATRIBUTOS>, IUser_Cat_AtributoRepository
+    public class User_Cat_AtributoRepository : Repository<user_cat_atributos>, IUser_Cat_AtributoRepository
     {
         public User_Cat_AtributoRepository(Imagem_ItapeviContext context) : base(context)
         {
@@ -21,7 +21,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
         {
             var con = Db.Database.Connection;
 
-            var sql = "DELETE FROM USER_CAT_ATRIBUTOS WHERE id_oper = @id_oper";
+            var sql = "DELETE FROM dbo.user_cat_atributos WHERE id_oper = @id_oper";
 
             var rows = con.Execute(sql, new { id_oper = id_oper }, null, 0, null);
 

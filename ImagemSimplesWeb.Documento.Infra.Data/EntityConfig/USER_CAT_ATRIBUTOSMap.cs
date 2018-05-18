@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_CAT_ATRIBUTOSMap : EntityTypeConfiguration<USER_CAT_ATRIBUTOS>
+    public class USER_CAT_ATRIBUTOSMap : EntityTypeConfiguration<user_cat_atributos>
     {
         public USER_CAT_ATRIBUTOSMap()
         {
@@ -12,19 +12,19 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.HasKey(t => t.id_cat_atrib);
 
             // Properties
-            this.Property(t => t.NomeAtributo)
+            this.Property(t => t.nomeatributo)
                 .HasMaxLength(100);
 
-            this.Property(t => t.TituloAtributo)
+            this.Property(t => t.tituloatributo)
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            this.ToTable("USER_CAT_ATRIBUTOS");
+            this.ToTable("user_cat_atributos");
             this.Property(t => t.id_cat_atrib).HasColumnName("id_cat_atrib");
-            this.Property(t => t.id_Oper).HasColumnName("id_Oper");
-            this.Property(t => t.NomeAtributo).HasColumnName("NomeAtributo");
-            this.Property(t => t.TituloAtributo).HasColumnName("TituloAtributo");
-            this.Property(t => t.Ordem).HasColumnName("Ordem");
+            this.Property(t => t.id_oper).HasColumnName("id_oper");
+            this.Property(t => t.nomeatributo).HasColumnName("nomeatributo");
+            this.Property(t => t.tituloatributo).HasColumnName("tituloatributo");
+            this.Property(t => t.ordem).HasColumnName("ordem");
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_VINCULOSMap : EntityTypeConfiguration<USER_VINCULOS>
+    public class USER_VINCULOSMap : EntityTypeConfiguration<user_vinculos>
     {
         public USER_VINCULOSMap()
         {
@@ -16,29 +16,29 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Nome_doc)
+            this.Property(t => t.nome_doc)
                 .HasMaxLength(80);
 
-            this.Property(t => t.Nome_ass)
+            this.Property(t => t.nome_ass)
                 .HasMaxLength(80);
 
-            this.Property(t => t.Arquivo_Trabalho)
+            this.Property(t => t.arquivo_trabalho)
                 .HasMaxLength(180);
 
-            this.Property(t => t.Arquivo_Base)
+            this.Property(t => t.arquivo_base)
                 .HasMaxLength(180);
 
             this.Property(t => t.id_user)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("USER_VINCULOS");
+            this.ToTable("user_vinculos");
             this.Property(t => t.id).HasColumnName("id");
-            this.Property(t => t.Nome_doc).HasColumnName("Nome_doc");
-            this.Property(t => t.Nome_ass).HasColumnName("Nome_ass");
-            this.Property(t => t.Arquivo_Trabalho).HasColumnName("Arquivo_Trabalho");
-            this.Property(t => t.Arquivo_Base).HasColumnName("Arquivo_Base");
-            this.Property(t => t.Data).HasColumnName("Data");
+            this.Property(t => t.nome_doc).HasColumnName("nome_doc");
+            this.Property(t => t.nome_ass).HasColumnName("nome_ass");
+            this.Property(t => t.arquivo_trabalho).HasColumnName("arquivo_trabalho");
+            this.Property(t => t.arquivo_base).HasColumnName("arquivo_base");
+            this.Property(t => t.data).HasColumnName("data");
             this.Property(t => t.id_user).HasColumnName("id_user");
         }
     }

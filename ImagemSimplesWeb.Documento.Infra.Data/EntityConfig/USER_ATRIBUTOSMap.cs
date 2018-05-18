@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_ATRIBUTOSMap : EntityTypeConfiguration<USER_ATRIBUTOS>
+    public class USER_ATRIBUTOSMap : EntityTypeConfiguration<user_atributos>
     {
         public USER_ATRIBUTOSMap()
         {
@@ -16,14 +16,14 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Nome)
+            this.Property(t => t.nome)
                 .HasMaxLength(80);
 
-            this.Property(t => t.Tamanho)
+            this.Property(t => t.tamanho)
                 .IsFixedLength()
                 .HasMaxLength(10);
 
-            this.Property(t => t.Tipo)
+            this.Property(t => t.tipo)
                 .IsFixedLength()
                 .HasMaxLength(20);
 
@@ -31,13 +31,13 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("USER_ATRIBUTOS");
+            this.ToTable("user_atributos");
             this.Property(t => t.id).HasColumnName("id");
-            this.Property(t => t.Nome).HasColumnName("Nome");
-            this.Property(t => t.Tamanho).HasColumnName("Tamanho");
-            this.Property(t => t.Tipo).HasColumnName("Tipo");
-            this.Property(t => t.Uso).HasColumnName("Uso");
-            this.Property(t => t.Data).HasColumnName("Data");
+            this.Property(t => t.nome).HasColumnName("nome");
+            this.Property(t => t.tamanho).HasColumnName("tamanho");
+            this.Property(t => t.tipo).HasColumnName("tipo");
+            this.Property(t => t.uso).HasColumnName("uso");
+            this.Property(t => t.data).HasColumnName("data");
             this.Property(t => t.id_user).HasColumnName("id_user");
         }
     }

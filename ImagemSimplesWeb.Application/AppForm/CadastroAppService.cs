@@ -33,7 +33,7 @@ namespace ImagemSimplesWeb.Application.AppForm
             try
             {
                 BeginDocumentoTransaction();
-                _menuservice.AlteraCategoria(Mapper.Map<USER_MENU1>(cat), Mapper.Map<List<USER_CAT_ATRIBUTOS>>(cat.Atributos));
+                _menuservice.AlteraCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
                 if (CommitDocumento() > 0)
                 {
                     return "S";
@@ -54,9 +54,9 @@ namespace ImagemSimplesWeb.Application.AppForm
             try
             {
                 BeginDocumentoTransaction();
-                _cadastroservice.AlteraUsuario(Mapper.Map<USER_CADASTRO>(usuario));
+                _cadastroservice.AlteraUsuario(Mapper.Map<user_cadastro>(usuario));
                 _permissoesservice.AtualizarAcessos(usuario.id_user, Mapper.Map<List<DTOAcessos>>(usuario.Acessos));
-                _permissoesservice.AtualizarModulos(usuario.id_user, Mapper.Map<List<USER_MODULOS>>(usuario.Modulos));
+                _permissoesservice.AtualizarModulos(usuario.id_user, Mapper.Map<List<user_modulos>>(usuario.Modulos));
                 if (CommitDocumento() > 0)
                 {
                     return "S";
@@ -92,9 +92,14 @@ namespace ImagemSimplesWeb.Application.AppForm
             return Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(desc));
         }
 
+        public List<User_MenuViewModel> CategoriasDocumentos()
+        {
+            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.CategoriasDocumento());
+        }
+
         public List<User_CadastroViewModel> FiltrarUsuarios(User_CadastroViewModel filtro)
         {
-            var usuarios = Mapper.Map<List<User_CadastroViewModel>>(_cadastroservice.FiltrarUsuarios(Mapper.Map<USER_CADASTRO>(filtro)));
+            var usuarios = Mapper.Map<List<User_CadastroViewModel>>(_cadastroservice.FiltrarUsuarios(Mapper.Map<user_cadastro>(filtro)));
             return usuarios;
         }
 
@@ -103,7 +108,7 @@ namespace ImagemSimplesWeb.Application.AppForm
             try
             {
                 BeginDocumentoTransaction();
-                _menuservice.InsereCategoria(Mapper.Map<USER_MENU1>(cat), Mapper.Map<List<USER_CAT_ATRIBUTOS>>(cat.Atributos));
+                _menuservice.InsereCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
                 if (CommitDocumento() > 0)
                 {
                     return "S";
@@ -122,8 +127,8 @@ namespace ImagemSimplesWeb.Application.AppForm
             try
             {
                 BeginDocumentoTransaction();
-                _cadastroservice.InserirUsuario(Mapper.Map<USER_CADASTRO>(usuario));
-                _permissoesservice.InserirModulos(Mapper.Map<List<USER_MODULOS>>(usuario.Modulos), usuario.id_user);
+                _cadastroservice.InserirUsuario(Mapper.Map<user_cadastro>(usuario));
+                _permissoesservice.InserirModulos(Mapper.Map<List<user_modulos>>(usuario.Modulos), usuario.id_user);
                 if (CommitDocumento() > 0)
                 {
                     return "S";
@@ -176,7 +181,7 @@ namespace ImagemSimplesWeb.Application.AppForm
         public string RetornaCaminhoImgens(int idoper)
         {
             var menuitem = _menuservice.BuscaCategoria(idoper);
-            return menuitem.PATHIMAGENS;
+            return menuitem.pathimagens;
         }
 
         public User_CadastroViewModel RetornaUsuario(int id)
@@ -212,7 +217,7 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public bool ValidaLogin(string user, string senha)
         {
-            var usuario = new USER_CADASTRO(user, senha);
+            var usuario = new user_cadastro(user, senha);
             return _cadastroservice.ValidarUsuario(usuario);
         }
     }

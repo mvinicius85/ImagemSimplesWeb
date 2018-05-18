@@ -9,12 +9,13 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
 {
     public interface IUser_MenuService
     {
-        List<USER_MENU1> ListaCategorias();
-        USER_MENU1 BuscaCategoria(int id);
-        void AlteraCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib);
-        void ExcluiAtributos(USER_MENU1 cat);
-        List<USER_CAT_ATRIBUTOS> RetornaAtributos(int id_Oper);
-        List<USER_MENU1> RetornaCategorias(string desc);
-        void InsereCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib);
+        List<user_menu1> ListaCategorias();
+        user_menu1 BuscaCategoria(int id);
+        void AlteraCategoria(user_menu1 cat, List<user_cat_atributos> atrib);
+        void ExcluiAtributos(user_menu1 cat);
+        List<user_cat_atributos> RetornaAtributos(int id_Oper);
+        List<user_menu1> RetornaCategorias(string desc);
+        void InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib);
+        List<user_menu1> CategoriasDocumento();
     }
 }

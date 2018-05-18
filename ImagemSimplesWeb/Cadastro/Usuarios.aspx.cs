@@ -24,7 +24,7 @@ namespace ImagemSimplesWeb.Cadastro
 
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
             var service = container.GetInstance<ICadastroAppService>();
 
             var user = service.RetornaUsuario(Session["Login"].ToString());
@@ -61,7 +61,7 @@ namespace ImagemSimplesWeb.Cadastro
             var dep = Session["usuDep"] == null ? "" : Session["usuDep"];
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
             var service = container.GetInstance<ICadastroAppService>();
             var filtro = new User_CadastroViewModel(nome.ToString(), dep.ToString());
             var usuarios = service.FiltrarUsuarios(filtro);

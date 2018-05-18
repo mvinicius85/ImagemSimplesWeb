@@ -25,25 +25,25 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             _permissoesrepository.ExcluiAcessos(id_user);
             foreach (var item in acessos)
             {
-                var acesso = new USER_PERMISSOES(id_user.ToString(), item.id_oper, item.Nivel + " - " + item.Descricao, true);
+                var acesso = new user_permissoes(id_user.ToString(), item.id_oper, item.Nivel + " - " + item.Descricao, true);
                 _permissoesrepository.Adicionar(acesso);
             }
         }
 
-        public void AtualizarModulos(int id_user, List<USER_MODULOS> list)
+        public void AtualizarModulos(int id_user, List<user_modulos> list)
         {
             _cadmodulosrepository.ExcluirModulos(id_user);
             foreach (var item in list)
             {
-                _cadmodulosrepository.Adicionar(new USER_CADASTRO_MODULOS(id_user, item.id_modulo));
+                _cadmodulosrepository.Adicionar(new user_cadastro_modulos(id_user, item.id_modulo));
             }
         }
 
-        public void InserirModulos(List<USER_MODULOS> list, int id_user)
+        public void InserirModulos(List<user_modulos> list, int id_user)
         {
             foreach (var item in list)
             {
-                _cadmodulosrepository.Adicionar(new USER_CADASTRO_MODULOS(id_user,item.id_modulo));
+                _cadmodulosrepository.Adicionar(new user_cadastro_modulos(id_user,item.id_modulo));
             }
 
         }
@@ -53,7 +53,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _permissoesrepository.RetornaAcessos(id_user);
         }
 
-        public List<USER_MODULOS> RetornaModulos(int id)
+        public List<user_modulos> RetornaModulos(int id)
         {
             return _permissoesrepository.RetornaModulos(id);
         }

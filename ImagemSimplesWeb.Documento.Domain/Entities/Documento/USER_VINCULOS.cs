@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
-    public partial class USER_VINCULOS
+    public partial class user_vinculos
     {
         public int id { get; set; }
-        public string Nome_doc { get; set; }
-        public string Nome_ass { get; set; }
-        public string Arquivo_Trabalho { get; set; }
-        public string Arquivo_Base { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
+        public string nome_doc { get; set; }
+        public string nome_ass { get; set; }
+        public string arquivo_trabalho { get; set; }
+        public string arquivo_base { get; set; }
+        public Nullable<System.DateTime> data { get; set; }
         public int id_user { get; set; }
     }
 }

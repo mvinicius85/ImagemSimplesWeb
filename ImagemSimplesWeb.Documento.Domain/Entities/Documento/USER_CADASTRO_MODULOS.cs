@@ -4,14 +4,14 @@ using System.Collections.Generic;
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 
 {
-    public partial class USER_CADASTRO_MODULOS
+    public partial class user_cadastro_modulos
     {
-        public USER_CADASTRO_MODULOS()
+        public user_cadastro_modulos()
         {
 
         }
 
-        public USER_CADASTRO_MODULOS( int _iduser, int _idmod)
+        public user_cadastro_modulos( int _iduser, int _idmod)
         {
             id_user = _iduser;
             id_modulo = _idmod;

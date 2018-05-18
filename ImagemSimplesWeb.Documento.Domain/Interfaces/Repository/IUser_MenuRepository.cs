@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
 {
-    public interface IUser_MenuRepository : IRepository<USER_MENU1>
+    public interface IUser_MenuRepository : IRepository<user_menu1>
     {
+        List<user_menu1> CategoriasDocumento();
     }
 }

@@ -4,48 +4,48 @@ using System.Text;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
-    public partial class USER_CADASTRO
+    public partial class user_cadastro
     {
-        public USER_CADASTRO()
+        public user_cadastro()
         {
 
         }
-        public USER_CADASTRO(string user, string senha)
+        public user_cadastro(string user, string senha)
         {
-            this.Nome = user;
-            this.Senha = senha;
+            this.nome = user;
+            this.senha = senha;
         }
         public int id_user { get; set; }
         public string codigo { get; set; }
-        public string Nome { get; set; }
-        public string Depto { get; set; }
-        public string Data { get; set; }
-        public string DataInicio { get; set; }
-        public string Tel1 { get; set; }
-        public string Tel2 { get; set; }
-        public string Tel3 { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public string LiberaRequisicao { get; set; }
-        public string Assinatura { get; set; }
+        public string nome { get; set; }
+        public string depto { get; set; }
+        public string data { get; set; }
+        public string datainicio { get; set; }
+        public string tel1 { get; set; }
+        public string tel2 { get; set; }
+        public string tel3 { get; set; }
+        public string email { get; set; }
+        public string senha { get; set; }
+        public string liberarequisicao { get; set; }
+        public string assinatura { get; set; }
         public string nomepc { get; set; }
         public string secao { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
 
         public string MontaSwhere()
         {
             StringBuilder swhere = new StringBuilder();
-            if (!String.IsNullOrEmpty(this.Nome))
+            if (!String.IsNullOrEmpty(this.nome))
             {
-                swhere.Append(" Nome like '%" + this.Nome + "%'");
+                swhere.Append(" Nome like '%" + this.nome + "%'");
             }
-            if (!String.IsNullOrEmpty(this.Depto))
+            if (!String.IsNullOrEmpty(this.depto))
             {
                 if (swhere.Length > 1)
                 {
                     swhere.Append(" and ");
                 }
-                swhere.Append(" Depto like '" + this.Depto + "'");
+                swhere.Append(" Depto like '" + this.depto + "'");
             }
             if (swhere.Length > 0)
             {

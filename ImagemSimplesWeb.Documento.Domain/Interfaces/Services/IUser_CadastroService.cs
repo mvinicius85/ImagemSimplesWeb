@@ -9,13 +9,13 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
 {
     public interface IUser_CadastroService
     {
-        List<USER_CADASTRO> BuscarTodos();
-        bool ValidarUsuario(USER_CADASTRO user);
-        List<USER_MENU1> BuscarMenu();
-        USER_CADASTRO RetornaUsuario(int id);
-        USER_CADASTRO RetornaUsuario(string login);
-        void AlteraUsuario(USER_CADASTRO user);
-        void InserirUsuario(USER_CADASTRO usuario);
-        List<USER_CADASTRO> FiltrarUsuarios(USER_CADASTRO filtro);
+        List<user_cadastro> BuscarTodos();
+        bool ValidarUsuario(user_cadastro user);
+        List<user_menu1> BuscarMenu();
+        user_cadastro RetornaUsuario(int id);
+        user_cadastro RetornaUsuario(string login);
+        void AlteraUsuario(user_cadastro user);
+        void InserirUsuario(user_cadastro usuario);
+        List<user_cadastro> FiltrarUsuarios(user_cadastro filtro);
     }
 }

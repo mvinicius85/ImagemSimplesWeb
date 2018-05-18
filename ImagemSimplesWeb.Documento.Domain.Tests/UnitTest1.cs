@@ -12,11 +12,19 @@ namespace ImagemSimplesWeb.Documento.Domain.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            var container = new SimpleInjector.Container();
-            ImagemSimplesWeb.Application.AutoMapper.AutoMapperConfig.RegisterMappings();
-            ImagemSimplesWeb.Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);           
-            var teste = container.GetInstance<IUser_CadastroService>();
-            var teste2 = teste.BuscarTodos();            
+            try
+            {
+                var container = new SimpleInjector.Container();
+                ImagemSimplesWeb.Application.AutoMapper.AutoMapperConfig.RegisterMappings();
+                ImagemSimplesWeb.Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+                var teste = container.GetInstance<IUser_CadastroService>();
+                var teste2 = teste.BuscarTodos();
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.GetBaseException().Message);
+            }
         }
     }
 }

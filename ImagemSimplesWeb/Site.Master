@@ -55,6 +55,7 @@
                     <li><a runat="server" href="~/Documentos/Documento">Documentos</a></li>
                     <li><a runat="server" href="~/Cadastro/Categoria">Categorias</a></li>
                     <li><a runat="server" href="~/Cadastro/Usuarios">Usuarios</a></li>
+                    <li><a runat="server" href="~/Documentos/ListaIndexar">Indexar</a></li>
                 </ul>
             </nav>
         </div>
@@ -118,6 +119,10 @@
             <asp:ContentPlaceHolder ID="CadUsuario" runat="server">
             </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="AcessoNegado" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ListaIndexar" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="Indexar" runat="server">
             </asp:ContentPlaceHolder>
 
             <%--            <footer>

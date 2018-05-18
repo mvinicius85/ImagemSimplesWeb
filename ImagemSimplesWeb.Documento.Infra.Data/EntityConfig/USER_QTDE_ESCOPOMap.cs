@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_QTDE_ESCOPOMap : EntityTypeConfiguration<USER_QTDE_ESCOPO>
+    public class USER_QTDE_ESCOPOMap : EntityTypeConfiguration<user_qtde_escopo>
     {
         public USER_QTDE_ESCOPOMap()
         {
@@ -26,11 +26,11 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("USER_QTDE_ESCOPO");
+            this.ToTable("user_qtde_escopo");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.documentos).HasColumnName("documentos");
             this.Property(t => t.imagens).HasColumnName("imagens");
-            this.Property(t => t.Data).HasColumnName("Data");
+            this.Property(t => t.data).HasColumnName("data");
             this.Property(t => t.id_user).HasColumnName("id_user");
         }
     }

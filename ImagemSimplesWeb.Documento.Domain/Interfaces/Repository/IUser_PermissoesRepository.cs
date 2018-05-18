@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
 {
-    public interface IUser_PermissoesRepository : IRepository<USER_PERMISSOES>
+    public interface IUser_PermissoesRepository : IRepository<user_permissoes>
     {
         List<DTOAcessos> RetornaAcessos(int id_user);
         int ExcluiAcessos(int id_user);
-        List<USER_MODULOS> RetornaModulos(int id);
+        List<user_modulos> RetornaModulos(int id);
     }
 }

@@ -26,6 +26,7 @@ namespace ImagemSimplesWeb.Infra.CrossCutting.IoC
             #region Apps
             container.Register<ICadastroAppService, CadastroAppService>(Lifestyle.Scoped);
             container.Register<IArquivoAppService, ArquivoAppService>(Lifestyle.Scoped);
+            container.Register<IDocumentoAppService, DocumentoAppService>(Lifestyle.Scoped);
             #endregion
 
 
@@ -34,6 +35,7 @@ namespace ImagemSimplesWeb.Infra.CrossCutting.IoC
             container.Register<IMdbFileService, MdbFileService>(Lifestyle.Scoped);
             container.Register<IUser_MenuService, User_MenuService>(Lifestyle.Scoped);
             container.Register<IUser_PermissoesService, User_PermissoesService>(Lifestyle.Scoped);
+            container.Register<IUser_Documento_ImagemService, User_Documento_ImagemService>(Lifestyle.Scoped);
             #endregion
 
             #region Repository
@@ -41,7 +43,10 @@ namespace ImagemSimplesWeb.Infra.CrossCutting.IoC
             container.Register<IUser_MenuRepository, User_MenuRepository>(Lifestyle.Scoped);
             container.Register<IUser_Cat_AtributoRepository, User_Cat_AtributoRepository>(Lifestyle.Scoped);
             container.Register<IUser_PermissoesRepository, User_PermissoesRepository>(Lifestyle.Scoped);
+            container.Register<IUser_Documento_ImagemRepository, User_Documento_ImagemRepository>(Lifestyle.Scoped);
             container.Register<IUser_Cadastro_ModulosRepository, User_Cadastro_ModulosRepository>(Lifestyle.Scoped);
+            container.Register<IUser_Documento_AtributosRepository, User_Documento_AtributosRepository>(Lifestyle.Scoped);
+
             #endregion
 
 

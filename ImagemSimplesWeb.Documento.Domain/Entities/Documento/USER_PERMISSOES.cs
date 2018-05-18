@@ -3,29 +3,29 @@ using System.Collections.Generic;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
-    public partial class USER_PERMISSOES
+    public partial class user_permissoes
     {
-        public USER_PERMISSOES()
+        public user_permissoes()
         {
 
         }
-        public USER_PERMISSOES(string _iduser, int _idoper, string _nivel, bool _acesso)
+        public user_permissoes(string _iduser, int _idoper, string _nivel, bool _acesso)
         {
             id_user = _iduser;
             id_oper = _idoper;
-            Nivel = _nivel;
-            Acesso = _acesso;
+            nivel = _nivel;
+            acesso = _acesso;
         }
         public string id_user { get; set; }
         public int id_oper { get; set; }
         public string sub_oper { get; set; }
-        public string Nivel { get; set; }
-        public Nullable<bool> Acesso { get; set; }
-        public Nullable<bool> Incluir { get; set; }
-        public Nullable<bool> Alterar { get; set; }
-        public Nullable<bool> Excluir { get; set; }
-        public Nullable<bool> Inativar { get; set; }
-        public string Observacao { get; set; }
-        public virtual USER_MENU1 USER_MENU1 { get; set; }
+        public string nivel { get; set; }
+        public Nullable<bool> acesso { get; set; }
+        public Nullable<bool> incluir { get; set; }
+        public Nullable<bool> alterar { get; set; }
+        public Nullable<bool> excluir { get; set; }
+        public Nullable<bool> inativar { get; set; }
+        public string observacao { get; set; }
+        public virtual user_menu1 USER_MENU1 { get; set; }
     }
 }

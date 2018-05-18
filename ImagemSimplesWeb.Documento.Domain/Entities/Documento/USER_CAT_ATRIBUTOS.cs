@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
 {
-    public partial class USER_CAT_ATRIBUTOS
+    public partial class user_cat_atributos
     {
         public int id_cat_atrib { get; set; }
-        public Nullable<int> id_Oper { get; set; }
-        public string NomeAtributo { get; set; }
-        public string TituloAtributo { get; set; }
-        public Nullable<int> Ordem { get; set; }
+        public Nullable<int> id_oper { get; set; }
+        public string nomeatributo { get; set; }
+        public string tituloatributo { get; set; }
+        public Nullable<int> ordem { get; set; }
     }
 }

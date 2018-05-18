@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
 {
-    public interface IUser_Cadastro_ModulosRepository : IRepository<USER_CADASTRO_MODULOS>
+    public interface IUser_Cadastro_ModulosRepository : IRepository<user_cadastro_modulos>
     {
         int ExcluirModulos(int id_user);
     }

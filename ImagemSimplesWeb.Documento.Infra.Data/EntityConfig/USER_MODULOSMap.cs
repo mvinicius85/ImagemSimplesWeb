@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_MODULOSMap : EntityTypeConfiguration<USER_MODULOS>
+    public class USER_MODULOSMap : EntityTypeConfiguration<user_modulos>
     {
         public USER_MODULOSMap()
         {
@@ -20,7 +20,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .HasMaxLength(40);
 
             // Table & Column Mappings
-            this.ToTable("USER_MODULOS");
+            this.ToTable("user_modulos");
             this.Property(t => t.id_modulo).HasColumnName("id_modulo");
             this.Property(t => t.nome_modulo).HasColumnName("nome_modulo");
         }

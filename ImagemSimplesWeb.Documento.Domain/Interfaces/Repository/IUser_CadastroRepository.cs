@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
 {
-    public interface IUser_CadastroRepository : IRepository<USER_CADASTRO>
+    public interface IUser_CadastroRepository : IRepository<user_cadastro>
     {
-        List<USER_CADASTRO> FiltrarUsuarios(USER_CADASTRO filtro);
+        List<user_cadastro> FiltrarUsuarios(user_cadastro filtro);
     }
 }

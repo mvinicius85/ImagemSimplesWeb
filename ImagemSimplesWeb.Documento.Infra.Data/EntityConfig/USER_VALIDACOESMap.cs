@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
 {
-    public class USER_VALIDACOESMap : EntityTypeConfiguration<USER_VALIDACOES>
+    public class USER_VALIDACOESMap : EntityTypeConfiguration<user_validacoes>
     {
         public USER_VALIDACOESMap()
         {
@@ -16,21 +16,21 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            this.Property(t => t.Nome)
+            this.Property(t => t.nome)
                 .HasMaxLength(80);
 
-            this.Property(t => t.SQL)
+            this.Property(t => t.sql)
                 .HasMaxLength(280);
 
             this.Property(t => t.id_user)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
-            this.ToTable("USER_VALIDACOES");
+            this.ToTable("user_validacoes");
             this.Property(t => t.id).HasColumnName("id");
-            this.Property(t => t.Nome).HasColumnName("Nome");
-            this.Property(t => t.SQL).HasColumnName("SQL");
-            this.Property(t => t.Data).HasColumnName("Data");
+            this.Property(t => t.nome).HasColumnName("nome");
+            this.Property(t => t.sql).HasColumnName("sql");
+            this.Property(t => t.data).HasColumnName("data");
             this.Property(t => t.id_user).HasColumnName("id_user");
         }
     }

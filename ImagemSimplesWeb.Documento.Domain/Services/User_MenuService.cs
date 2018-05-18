@@ -19,69 +19,74 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             _atribrepository = atribrepository;
         }
 
-        public void AlteraCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib)
+        public void AlteraCategoria(user_menu1 cat, List<user_cat_atributos> atrib)
         {
             int i = 1;
-            var cat1 = _menurepository.ObterPorId(cat.id_Oper);
-            cat1.Dependencia = cat.Dependencia;
-            cat1.Descricao = cat.Descricao;
-            cat1.Nivel = cat.Nivel;
-            cat1.NOME = cat.NOME;
-            cat1.ExisteMDB = cat.ExisteMDB;
-            cat1.PATHIMAGENS = cat.PATHIMAGENS;
-            _atribrepository.ExcluirAtributos(cat1.id_Oper);
+            var cat1 = _menurepository.ObterPorId(cat.id_oper);
+            cat1.dependencia = cat.dependencia;
+            cat1.descricao = cat.descricao;
+            cat1.nivel = cat.nivel;
+            cat1.nome = cat.nome;
+            cat1.existemdb = cat.existemdb;
+            cat1.pathimagens = cat.pathimagens;
+            _atribrepository.ExcluirAtributos(cat1.id_oper);
             _menurepository.Atualizar(cat1);
             foreach (var item in atrib)
             {
-                item.Ordem = i;
+                item.ordem = i;
                 _atribrepository.Adicionar(item);
                 i = i + 1;
             }
         }
 
-        public void AlteraCategoria(USER_MENU1 cat)
+        public void AlteraCategoria(user_menu1 cat)
         {
             _menurepository.Adicionar(cat);
         }
 
-        public USER_MENU1 BuscaCategoria(int id)
+        public user_menu1 BuscaCategoria(int id)
         {
             var cat = _menurepository.ObterPorId(id);
             //cat.Atributos = _atribrepository.Buscar(x => x.id_Oper == cat.id_Oper).ToList();
             return cat;
         }
 
-        public void ExcluiAtributos(USER_MENU1 cat)
+        public List<user_menu1> CategoriasDocumento()
         {
-            _atribrepository.ExcluirAtributos(cat.id_Oper);
+            return _menurepository.CategoriasDocumento();
         }
 
-        public void InsereCategoria(USER_MENU1 cat, List<USER_CAT_ATRIBUTOS> atrib)
+        public void ExcluiAtributos(user_menu1 cat)
+        {
+            _atribrepository.ExcluirAtributos(cat.id_oper);
+        }
+
+        public void InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib)
         {
             int i = 1;
             var cat2 = _menurepository.Adicionar(cat);
             foreach (var item in atrib)
             {
-                item.Ordem = i;
-                item.id_Oper = cat2.id_Oper;
+                item.ordem = i;
+                item.id_oper = cat2.id_oper;
                 _atribrepository.Adicionar(item);
                 i = i + 1;
             }
         }
 
-        public List<USER_MENU1> ListaCategorias()
+        public List<user_menu1> ListaCategorias()
         {
             return _menurepository.ObterTodos().ToList();
         }
 
-        public List<USER_CAT_ATRIBUTOS> RetornaAtributos(int id_Oper)
+        public List<user_cat_atributos> RetornaAtributos(int id_Oper)
         {
-            return _atribrepository.Buscar(x => x.id_Oper == id_Oper).ToList();
+            return _atribrepository.Buscar(x => x.id_oper == id_Oper).ToList();
         }
 
-        public List<USER_MENU1> RetornaCategorias(string desc)
+        public List<user_menu1> RetornaCategorias(string desc)
         {
-            return _menurepository.Buscar(x => x.Descricao.Contains(desc)).ToList();
+            return _menurepository.Buscar(x => x.descricao.Contains(desc)).ToList();
         }
     }
 }
