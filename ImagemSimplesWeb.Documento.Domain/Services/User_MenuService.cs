@@ -13,10 +13,15 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
     {
         private readonly IUser_MenuRepository _menurepository;
         private readonly IUser_Cat_AtributoRepository _atribrepository;
-        public User_MenuService(IUser_MenuRepository menurepository, IUser_Cat_AtributoRepository atribrepository)
+        private readonly IUser_Tipo_ArquivoRepository _tipoarquivorepository;
+        private readonly IUser_Documento_ImagemRepository _documentorepository;
+        public User_MenuService(IUser_MenuRepository menurepository, IUser_Cat_AtributoRepository atribrepository,
+            IUser_Tipo_ArquivoRepository tipoarquivorepository, IUser_Documento_ImagemRepository documentorepository)
         {
             _menurepository = menurepository;
             _atribrepository = atribrepository;
+            _tipoarquivorepository = tipoarquivorepository;
+            _documentorepository = documentorepository;
         }
 
         public void AlteraCategoria(user_menu1 cat, List<user_cat_atributos> atrib)
@@ -29,13 +34,19 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             cat1.nome = cat.nome;
             cat1.existemdb = cat.existemdb;
             cat1.pathimagens = cat.pathimagens;
-            _atribrepository.ExcluirAtributos(cat1.id_oper);
+            cat1.id_tipo_arquivo = cat.id_tipo_arquivo;
             _menurepository.Atualizar(cat1);
-            foreach (var item in atrib)
+
+            var at = _documentorepository.Buscar(x => x.id_categoria == cat1.id_oper).ToList();
+            if (at.Count == 0)
             {
-                item.ordem = i;
-                _atribrepository.Adicionar(item);
-                i = i + 1;
+                _atribrepository.ExcluirAtributos(cat1.id_oper);
+                foreach (var item in atrib)
+                {
+                    item.ordem = i;
+                    _atribrepository.Adicionar(item);
+                    i = i + 1;
+                }
             }
         }
 
@@ -79,6 +90,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _menurepository.ObterTodos().ToList();
         }
 
+        public List<user_tipo_arquivo> ListaTiposArquivo()
+        {
+            return _tipoarquivorepository.ObterTodos().ToList();
+        }
+
         public List<user_cat_atributos> RetornaAtributos(int id_Oper)
         {
             return _atribrepository.Buscar(x => x.id_oper == id_Oper).ToList();
@@ -87,6 +103,16 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
         public List<user_menu1> RetornaCategorias(string desc)
         {
             return _menurepository.Buscar(x => x.descricao.Contains(desc)).ToList();
+        }
+
+        public string ValidaCategoria(int id_Oper)
+        {
+            var docs = _documentorepository.Buscar(x => x.id_categoria == id_Oper).ToList();
+            if (docs.Count > 0)
+            {
+                return "Não será possível alterar esta categoria pois ela já possui documentos vinculados.";
+            }
+            return "";
         }
     }
 }

@@ -7,6 +7,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="~/css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Cadastro.css" />
+      <link rel="stylesheet" type="text/css" href="~/css/Documentos.css" />
     <link rel="archives" type="text/javascript" href="~/javascript/Principal.js">
     <link rel="shortcut icon" type="image/x-icon" href="/Imagens/favicon.ico" />
     <%--<link rel="archives" type="text/javascript" href="~/javascript/menudocumentos.js">--%>
@@ -44,7 +45,7 @@
             <img src="../Imagens/cotia_logo.png">
 
             <div class="divLogout">
-                <p><% = Session["Login"].ToString()%></p>
+                <p><% = Session["Login"]%></p>
                 <img src="../Imagens/icons8-shutdown-20.png" onclick="Logout()" id="btnLogout" />
             </div>
 

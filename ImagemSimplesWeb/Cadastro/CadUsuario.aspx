@@ -133,6 +133,8 @@
                     <asp:CheckBox runat="server" ID="chkCategorias" Text="Categorias" /></li>
                 <li>
                     <asp:CheckBox runat="server" ID="chkUsuarios" Text="Usuarios" /></li>
+                                <li>
+                    <asp:CheckBox runat="server" ID="chkIndexar" Text="Indexar" /></li>
             </ol>
 
             <div>

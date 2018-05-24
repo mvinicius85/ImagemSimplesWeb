@@ -125,11 +125,13 @@
     <Compile Include="Entities\Documento\user_permissoes.cs" />
     <Compile Include="Entities\Documento\user_qtde_escopo.cs" />
     <Compile Include="Entities\Documento\user_status_documento.cs" />
+    <Compile Include="Entities\Documento\user_tipo_arquivo.cs" />
     <Compile Include="Entities\Documento\user_validacoes.cs" />
     <Compile Include="Entities\Documento\user_vinculos.cs" />
     <Compile Include="Entities\Documento\user_vinculos_atri.cs" />
     <Compile Include="Entities\DTO\DTOAcessoPermissoes.cs" />
     <Compile Include="Entities\DTO\DTOAcessos.cs" />
+    <Compile Include="Entities\DTO\DTODocAtributos.cs" />
     <Compile Include="Interfaces\Repository\IUser_CadastroRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_Cadastro_ModulosRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_Cat_AtributoRepository.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="Interfaces\Repository\IUser_Documento_ImagemRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_MenuRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_PermissoesRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUser_Tipo_ArquivoRepository.cs" />
     <Compile Include="Interfaces\Services\IUser_CadastroService.cs" />
     <Compile Include="Interfaces\Services\IUser_Documento_ImagemService.cs" />
     <Compile Include="Interfaces\Services\IUser_MenuService.cs" />

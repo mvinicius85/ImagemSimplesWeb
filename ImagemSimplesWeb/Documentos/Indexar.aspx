@@ -13,25 +13,30 @@
             }
 
             var idcateg = document.getElementById("idcateg").value;
+            var nmfile = document.getElementById("nmfile").value;
 
             $.ajax({
                 type: "POST",
                 url: 'Indexar.aspx/SalvarIndexacao',
-                data: "{atribs:'" + atribs + "', idcateg:'" + idcateg + "'}",
+                data: "{atribs:'" + atribs + "', idcateg:'" + idcateg + "', nmfile:'" + nmfile + "'}",
                 contentType: 'application/json; charset=utf-8',
                 dataType: "json",
-                success: function () {
-                    //window.open(data.d + '\\' + pdfname, '_blank');
+                success: function (ret) {
+                    if (ret.d == "") {
+                        window.location = "../Documentos/ListaIndexar";
+                    }
+
                 }
             });
+
         }
     </script>
     <div>
         <div class="IndexarPanelPdf" id="DivPanelPreview">
             <iframe id="pdfFrame" runat="server" src=""></iframe>
         </div>
-        <asp:DropDownList runat="server" ID="ddlCategorias" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-        <div>
+        <div class="IndexarPanelIndices">
+            <asp:DropDownList runat="server" ID="ddlCategorias" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
             <table>
                 <asp:Literal runat="server" ID="TableAtributos">
        

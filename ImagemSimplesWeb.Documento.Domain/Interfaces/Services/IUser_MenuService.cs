@@ -17,5 +17,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
         List<user_menu1> RetornaCategorias(string desc);
         void InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib);
         List<user_menu1> CategoriasDocumento();
+        List<user_tipo_arquivo> ListaTiposArquivo();
+        string ValidaCategoria(int id_Oper);
     }
 }

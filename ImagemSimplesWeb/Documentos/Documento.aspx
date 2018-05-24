@@ -60,6 +60,7 @@
 
             function openFile(row) {
                 var cell = row.cells[0];
+                console.log(row.cells[0]);
                 var pdfname = cell.textContent;
                 $.ajax({
                     type: "POST",
@@ -70,6 +71,7 @@
                         //window.open(data.d + '\\' + pdfname, '_blank');
                         var pdf = document.getElementById('pdfFrame');
                         pdf.src = data.d + '\\' + pdfname;
+                        console.log(data.d + '\\' + pdfname)
                     }
                 });
             }

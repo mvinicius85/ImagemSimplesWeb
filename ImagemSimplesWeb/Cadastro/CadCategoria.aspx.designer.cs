@@ -13,6 +13,15 @@ namespace ImagemSimplesWeb.Cadastro {
     public partial class CadCategoria {
         
         /// <summary>
+        /// lblMsgErro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsgErro;
+        
+        /// <summary>
         /// lblidCategoria control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace ImagemSimplesWeb.Cadastro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// ddlTipoArquivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoArquivo;
         
         /// <summary>
         /// txtNivel control.

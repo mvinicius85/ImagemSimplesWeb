@@ -47,7 +47,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
         public DbSet<user_documentos_atributos> user_documentos_atributos { get; set; }
         public DbSet<user_documentos_imagem> user_documentos_imagem { get; set; }
         public DbSet<user_status_documento> user_status_documento { get; set; }
-
+        public DbSet<user_tipo_arquivo> user_tipo_arquivo { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CAD_MASCARASMap());
@@ -72,6 +72,8 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new user_documentos_atributosMap());
             modelBuilder.Configurations.Add(new user_documentos_imagemMap());
             modelBuilder.Configurations.Add(new user_status_documentoMap());
+            modelBuilder.Configurations.Add(new user_tipo_arquivoMap());
+
         }
 
         public override int SaveChanges()

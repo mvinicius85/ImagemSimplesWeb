@@ -20,5 +20,6 @@ namespace ImagemSimplesWeb.Documento.Domain.Entities.Documento
         public string existemdb { get; set; }
         public string pathimagens { get; set; }
         public string nome { get; set; }
+        public Nullable<int> id_tipo_arquivo { get; set; }
     }
 }

@@ -103,6 +103,7 @@
     <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -135,6 +136,7 @@
     <Compile Include="ViewModels\User_ModulosViewModel.cs" />
     <Compile Include="ViewModels\User_PermissoesViewmodel.cs" />
     <Compile Include="ViewModels\User_Status_DocumentoViewModel.cs" />
+    <Compile Include="ViewModels\User_Tipo_ArquivoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

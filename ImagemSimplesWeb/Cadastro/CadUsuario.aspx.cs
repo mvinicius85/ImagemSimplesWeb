@@ -81,6 +81,10 @@ namespace ImagemSimplesWeb.Cadastro
                 {
                     chkUsuarios.Checked = true;
                 }
+                if (mod.id_modulo == 3)
+                {
+                    chkIndexar.Checked = true;
+                }
             }
 
 
@@ -115,6 +119,11 @@ namespace ImagemSimplesWeb.Cadastro
             if (Request.Form["ctl00$CadUsuario$chkCategorias"] != null)
             {
                 usuario.Modulos.Add(new User_ModulosViewModel(1, "Categorias"));
+            }
+
+            if (Request.Form["ctl00$CadUsuario$chkIndexar"] != null)
+            {
+                usuario.Modulos.Add(new User_ModulosViewModel(3, "Indexar"));
             }
 
             string ret = "";

@@ -32,6 +32,11 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             try
             {
+                //var msg = _menuservice.ValidaCategoria(cat.id_Oper);
+                //if (!String.IsNullOrEmpty(msg))
+                //{
+                //    return msg;
+                //}
                 BeginDocumentoTransaction();
                 _menuservice.AlteraCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
                 if (CommitDocumento() > 0)
@@ -89,7 +94,7 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public List<User_MenuViewModel> BuscarCategoria(string desc)
         {
-            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(desc));
+            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(desc).OrderBy(x => x.id_oper).ToList());
         }
 
         public List<User_MenuViewModel> CategoriasDocumentos()
@@ -149,7 +154,7 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public List<User_MenuViewModel> ListaCategorias()
         {
-            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias());
+            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias().OrderBy(x => x.id_oper).ToList());
         }
 
         public List<USER_CAT_ATRIBUTOSViewModel> ListarAtributos(int id)
@@ -167,6 +172,11 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             var cat = Mapper.Map<User_MenuViewModel>(_menuservice.BuscaCategoria(id));
             cat.Atributos = Mapper.Map<List<USER_CAT_ATRIBUTOSViewModel>>(_menuservice.RetornaAtributos(cat.id_Oper));
+            var str = _menuservice.ValidaCategoria(cat.id_Oper);
+            if (!String.IsNullOrEmpty(str))
+            {
+                cat.PossuiDocumentos = true;
+            }
             return cat;
         }
 
@@ -174,7 +184,9 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             var form = new frmCadCategoriaViewModel();
             form.Menus = Mapper.Map<List<User_MenuViewModel>>(_menuservice.ListaCategorias());
+            form.TiposArquivo = Mapper.Map<List<User_Tipo_ArquivoViewModel>>(_menuservice.ListaTiposArquivo());
             form.Menus.Add(new User_MenuViewModel(0, ""));
+            form.TiposArquivo.Add(new User_Tipo_ArquivoViewModel(0, ""));
             return form;
         }
 

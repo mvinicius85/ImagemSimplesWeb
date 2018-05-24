@@ -27,6 +27,9 @@
     </script>
 
     <div class="divcadcategoria">
+         <div class="MsgErro">
+        <asp:label runat="server" id="lblMsgErro" Visible="false" />
+             </div>
         <div>
             <table>
                 <tr>
@@ -73,6 +76,15 @@
                             ErrorMessage="*Campo Obrigatorio"
                             ForeColor="Red">
                         </asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Tipo de Arquivamento: "></asp:Label>
+                    </td>
+                    <td>
+
+                        <asp:DropDownList runat="server" ID="ddlTipoArquivo" ></asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -144,9 +156,9 @@
             <table>
                 <tr>
                     <td>
-                        <asp:TextBox runat="server" ID="txtNomeAtrib"></asp:TextBox></td>
+                        <asp:TextBox runat="server" ID="txtNomeAtrib" placeholder="Nome Do Atributo"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox runat="server" ID="txtTituloAtrib"></asp:TextBox></td>
+                        <asp:TextBox runat="server" ID="txtTituloAtrib" placeholder="Título do Atributo"></asp:TextBox></td>
                     <td>
                         <asp:Button ID="BtnAdd" runat="server" Text="Add" OnClick="BtnAdd_Click" CssClass="BtnPesquisar" />
                     </td>

@@ -48,8 +48,8 @@
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.3.1.0\lib\net451\Npgsql.dll</HintPath>
+    <Reference Include="Npgsql, Version=3.1.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.2\lib\net451\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
     </Reference>
@@ -135,6 +136,7 @@
     <Compile Include="EntityConfig\USER_PERMISSOESMap.cs" />
     <Compile Include="EntityConfig\USER_QTDE_ESCOPOMap.cs" />
     <Compile Include="EntityConfig\user_status_documentoMap.cs" />
+    <Compile Include="EntityConfig\user_tipo_arquivoMap.cs" />
     <Compile Include="EntityConfig\USER_VALIDACOESMap.cs" />
     <Compile Include="EntityConfig\USER_VINCULOSMap.cs" />
     <Compile Include="EntityConfig\USER_VINCULOS_ATRIMap.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Repository\User_Documento_ImagemRepository.cs" />
     <Compile Include="Repository\User_MenuRepository.cs" />
     <Compile Include="Repository\User_PermissoesRepository.cs" />
+    <Compile Include="Repository\User_Tipo_ArquivoRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

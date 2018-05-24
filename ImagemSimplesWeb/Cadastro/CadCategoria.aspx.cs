@@ -51,9 +51,10 @@ namespace ImagemSimplesWeb.Cadastro
             txtDescricao.Text = cat.Descricao.ToString();
             txtNome.Text = cat.Nome.ToString();
             txtNivel.Text = cat.Nivel;
+            ddlTipoArquivo.SelectedValue = cat.id_tipo_arquivo == null ? "0" : cat.id_tipo_arquivo.ToString();
             if (!String.IsNullOrEmpty(cat.ExisteMDB))
             {
-                chkExisteMDB.Checked = cat.ExisteMDB.ToString() == "SIM" ? true : false;
+                chkExisteMDB.Checked = cat.ExisteMDB.ToString().Trim() == "SIM" ? true : false;
             }
             else
             {
@@ -64,6 +65,16 @@ namespace ImagemSimplesWeb.Cadastro
             {
                 gridAtributos.DataSource = cat.Atributos;
                 gridAtributos.DataBind();
+            }
+
+            if (cat.PossuiDocumentos)
+            {
+                lblMsgErro.Text = "Não será possível alterar os atributos desta categoria pois ela possui documentos vinculados";
+                lblMsgErro.Visible = true;
+                gridAtributos.Enabled = false;
+                BtnAdd.Enabled = false;
+                txtNomeAtrib.Enabled = false;
+                txtTituloAtrib.Enabled = false;
             }
         }
 
@@ -82,6 +93,11 @@ namespace ImagemSimplesWeb.Cadastro
                 ddlMenus.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
             }
 
+            foreach (var item in frmcadcategoria.TiposArquivo.OrderBy(x => x.id_tipo_arquivo).ToList())
+            {
+                ddlTipoArquivo.Items.Add(new ListItem(item.descricao, item.id_tipo_arquivo.ToString()));
+            }
+
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
@@ -95,7 +111,8 @@ namespace ImagemSimplesWeb.Cadastro
                 Request.Form["ctl00$CadCategoria$txtDescricao"].ToString(),
                 Request.Form["ctl00$CadCategoria$txtNivel"].ToString(),
                 Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? "SIM" : "NÃO",
-                Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString()
+                Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString(),
+                Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlTipoArquivo"])
                 );
 
             cat.Atributos = RetornaListaAtrib();
@@ -111,6 +128,11 @@ namespace ImagemSimplesWeb.Cadastro
             if (ret == "S")
             {
                 Response.Redirect("Categoria.aspx");
+            }
+            else
+            {
+                lblMsgErro.Text = ret;
+                lblMsgErro.Visible = true;
             }
         }
 
@@ -173,7 +195,8 @@ namespace ImagemSimplesWeb.Cadastro
             txtDescricao.Text = Request.Form["ctl00$CadCategoria$txtDescricao"].ToString().TrimEnd();
             txtNivel.Text = Request.Form["ctl00$CadCategoria$txtNivel"].ToString().TrimEnd();
             chkExisteMDB.Checked = Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? true : false;
-            txtPathImagens.Text =  Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd(); 
+            txtPathImagens.Text =  Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd();
+            ddlTipoArquivo.SelectedValue = Request.Form["ctl00$CadCategoria$ddlTipoArquivo"].ToString().TrimEnd();
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

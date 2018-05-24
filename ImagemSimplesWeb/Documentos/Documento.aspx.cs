@@ -32,6 +32,7 @@ namespace ImagemSimplesWeb.Documentos
             var id = Convert.ToInt32(Request.QueryString["idoper"]);
             if (id > 0)
             {
+                Session["idoper"] = id;
                 MontaGrid(id);
                 PreencheGrid(id);
             }
@@ -43,7 +44,7 @@ namespace ImagemSimplesWeb.Documentos
             {
                 return;
             }
-            
+
             var col1 = new BoundField();
             col1.DataField = "imagem";
             col1.HeaderText = "Imagem";
@@ -121,11 +122,21 @@ namespace ImagemSimplesWeb.Documentos
 
         protected void griddocumentos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            var id = Convert.ToInt32(Request.QueryString["idoper"]);
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
+
+            var menuserivce = container.GetInstance<ICadastroAppService>();
+            var categoria = menuserivce.PesquisaCategoria(Convert.ToInt32(id));
+
+            var query = RetornaQuery(Convert.ToInt32(categoria.id_tipo_arquivo));
+
             griddocumentos.PageIndex = e.NewPageIndex;
-            LoadGrid(Session["dir"].ToString());
+            LoadGrid(Session["dir"].ToString(), query);
         }
 
-        private void LoadGrid(string dir)
+        private string RetornaQuery(int id_tipo_arquivo)
         {
             string query = "";
 
@@ -137,14 +148,42 @@ namespace ImagemSimplesWeb.Documentos
             foreach (var item in atrib)
             {
                 var x = Request.QueryString[item.Ordem.ToString()];
-                if (!String.IsNullOrEmpty(x))
+                switch (id_tipo_arquivo)
                 {
-                    query = query.Length > 0 ? query + " and " : "";
-                    query = query + item.NomeAtributo + " like '%" + x + "%' "; 
+                    case 1:
+                        if (!String.IsNullOrEmpty(x))
+                        {
+                            query = query.Length > 0 ? query + " and " : "";
+                            query = query + item.NomeAtributo + " like '%" + x + "%' ";
+                        }
+                        break;
+                    case 3:
+                        if (!String.IsNullOrEmpty(x))
+                        {
+                            
+                            query = query.Length > 0 ? query + " or " : "";
+                            query = query + "(";
+                            query = query + "uca.nomeatributo = '" + item.NomeAtributo + "' AND uda.valor like '%" + x + "%' ";
+                            query = query + ")";
+                        }
+                        break;
                 }
+
             }
 
-            var dirimp = new DirectoryInfo(ConfigurationManager.AppSettings["LocalDir"].ToString() + dir);
+            return query;
+        }
+
+        private void LoadGrid(string dir, string query)
+        {
+
+
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
+
+
+            var dirimp = new DirectoryInfo(HttpRuntime.AppDomainAppPath + dir);
             var listfiles = dirimp.GetFiles("*.mdb", SearchOption.AllDirectories);
             //Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             //container.GetInstance<ImagemSimplesWeb.Documento.Infra.Data.Contexto.Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.AppSettings["conn"]);
@@ -181,24 +220,52 @@ namespace ImagemSimplesWeb.Documentos
                 return;
             }
 
-            string pathmenu = menuserivce.RetornaCaminhoImgens(Convert.ToInt32(idoper));
-            var appservice = container.GetInstance<IArquivoAppService>();
-            Session["dir"] = pathmenu;
-            var query = "";
-            LoadGrid(pathmenu);
-            //var dirimp = new DirectoryInfo(pathmenu);
-            //var listfiles = dirimp.GetFiles("*.mdb", SearchOption.AllDirectories);
-            //var griddatasource = appservice.AbreArquivo(listfiles.FirstOrDefault().FullName);
+            // string pathmenu = menuserivce.RetornaCaminhoImgens(Convert.ToInt32(idoper));
+            var categoria = menuserivce.PesquisaCategoria(Convert.ToInt32(idoper));
+            var query = RetornaQuery(Convert.ToInt32(categoria.id_tipo_arquivo));
+            if (categoria.id_tipo_arquivo == 1)
+            {
+                Session["dir"] = categoria.PATHIMAGENS;
+                LoadGrid(categoria.PATHIMAGENS, query);
+            }
+            else if (categoria.id_tipo_arquivo == 3)
+            {
 
-            //griddocumentos.DataSource = griddatasource;
-            //griddocumentos.DataBind();
+                LoadGridPostgres(idoper, query);
+            }
 
+
+        }
+
+        private void LoadGridPostgres(int idoper, string query)
+        {
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
+            var docservice = container.GetInstance<IDocumentoAppService>();
+            var ds = docservice.RetornaDocumentos(idoper, query);
+            griddocumentos.DataSource = ds;
+            griddocumentos.DataBind();
         }
 
         [WebMethod(EnableSession = true)]
         public static string getPath()
         {
-            return HttpContext.Current.Session["dir"].ToString();
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
+            var menuserivce = container.GetInstance<ICadastroAppService>();
+
+            var categoria = menuserivce.PesquisaCategoria(Convert.ToInt32(HttpContext.Current.Session["idoper"]));
+            if (categoria.id_tipo_arquivo == 1)
+            {
+                return HttpContext.Current.Session["dir"].ToString();
+            }
+            else if (true)
+            {
+                return "";
+            }
+
         }
 
     }

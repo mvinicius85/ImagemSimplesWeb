@@ -159,6 +159,7 @@
     <Content Include="Content\Site.css" />
     <AdditionalFiles Include="css\estilos.css" />
     <Content Include="css\Cadastro.css" />
+    <Content Include="css\Documentos.css" />
     <Content Include="css\jquery-ui-1.12.1.css" />
     <Content Include="css\Login.css" />
     <Content Include="Default.aspx" />
@@ -181,6 +182,7 @@
     <Content Include="Imagens\folder-horizontal.png" />
     <Content Include="Imagens\icons8-cancel-16.png" />
     <Content Include="Imagens\icons8-no-edit-40.png" />
+    <Content Include="Imagens\icons8-pdf-16.png" />
     <Content Include="Imagens\icons8-shutdown-20.png" />
     <Content Include="Imagens\icons8-shutdown-40.png" />
     <Content Include="Imagens\favicon.ico" />
@@ -258,6 +260,11 @@
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\68_94.PDF" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\Base.xxx" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\Thumbs.db" />
+    <Content Include="Files\Indexar\Kodak Pro x SeSuite.pdf" />
+    <Content Include="Files\Indexar\Peridodizacao_referencias_Brasil_historia %281%29.pdf" />
+    <Content Include="Files\Indexar\Politica_de_valorizacao_do_cafe.pdf" />
+    <Content Include="Files\Indexar\Vargas_medidas_sintese.pdf" />
+    <Content Include="Files\Repositorio\Vargas_medidas_sintese.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="javascript\menudocumentos.js" />
     <Content Include="Scripts\bootstrap.js" />
