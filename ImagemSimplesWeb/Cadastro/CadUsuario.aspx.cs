@@ -141,6 +141,10 @@ namespace ImagemSimplesWeb.Cadastro
             {
                 Response.Redirect("Usuarios.aspx");
             }
+            else
+            {
+                lblMsgErro.Text = ret;
+            }
             //var user = new User_CadastroViewModel(
             //    Convert.ToInt32(lblidCategoria.Text),
             //    Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlMenus"]),

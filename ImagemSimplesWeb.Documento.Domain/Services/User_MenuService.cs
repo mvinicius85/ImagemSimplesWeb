@@ -105,7 +105,20 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             return _menurepository.Buscar(x => x.descricao.Contains(desc)).ToList();
         }
 
-        public string ValidaCategoria(int id_Oper)
+        public string ValidaCategoria(user_menu1 cat)
+        {
+            if (cat.id_tipo_arquivo == 1 && String.IsNullOrEmpty(cat.pathimagens))
+            {
+                return "Por favor informe o caminho dos arquivos .MDB";
+            }
+            if (cat.id_tipo_arquivo == 2 && String.IsNullOrEmpty(cat.pathimagens))
+            {
+                return "Por favor informe o caminho dos arquivos .XML";
+            }
+            return "";
+        }
+
+        public string VerificaDocumentosVinculados(int id_Oper)
         {
             var docs = _documentorepository.Buscar(x => x.id_categoria == id_Oper).ToList();
             if (docs.Count > 0)

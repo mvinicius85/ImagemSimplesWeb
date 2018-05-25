@@ -46,11 +46,15 @@ namespace ImagemSimplesWeb.Documentos
 
 
             //var frmcadcategoria = service.PreencheTela();
-            var frmcadcategoria = service.CategoriasDocumentos();
-            foreach (var item in frmcadcategoria.OrderBy(x => x.Nivel).ToList())
+            if (ddlCategorias.Items.Count == 0)
             {
-                ddlCategorias.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
+                var frmcadcategoria = service.CategoriasDocumentos();
+                foreach (var item in frmcadcategoria.OrderBy(x => x.Nivel).ToList())
+                {
+                    ddlCategorias.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
+                }
             }
+
         }
 
         protected void ddlCategorias_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,23 +111,23 @@ namespace ImagemSimplesWeb.Documentos
         public static string SalvarIndexacao(string atribs, string idcateg, string nmfile)
         {
 
-                var x = atribs.Split(';');
-                var container = new SimpleInjector.Container();
-                Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
-                container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
-                var menuservice = container.GetInstance<ICadastroAppService>();
-                var atrib = menuservice.ListarAtributos(Convert.ToInt32(idcateg));
+            var x = atribs.Split(';');
+            var container = new SimpleInjector.Container();
+            Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
+            container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
+            var menuservice = container.GetInstance<ICadastroAppService>();
+            var atrib = menuservice.ListarAtributos(Convert.ToInt32(idcateg));
 
-                var doc = new User_Documentos_ImagemViewModel(0, Convert.ToInt32(idcateg), 1, "Teste", "");
-                for (int i = 1; i < x.Length; i++)
-                {
-                    int idatrib = atrib.Where(y => y.Ordem == i).FirstOrDefault().id_cat_atrib;
-                    doc.atributos.Add(new User_Documentos_AtributosViewModel(0, 23, idatrib, x[i]));
-                }
+            var doc = new User_Documentos_ImagemViewModel(0, Convert.ToInt32(idcateg), 1, "Teste", "");
+            for (int i = 1; i < x.Length; i++)
+            {
+                int idatrib = atrib.Where(y => y.Ordem == i).FirstOrDefault().id_cat_atrib;
+                doc.atributos.Add(new User_Documentos_AtributosViewModel(0, 23, idatrib, x[i]));
+            }
 
-                var docservice = container.GetInstance<IDocumentoAppService>();
-                var ret = docservice.InsereDocumento(doc, nmfile);
-                return ret;
+            var docservice = container.GetInstance<IDocumentoAppService>();
+            var ret = docservice.InsereDocumento(doc, nmfile);
+            return ret;
 
 
         }

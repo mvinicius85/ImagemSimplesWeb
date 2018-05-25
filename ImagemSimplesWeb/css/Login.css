@@ -79,3 +79,7 @@
     margin-right: auto;
     text-align: center;
 }
+
+#lblMsgErro{
+    color: red;
+}

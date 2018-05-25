@@ -88,15 +88,22 @@ namespace ImagemSimplesWeb.Cadastro
                 Response.Redirect("~/AcessoNegado.aspx");
             }
 
-            foreach (var item in frmcadcategoria.Menus.OrderBy(x => x.id_Oper).ToList())
+            if (ddlMenus.Items.Count == 0)
             {
-                ddlMenus.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
+                foreach (var item in frmcadcategoria.Menus.OrderBy(x => x.id_Oper).ToList())
+                {
+                    ddlMenus.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
+                }
             }
 
-            foreach (var item in frmcadcategoria.TiposArquivo.OrderBy(x => x.id_tipo_arquivo).ToList())
+            if (ddlTipoArquivo.Items.Count == 0)
             {
-                ddlTipoArquivo.Items.Add(new ListItem(item.descricao, item.id_tipo_arquivo.ToString()));
+                foreach (var item in frmcadcategoria.TiposArquivo.OrderBy(x => x.id_tipo_arquivo).ToList())
+                {
+                    ddlTipoArquivo.Items.Add(new ListItem(item.descricao, item.id_tipo_arquivo.ToString()));
+                }
             }
+
 
         }
 
@@ -190,12 +197,12 @@ namespace ImagemSimplesWeb.Cadastro
 
         private void RemontaTela()
         {
-            ddlMenus.SelectedValue = Request.Form["ctl00$CadCategoria$ddlMenus"].ToString().TrimEnd(); 
+            ddlMenus.SelectedValue = Request.Form["ctl00$CadCategoria$ddlMenus"].ToString().TrimEnd();
             txtNome.Text = Request.Form["ctl00$CadCategoria$txtNome"].ToString().TrimEnd();
             txtDescricao.Text = Request.Form["ctl00$CadCategoria$txtDescricao"].ToString().TrimEnd();
             txtNivel.Text = Request.Form["ctl00$CadCategoria$txtNivel"].ToString().TrimEnd();
             chkExisteMDB.Checked = Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? true : false;
-            txtPathImagens.Text =  Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd();
+            txtPathImagens.Text = Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd();
             ddlTipoArquivo.SelectedValue = Request.Form["ctl00$CadCategoria$ddlTipoArquivo"].ToString().TrimEnd();
         }
 

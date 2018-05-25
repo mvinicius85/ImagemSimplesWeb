@@ -39,6 +39,9 @@
                     <asp:Button ID="btnLogin" runat="server" Text="Entrar" OnClick="btnLogin_Click" CssClass="BtnLogin" />
 
                 </div>
+                         <div class="MsgErro">
+        <asp:label runat="server" id="lblMsgErro" Visible="false"/>
+             </div>
             </div>
         </form>
 

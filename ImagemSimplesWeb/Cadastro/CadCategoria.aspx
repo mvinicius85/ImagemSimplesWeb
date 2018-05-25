@@ -102,7 +102,7 @@
                 </tr>
                 <tr>
                     <td class="cadCategoriaLabel">
-                        <asp:Label runat="server" Text="Existe MDB: "></asp:Label>
+                        <asp:Label runat="server" Text="Armazena Imagens: "></asp:Label>
 
                     </td>
                     <td>

@@ -34,6 +34,8 @@ namespace ImagemSimplesWeb
                 Session["Login"] = login;
                 Response.Redirect("~/Documentos/Documento.aspx");
             }
+            lblMsgErro.Text = "Informações de login/senha inválidos.";
+            lblMsgErro.Visible = true;
         }
     }
 }

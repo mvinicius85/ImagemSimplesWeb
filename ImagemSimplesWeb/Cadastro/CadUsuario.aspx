@@ -1,6 +1,9 @@
 ﻿<%@ Page MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="CadUsuario.aspx.cs" Inherits="ImagemSimplesWeb.Cadastro.CadUsuario" %>
 
 <asp:Content ContentPlaceHolderID="CadUsuario" runat="server">
+    <div class="MsgErro">
+        <asp:Label runat="server" ID="lblMsgErro" Visible="false" />
+    </div>
     <div class="formUsuario">
         <div class="TableUsuarios">
             <table id="tbUser">
@@ -133,7 +136,7 @@
                     <asp:CheckBox runat="server" ID="chkCategorias" Text="Categorias" /></li>
                 <li>
                     <asp:CheckBox runat="server" ID="chkUsuarios" Text="Usuarios" /></li>
-                                <li>
+                <li>
                     <asp:CheckBox runat="server" ID="chkIndexar" Text="Indexar" /></li>
             </ol>
 

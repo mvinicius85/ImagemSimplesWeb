@@ -24,6 +24,9 @@
                 success: function (ret) {
                     if (ret.d == "") {
                         window.location = "../Documentos/ListaIndexar";
+                    } else {
+                        var lblerro = document.getElementById("lblMsgErro");
+                        lblerro.textContent = ret.d;
                     }
 
                 }
@@ -32,6 +35,9 @@
         }
     </script>
     <div>
+        <div class="MsgErro">
+           <label id="lblMsgErro"></label>
+        </div>
         <div class="IndexarPanelPdf" id="DivPanelPreview">
             <iframe id="pdfFrame" runat="server" src=""></iframe>
         </div>

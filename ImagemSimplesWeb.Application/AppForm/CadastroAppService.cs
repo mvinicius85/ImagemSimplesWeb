@@ -38,6 +38,11 @@ namespace ImagemSimplesWeb.Application.AppForm
                 //    return msg;
                 //}
                 BeginDocumentoTransaction();
+                var ret = _menuservice.ValidaCategoria(Mapper.Map<user_menu1>(cat));
+                if (!String.IsNullOrEmpty(ret)) 
+                {
+                    return ret;
+                }
                 _menuservice.AlteraCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
                 if (CommitDocumento() > 0)
                 {
@@ -99,7 +104,9 @@ namespace ImagemSimplesWeb.Application.AppForm
 
         public List<User_MenuViewModel> CategoriasDocumentos()
         {
-            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.CategoriasDocumento());
+            var categorias = Mapper.Map<List<User_MenuViewModel>>(_menuservice.CategoriasDocumento().Where(x => x.id_tipo_arquivo == 3).ToList());
+            categorias.Add(new User_MenuViewModel(0, ""));
+            return categorias.OrderBy(x => x.id_Oper).ToList();
         }
 
         public List<User_CadastroViewModel> FiltrarUsuarios(User_CadastroViewModel filtro)
@@ -172,7 +179,7 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             var cat = Mapper.Map<User_MenuViewModel>(_menuservice.BuscaCategoria(id));
             cat.Atributos = Mapper.Map<List<USER_CAT_ATRIBUTOSViewModel>>(_menuservice.RetornaAtributos(cat.id_Oper));
-            var str = _menuservice.ValidaCategoria(cat.id_Oper);
+            var str = _menuservice.VerificaDocumentosVinculados(cat.id_Oper);
             if (!String.IsNullOrEmpty(str))
             {
                 cat.PossuiDocumentos = true;

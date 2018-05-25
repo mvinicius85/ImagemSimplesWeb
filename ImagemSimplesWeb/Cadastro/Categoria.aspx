@@ -61,7 +61,7 @@
                             Text='<%# Bind("Descricao") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Existe MDB" SortExpression="FirstName">
+                <asp:TemplateField HeaderText="Armazena Imagens" SortExpression="FirstName">
                     <ItemTemplate>
                         <asp:Label ID="ExisteMDB" runat="server"
                             Text='<%# Bind("ExisteMDB") %>'></asp:Label>

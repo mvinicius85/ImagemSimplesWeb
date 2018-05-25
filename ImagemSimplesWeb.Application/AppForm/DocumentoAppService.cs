@@ -27,6 +27,10 @@ namespace ImagemSimplesWeb.Application.AppForm
         {
             try
             {
+                if (doc.atributos.Count == 0)
+                {
+                    return "Por favor, selecione uma categoria que tenha atributos vinculados.";
+                }
                 BeginDocumentoTransaction();
                 var newname = Guid.NewGuid().ToString();
                 var oldfile = HttpRuntime.AppDomainAppPath + "Files\\Indexar\\" + nmfile;

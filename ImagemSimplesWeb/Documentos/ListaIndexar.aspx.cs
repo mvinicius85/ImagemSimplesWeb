@@ -39,7 +39,7 @@ namespace ImagemSimplesWeb.Documentos
                 Response.Redirect("~/AcessoNegado.aspx");
             }
 
-            var dirimp = new DirectoryInfo(ConfigurationManager.AppSettings["LocalDir"].ToString() + "//Files//Indexar");
+            var dirimp = new DirectoryInfo(HttpRuntime.AppDomainAppPath + "//Files//Indexar");
             var listfiles = dirimp.GetFiles("*.pdf", SearchOption.AllDirectories);
             StringBuilder str = new StringBuilder();
             str.Append("<ol>");
