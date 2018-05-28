@@ -23,29 +23,22 @@
         <div class="PanelPesquisa" id="DivPanelPesquisa">
             <table>
                 <tr>
-                    <td>
-                        <asp:Label runat="server">Nome</asp:Label>
+                    <td  class="tdText">
+                        <asp:Label runat="server" >Nome:</asp:Label>
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="txtNome"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <asp:Label runat="server">Departamento</asp:Label>
+                    <td  class="tdText">
+                        <asp:Label runat="server" >Departamento:</asp:Label>
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="txtDepartamento"></asp:TextBox>
                     </td>
                 </tr>
-                      <tr>
-                    <td>
-                        <asp:Label runat="server">Nome</asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox runat="server" ID="TextBox1"></asp:TextBox>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>
                         <asp:Button runat="server" ID="BtnPesquisar" CssClass="BtnPesquisar" Text="Pesquisar" OnClick="BtnPesquisar_Click" />

@@ -18,16 +18,36 @@
         <div class="PanelPesquisa" id="DivPanelPesquisa">
             <table>
                 <tr>
+                    <td class="tdText">
+                        <asp:Label runat="server">Nome:</asp:Label>
+                    </td>
                     <td>
-                        <asp:Label runat="server">Descrição</asp:Label>
+                        <asp:TextBox runat="server" ID="txtNome"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdText">
+                        <asp:Label runat="server" >Descrição:</asp:Label>
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
                     </td>
+                </tr>
+                <tr>
+                    <td  class="tdText">
+                        <asp:Label runat="server" >Armazena Imagens:</asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList runat="server" ID="ddlArmazenaImagens" />
+                    </td>
+                </tr>
+
+                <tr>
                     <td>
                         <asp:Button runat="server" ID="BtnPesquisar" CssClass="BtnPesquisar" Text="Pesquisar" OnClick="BtnPesquisar_Click" />
                     </td>
                 </tr>
+
             </table>
         </div>
 

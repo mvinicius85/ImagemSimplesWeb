@@ -20,6 +20,7 @@ namespace ImagemSimplesWeb.Application.AutoMapper
             CreateMap<User_Documentos_ImagemViewModel, user_documentos_imagem>();
             CreateMap<User_Documentos_AtributosViewModel, user_documentos_atributos>();
             CreateMap<User_Status_DocumentoViewModel, user_status_documento>();
+            CreateMap<frmCategoriasViewModel, DTOCategorias>();
         }
     }
 

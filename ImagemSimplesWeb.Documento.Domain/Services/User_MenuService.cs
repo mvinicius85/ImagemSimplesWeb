@@ -1,4 +1,5 @@
 ﻿using ImagemSimplesWeb.Documento.Domain.Entities.Documento;
+using ImagemSimplesWeb.Documento.Domain.Entities.DTO;
 using ImagemSimplesWeb.Documento.Domain.Interfaces.Repository;
 using ImagemSimplesWeb.Documento.Domain.Interfaces.Services;
 using System;
@@ -99,10 +100,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
         {
             return _atribrepository.Buscar(x => x.id_oper == id_Oper).ToList();
         }
-
-        public List<user_menu1> RetornaCategorias(string desc)
+   
+        public List<user_menu1> RetornaCategorias(DTOCategorias filtro)
         {
-            return _menurepository.Buscar(x => x.descricao.Contains(desc)).ToList();
+           return _menurepository.RetornaCategorias(filtro);
+            //return _menurepository.Buscar(x => x.descricao.Contains(desc)).ToList();
         }
 
         public string ValidaCategoria(user_menu1 cat)

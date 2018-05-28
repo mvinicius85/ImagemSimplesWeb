@@ -65,7 +65,7 @@ namespace ImagemSimplesWeb.Documentos
                 griddocumentos.Columns.Add(col2);
 
                 table.Append("<tr>");
-                table.Append("<td>");
+                table.Append("<td class='tdText'>");
                 table.Append("<span>" + item.TituloAtributo + ": </span>");
                 table.Append("</td>");
                 table.Append("<td>");

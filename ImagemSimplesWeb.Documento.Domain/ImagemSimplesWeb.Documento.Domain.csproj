@@ -131,6 +131,7 @@
     <Compile Include="Entities\Documento\user_vinculos_atri.cs" />
     <Compile Include="Entities\DTO\DTOAcessoPermissoes.cs" />
     <Compile Include="Entities\DTO\DTOAcessos.cs" />
+    <Compile Include="Entities\DTO\DTOCategorias.cs" />
     <Compile Include="Entities\DTO\DTODocAtributos.cs" />
     <Compile Include="Interfaces\Repository\IUser_CadastroRepository.cs" />
     <Compile Include="Interfaces\Repository\IUser_Cadastro_ModulosRepository.cs" />

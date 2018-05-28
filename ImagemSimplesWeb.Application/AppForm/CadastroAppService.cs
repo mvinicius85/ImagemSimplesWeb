@@ -97,9 +97,10 @@ namespace ImagemSimplesWeb.Application.AppForm
             return final;
         }
 
-        public List<User_MenuViewModel> BuscarCategoria(string desc)
+        public List<User_MenuViewModel> BuscarCategoria(frmCategoriasViewModel categoria)
         {
-            return Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(desc).OrderBy(x => x.id_oper).ToList());
+            var ret = Mapper.Map<List<User_MenuViewModel>>(_menuservice.RetornaCategorias(Mapper.Map<DTOCategorias>(categoria)));
+            return ret.OrderBy(x => x.id_Oper).ToList();
         }
 
         public List<User_MenuViewModel> CategoriasDocumentos()

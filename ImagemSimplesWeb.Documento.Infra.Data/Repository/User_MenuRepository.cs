@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using ImagemSimplesWeb.Documento.Domain.Entities.Documento;
+using ImagemSimplesWeb.Documento.Domain.Entities.DTO;
 using ImagemSimplesWeb.Documento.Domain.Interfaces.Repository;
 using ImagemSimplesWeb.Documento.Infra.Data.Contexto;
 using System;
@@ -23,6 +24,16 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 
             var sql = @"Select * from dbo.user_menu1 where existemdb like '%SIM%' ";
             var menus = con.Query<user_menu1>(sql).ToList();
+
+            return menus;
+        }
+
+        public List<user_menu1> RetornaCategorias(DTOCategorias filtro)
+        {
+            var con = Db.Database.Connection;
+
+            var sql = @"Select * from dbo.user_menu1 " + filtro.SWhere();
+            var menus = con.Query<user_menu1>(sql, filtro).ToList();
 
             return menus;
         }

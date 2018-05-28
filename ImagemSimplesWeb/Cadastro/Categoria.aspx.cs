@@ -1,4 +1,5 @@
 ﻿using ImagemSimplesWeb.Application.Interface;
+using ImagemSimplesWeb.Application.ViewModels;
 using ImagemSimplesWeb.Documento.Infra.Data.Contexto;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace ImagemSimplesWeb.Cadastro
 
 
             var user = service.RetornaUsuario(Session["Login"].ToString());
-            if (!user.Modulos.Any(x => x.id_modulo == 1)) 
+            if (!user.Modulos.Any(x => x.id_modulo == 1))
             {
                 Response.Redirect("~/AcessoNegado.aspx");
             }
@@ -38,6 +39,13 @@ namespace ImagemSimplesWeb.Cadastro
             var categorias = service.ListaCategorias();
             GridCategorias.DataSource = categorias;
             GridCategorias.DataBind();
+            if (ddlArmazenaImagens.Items.Count == 0)
+            {
+                ddlArmazenaImagens.Items.Add(new ListItem("Todos", "0"));
+                ddlArmazenaImagens.Items.Add(new ListItem("Sim", "1"));
+                ddlArmazenaImagens.Items.Add(new ListItem("Não", "2"));
+            }
+
         }
 
         protected void BtnEdit_Click(object sender, ImageClickEventArgs e)
@@ -51,16 +59,23 @@ namespace ImagemSimplesWeb.Cadastro
         {
             GridCategorias.PageIndex = 0;
             Session["descMenu"] = Request.Form["ctl00$Categoria$txtDescricao"].ToString();
+            Session["nomeMenu"] = Request.Form["ctl00$Categoria$txtNome"].ToString();
+            Session["armazMenu"] = Request.Form["ctl00$Categoria$ddlArmazenaImagens"].ToString();
+
             RecarregarGrid();
         }
         void RecarregarGrid()
         {
-            var desc = Session["descMenu"] == null ? "" : Session["descMenu"];
+            var filtro = new frmCategoriasViewModel(
+                Session["descMenu"] == null ? "" : Session["descMenu"].ToString(),
+                Session["nomeMenu"] == null ? "" : Session["nomeMenu"].ToString(),
+                 Session["armazMenu"] == null ? "" : Session["armazMenu"].ToString()
+                );
             var container = new SimpleInjector.Container();
             Infra.CrossCutting.IoC.BootStrapper.RegisterServices(container);
             container.GetInstance<Imagem_ItapeviContext>().ChangeConnection(ConfigurationManager.ConnectionStrings["PgProdutos"].ToString());
             var service = container.GetInstance<ICadastroAppService>();
-            var categorias = service.BuscarCategoria(desc.ToString());
+            var categorias = service.BuscarCategoria(filtro);
             GridCategorias.DataSource = categorias;
             GridCategorias.DataBind();
         }

@@ -221,6 +221,10 @@ ol.tree {
         border: none;
     }
 
+.tdText {
+    text-align: right;
+}
+
 .BtnPesquisar {
     background-color: #C1CDCD;
     border-radius: 2px;
