@@ -16,10 +16,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Services
         void ExcluiAtributos(user_menu1 cat);
         List<user_cat_atributos> RetornaAtributos(int id_Oper);
         List<user_menu1> RetornaCategorias(DTOCategorias filtro);
-        void InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib);
+        int InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib);
         List<user_menu1> CategoriasDocumento();
         List<user_tipo_arquivo> ListaTiposArquivo();
         string VerificaDocumentosVinculados(int id_Oper);
         string ValidaCategoria(user_menu1 user_menu1);
+        int NewId();
     }
 }

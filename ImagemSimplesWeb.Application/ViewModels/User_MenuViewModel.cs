@@ -12,6 +12,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public User_MenuViewModel(int _idop, int _iddep, string _nome, string _desc, 
             string _nivel, string _mdb, string _path, int _idtparquivo)
         {
+
             id_Oper = _idop;
             Dependencia = _iddep;
             Nome = _nome;
@@ -30,6 +31,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
         {
             id_Oper = _idop;
             Descricao = _desc;
+            ExisteMDB = "NAO";
         }
         public int id_Oper { get; set; }
         public Nullable<int> Dependencia { get; set; }

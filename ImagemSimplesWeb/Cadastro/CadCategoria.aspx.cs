@@ -90,7 +90,7 @@ namespace ImagemSimplesWeb.Cadastro
 
             if (ddlMenus.Items.Count == 0)
             {
-                foreach (var item in frmcadcategoria.Menus.OrderBy(x => x.id_Oper).ToList())
+                foreach (var item in frmcadcategoria.Menus.Where(y => y.ExisteMDB.Trim().ToUpper() == "NAO").OrderBy(x => x.id_Oper).ToList())
                 {
                     ddlMenus.Items.Add(new ListItem(item.DescNivel, item.id_Oper.ToString()));
                 }

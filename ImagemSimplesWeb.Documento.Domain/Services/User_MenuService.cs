@@ -73,17 +73,20 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             _atribrepository.ExcluirAtributos(cat.id_oper);
         }
 
-        public void InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib)
+        public int InsereCategoria(user_menu1 cat, List<user_cat_atributos> atrib)
         {
             int i = 1;
-            var cat2 = _menurepository.Adicionar(cat);
+            cat.id_oper = _menurepository.UltimoId();
+            //var cat2 = _menurepository.Adicionar(cat);
+            var cat2 = _menurepository.AddDapper(cat);
             foreach (var item in atrib)
             {
                 item.ordem = i;
-                item.id_oper = cat2.id_oper;
+                item.id_oper = cat.id_oper;
                 _atribrepository.Adicionar(item);
                 i = i + 1;
             }
+            return cat2;
         }
 
         public List<user_menu1> ListaCategorias()
@@ -94,6 +97,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
         public List<user_tipo_arquivo> ListaTiposArquivo()
         {
             return _tipoarquivorepository.ObterTodos().ToList();
+        }
+
+        public int NewId()
+        {
+            return _menurepository.UltimoId();
         }
 
         public List<user_cat_atributos> RetornaAtributos(int id_Oper)

@@ -77,7 +77,7 @@
             }
 
             function openPdfNewTab(row) {
-                 var cell = row.cells[0];
+                var cell = row.cells[0];
                 var pdfname = cell.textContent;
                 $.ajax({
                     type: "POST",
@@ -101,8 +101,20 @@
                         <%foreach (var item in CriaMenu())
                             { %>
                         <li>
+                            <% if (item.ExisteMDB.Trim().ToUpper() == "SIM")
+                                { %>
+                            <a href="<%=item.link%>">
+                                <label class="file">
+                                    <%=item.Nome %>
+                                </label>
+                            </a>
+
+                            <% }
+                                else
+                                { %>
                             <label for="folder<%= item.id_Oper%>"><%= item.Nome %></label>
                             <input type="checkbox" id="folder<%= item.id_Oper%>" />
+                            <% }%>
                             <%if (item.submenu.Count > 0)
                                 {%>
                             <ol>
@@ -111,8 +123,22 @@
                                     {%>
 
                                 <li>
+
+                                    <% if (subitem.ExisteMDB.Trim().ToUpper() == "SIM")
+                                        { %>
+                                    <a href="<%=subitem.link%>">
+                                        <label class="file">
+                                            <%=subitem.Nome %>
+                                        </label>
+                                    </a>
+
+                                    <% }
+                                        else
+                                        { %>
                                     <label for="subfolder<%= subitem.id_Oper%>"><%= subitem.Nome %></label>
                                     <input type="checkbox" id="subfolder<%= subitem.id_Oper%>" />
+                                    <% }%>
+
 
                                     <%if (subitem.submenu.Count > 0)
                                         {%>

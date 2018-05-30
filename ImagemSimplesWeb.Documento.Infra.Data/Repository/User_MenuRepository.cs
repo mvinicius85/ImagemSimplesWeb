@@ -18,6 +18,22 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
 
         }
 
+        public int AddDapper(user_menu1 cat)
+        {
+            var con = Db.Database.Connection;
+
+            var sql = @"INSERT INTO dbo.user_menu1 (id_oper, dependencia, descricao, nivel, 
+                            datainclusao,  operincluiu, operalterou, existemdb, pathimagens, nome, id_tipo_arquivo)
+                    VALUES (@id_oper, @dependencia, @descricao, @nivel, @datainclusao, @operincluiu, @operalterou,
+                        @existemdb, @pathimagens, @nome, @id_tipo_arquivo)";
+
+
+
+            var menus = con.Execute(sql, cat);
+
+            return menus;
+        }
+
         public List<user_menu1> CategoriasDocumento()
         {
             var con = Db.Database.Connection;
@@ -36,6 +52,16 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
             var menus = con.Query<user_menu1>(sql, filtro).ToList();
 
             return menus;
+        }
+
+        public int UltimoId()
+        {
+            var con = Db.Database.Connection;
+
+            var sql = @"Select max(id_oper) + 1 from dbo.user_menu1";
+            var id = con.Query<int>(sql).FirstOrDefault();
+
+            return id;
         }
     }
 

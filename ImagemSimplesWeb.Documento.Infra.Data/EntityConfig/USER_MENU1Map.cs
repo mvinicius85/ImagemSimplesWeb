@@ -12,10 +12,6 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             // Primary Key
             this.HasKey(t => t.id_oper);
 
-            // Properties
-            this.Property(t => t.id_oper)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
             this.Property(t => t.descricao)
                 .IsFixedLength()
                 .HasMaxLength(50);
@@ -32,7 +28,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
                 .HasMaxLength(20);
 
             // Table & Column Mappings
-            this.ToTable("user_menu1");
+            this.ToTable("dbo.user_menu1");
             this.Property(t => t.id_oper).HasColumnName("id_oper");
             this.Property(t => t.dependencia).HasColumnName("dependencia");
             this.Property(t => t.descricao).HasColumnName("descricao");

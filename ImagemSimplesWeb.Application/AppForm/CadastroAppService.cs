@@ -121,8 +121,8 @@ namespace ImagemSimplesWeb.Application.AppForm
             try
             {
                 BeginDocumentoTransaction();
-                _menuservice.InsereCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
-                if (CommitDocumento() > 0)
+                var ret =_menuservice.InsereCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
+                if (ret > 0)
                 {
                     return "S";
                 }

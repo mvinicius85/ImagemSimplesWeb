@@ -201,7 +201,7 @@ namespace ImagemSimplesWeb.Documentos
             var appcadastro = container.GetInstance<ICadastroAppService>();
             var menus = appcadastro.BuscaMenu();
             menus = menus.OrderByDescending(x => x.id_Oper).ToList();
-            return menus.Where(x => x.submenu.Count > 0).ToList();
+            return menus.ToList();
         }
 
 

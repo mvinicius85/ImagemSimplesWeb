@@ -13,5 +13,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Interfaces.Repository
     {
         List<user_menu1> CategoriasDocumento();
         List<user_menu1> RetornaCategorias(DTOCategorias filtro);
+        int UltimoId();
+        int AddDapper(user_menu1 cat);
     }
 }

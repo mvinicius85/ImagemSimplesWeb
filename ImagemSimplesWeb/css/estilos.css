@@ -150,8 +150,8 @@ ol.tree {
     }
 
         #criamenu li input + ol {
-            background: url(../Imagens/toggle-small-expand.png) 40px 0 no-repeat;
-            margin: -0.938em 0 0 -44px; /* 15px */
+            background: url(../Imagens/toggle-small-expand.png) 40px -3px no-repeat;
+            margin: -1.250em 0 0 -44px; /* 15px */
             height: 1em;
         }
 
@@ -177,7 +177,7 @@ ol.tree {
 
     #criamenu li input:checked + ol {
         background: url(../Imagens/toggle-small.png) 40px 0 no-repeat;
-        margin: -1.25em 0 0 -44px; /* 20px */
+        margin: -1.50em 0 0 -44px; /* 20px */
         padding: 1.563em 0 0 80px;
         height: auto;
     }
