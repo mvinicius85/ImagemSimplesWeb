@@ -146,7 +146,7 @@
                                 Text='<%# Bind("TituloAtributo") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Excluir" SortExpression="FirstName">
+                    <asp:TemplateField SortExpression="FirstName"   >
                         <ItemTemplate>
                             <asp:ImageButton runat="server" ToolTip="Excluir" ImageUrl="~/Imagens/icons8-cancel-16.png" ID="btnExcluirAtrib" OnClick="Unnamed_Click" CommandArgument='<%# Bind("NomeAtributo") %>' />
                         </ItemTemplate>

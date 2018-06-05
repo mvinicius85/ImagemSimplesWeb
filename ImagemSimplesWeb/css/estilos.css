@@ -162,14 +162,14 @@ ol.tree {
             }
 
     #criamenu li label {
-        background: url(../Imagens/folder-horizontal.png) 15px 1px no-repeat;
+        background: url(../Imagens/icons8-folder-16.png) 15px 1px no-repeat;
         cursor: pointer;
         display: block;
         padding-left: 37px;
     }
 
         #criamenu li label.file {
-            background: url(../Imagens/document.png) 15px 1px no-repeat;
+            background: url(../Imagens/icons8-binder-15-2.png) 15px 1px no-repeat;
             cursor: pointer;
             display: block;
             padding-left: 37px;

@@ -41,8 +41,8 @@
 
     <header class="header">
         <div class="MasterHeader">
-            <img src="../Imagens/cotia_icon.png">
-            <img src="../Imagens/cotia_logo.png">
+            <img src="../Imagens/header_icon.png">
+            <img src="../Imagens/header_logo.png">
 
             <div class="divLogout">
                 <p><% = Session["Login"]%></p>

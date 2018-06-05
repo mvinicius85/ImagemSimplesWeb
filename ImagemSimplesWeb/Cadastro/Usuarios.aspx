@@ -1,20 +1,7 @@
 ﻿<%@ Page MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Usuarios.aspx.cs" Inherits="ImagemSimplesWeb.Cadastro.Usuarios" %>
 
 <asp:Content ContentPlaceHolderID="Usuarios" runat="server">
-    <script>
-        function ShowDivPesquisa() {
-            var x = document.getElementById("DivPanelPesquisa");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-                //}
-            }
-        }
-    </script>
-
-    <div>
-    </div>
+    <script src="../javascript/TelasPesquisa.js"></script>
 
 
     <div class="divcategoria">

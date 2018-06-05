@@ -142,7 +142,7 @@
 
             <div>
                 <asp:GridView ID="GridAcessos" runat="server" AllowPaging="False"
-                    AllowSorting="True" AutoGenerateColumns="false" CssClass="GridCadastro">
+                 AutoGenerateColumns="false" CssClass="GridCadastro">
 
                     <Columns>
                         <asp:TemplateField HeaderText="ID" SortExpression="FirstName">
@@ -159,7 +159,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nivel" SortExpression="FirstName">
                             <ItemTemplate>
-                                <asp:Label ID="Nivel" runat="server"
+                                <asp:Label ID="Nivel" runat="server" 
                                     Text='<%# Bind("Nivel") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -169,9 +169,9 @@
                             Text='<%# Bind("Acesso") %>'></asp:CheckBox>
                     </ItemTemplate>
                 </asp:TemplateField>--%>
-                        <asp:TemplateField HeaderStyle-Width="40">
+                        <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" ImageUrl="~/Imagens/icons8-cancel-16.png" ID="BtnExcluir" OnClick="BtnExcluir_Click" CommandArgument='<%# Bind("id_oper") %>' />
+                                <asp:ImageButton runat="server" ImageUrl="~/Imagens/icons8-cancel-16.png" ID="BtnExcluir" OnClick="BtnExcluir_Click" CommandArgument='<%# Bind("id_oper") %>' placeholder="Retirar da Lista" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

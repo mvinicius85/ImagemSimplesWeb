@@ -1,17 +1,7 @@
 ﻿<%@ Page MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Categoria.aspx.cs" Inherits="ImagemSimplesWeb.Cadastro.Categoria" %>
 
 <asp:Content ContentPlaceHolderID="Categoria" runat="server">
-    <script>
-        function ShowDivPesquisa() {
-            var x = document.getElementById("DivPanelPesquisa");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-                //}
-            }
-        }
-    </script>
+    <script src="../javascript/TelasPesquisa.js"></script>
     <div class="divcategoria">
         <asp:Button runat="server" ID="btnIncluir" Text="Incluir" OnClick="btnIncluir_Click" CssClass="btnIncluir" />
         <button type="button" onclick="ShowDivPesquisa()" class="btnShowDiv">Filtro</button>

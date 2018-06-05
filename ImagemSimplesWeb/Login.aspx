@@ -19,7 +19,7 @@
     <div class="mainLogin">
         <div class="LoginHeader">
             <div class="ImageLogo">
-                <asp:Image runat="server" ImageUrl="~/Imagens/saudesimpleslogo.png" />
+                <asp:Image runat="server" ImageUrl="~/Imagens/main-logo.png" />
             </div>
         </div>
         <form id="formLogin" runat="server">

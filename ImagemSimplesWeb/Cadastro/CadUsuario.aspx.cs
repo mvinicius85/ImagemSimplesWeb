@@ -65,7 +65,7 @@ namespace ImagemSimplesWeb.Cadastro
             txtTelRes.Text = usuario.Tel2;
             txtTelCel.Text = usuario.Tel3;
             txtEmail.Text = usuario.Email;
-            if (GridAcessos.Rows.Count == 0)
+            if (!this.IsPostBack)
             {
                 GridAcessos.DataSource = usuario.Acessos;
                 GridAcessos.DataBind();

@@ -17,6 +17,7 @@ namespace ImagemSimplesWeb.Cadastro
     {
         private readonly ICadastroAppService service;
         private static int id;
+        private static List<USER_CAT_ATRIBUTOSViewModel> atributos;
         public CadCategoria()
         {
             var container = new SimpleInjector.Container();
@@ -61,8 +62,9 @@ namespace ImagemSimplesWeb.Cadastro
                 chkExisteMDB.Checked = false;
             }
             txtPathImagens.Text = cat.PATHIMAGENS != null ? cat.PATHIMAGENS : "";
-            if (cat.Atributos.Count > 0 && gridAtributos.Rows.Count == 0)
+            if (!this.IsPostBack)
             {
+                atributos = cat.Atributos;
                 gridAtributos.DataSource = cat.Atributos;
                 gridAtributos.DataBind();
             }
@@ -122,7 +124,8 @@ namespace ImagemSimplesWeb.Cadastro
                 Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlTipoArquivo"])
                 );
 
-            cat.Atributos = RetornaListaAtrib();
+            //cat.Atributos = RetornaListaAtrib();
+            cat.Atributos = atributos;
             string ret = "";
             if (cat.id_Oper == 0)
             {
@@ -148,35 +151,35 @@ namespace ImagemSimplesWeb.Cadastro
             RemontaTela();
             ImageButton button = sender as ImageButton;
             var nomeatrib = button.CommandArgument;
-            var cat = new List<USER_CAT_ATRIBUTOSViewModel>();
-            foreach (GridViewRow row in gridAtributos.Rows)
-            {
-                var nome = (Label)row.Cells[2].Controls[1];
-                var header = (Label)row.Cells[3].Controls[1];
-                var item = new USER_CAT_ATRIBUTOSViewModel(
-                    Convert.ToInt32(lblidCategoria.Text),
-                    nome.Text, header.Text);
-                cat.Add(item);
-            }
-            cat.Remove(cat.Where(x => x.NomeAtributo == nomeatrib).FirstOrDefault());
-            gridAtributos.DataSource = cat.ToList();
+            //foreach (GridViewRow row in gridAtributos.Rows)
+            //{
+            //    var nome = (Label)row.Cells[2].Controls[1];
+            //    var header = (Label)row.Cells[3].Controls[1];
+            //    var item = new USER_CAT_ATRIBUTOSViewModel(
+            //        Convert.ToInt32(lblidCategoria.Text),
+            //        nome.Text, header.Text);
+            //    atributos.Add(item);
+            //}
+            atributos.Remove(atributos.Where(x => x.NomeAtributo == nomeatrib).FirstOrDefault());
+            gridAtributos.DataSource = atributos.ToList();
             gridAtributos.DataBind();
         }
 
         protected void BtnAdd_Click(object sender, EventArgs e)
         {
             RemontaTela();
-            var cat = RetornaListaAtrib();
+            //var cat = RetornaListaAtrib();
 
-            var y = cat.Where(x => x.NomeAtributo == txtNomeAtrib.Text).FirstOrDefault();
+            var y = atributos.Where(x => x.NomeAtributo == txtNomeAtrib.Text).FirstOrDefault();
             if (y != null)
             {
                 return;
             }
 
 
-            cat.Add(new USER_CAT_ATRIBUTOSViewModel(Convert.ToInt32(lblidCategoria.Text == "" ? "0" : lblidCategoria.Text), txtNomeAtrib.Text, txtTituloAtrib.Text));
-            gridAtributos.DataSource = cat.ToList();
+            //cat.Add(new USER_CAT_ATRIBUTOSViewModel(Convert.ToInt32(lblidCategoria.Text == "" ? "0" : lblidCategoria.Text), txtNomeAtrib.Text, txtTituloAtrib.Text));
+            atributos.Add(new USER_CAT_ATRIBUTOSViewModel(Convert.ToInt32(lblidCategoria.Text == "" ? "0" : lblidCategoria.Text), txtNomeAtrib.Text, txtTituloAtrib.Text));
+            gridAtributos.DataSource = atributos.ToList();
             gridAtributos.DataBind();
         }
 
@@ -192,6 +195,7 @@ namespace ImagemSimplesWeb.Cadastro
                     nome.Text, header.Text);
                 cat.Add(item);
             }
+
             return cat;
         }
 
