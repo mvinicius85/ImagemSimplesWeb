@@ -39,7 +39,7 @@ namespace ImagemSimplesWeb.Application.AppForm
                 //}
                 BeginDocumentoTransaction();
                 var ret = _menuservice.ValidaCategoria(Mapper.Map<user_menu1>(cat));
-                if (!String.IsNullOrEmpty(ret)) 
+                if (!String.IsNullOrEmpty(ret))
                 {
                     return ret;
                 }
@@ -121,7 +121,7 @@ namespace ImagemSimplesWeb.Application.AppForm
             try
             {
                 BeginDocumentoTransaction();
-                var ret =_menuservice.InsereCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
+                var ret = _menuservice.InsereCategoria(Mapper.Map<user_menu1>(cat), Mapper.Map<List<user_cat_atributos>>(cat.Atributos));
                 if (ret > 0)
                 {
                     return "S";
@@ -173,7 +173,7 @@ namespace ImagemSimplesWeb.Application.AppForm
         public List<User_CadastroViewModel> ListaUsuarios()
         {
             var usuarios = Mapper.Map<List<User_CadastroViewModel>>(_cadastroservice.BuscarTodos());
-            return usuarios;
+            return usuarios.OrderBy(x => x.id_user).ToList();
         }
 
         public User_MenuViewModel PesquisaCategoria(int id)
@@ -238,7 +238,9 @@ namespace ImagemSimplesWeb.Application.AppForm
         public bool ValidaLogin(string user, string senha)
         {
             var usuario = new user_cadastro(user, senha);
+
             return _cadastroservice.ValidarUsuario(usuario);
+
         }
     }
 }

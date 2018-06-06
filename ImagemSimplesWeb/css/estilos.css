@@ -168,6 +168,10 @@ ol.tree {
         padding-left: 37px;
     }
 
+        #criamenu li label:hover {
+            text-decoration: underline;
+        }
+
         #criamenu li label.file {
             background: url(../Imagens/icons8-binder-15-2.png) 15px 1px no-repeat;
             cursor: pointer;

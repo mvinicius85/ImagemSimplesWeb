@@ -120,6 +120,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Ativo: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:CheckBox runat="server" ID="chkAtivo" />
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <asp:Button runat="server" ID="btnSalvar" Text="Salvar" OnClick="btnSalvar_Click" CssClass="BtnPesquisar" /></td>
                     <td>
@@ -142,7 +150,7 @@
 
             <div>
                 <asp:GridView ID="GridAcessos" runat="server" AllowPaging="False"
-                 AutoGenerateColumns="false" CssClass="GridCadastro">
+                    AutoGenerateColumns="false" CssClass="GridCadastro">
 
                     <Columns>
                         <asp:TemplateField HeaderText="ID" SortExpression="FirstName">
@@ -159,7 +167,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nivel" SortExpression="FirstName">
                             <ItemTemplate>
-                                <asp:Label ID="Nivel" runat="server" 
+                                <asp:Label ID="Nivel" runat="server"
                                     Text='<%# Bind("Nivel") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>

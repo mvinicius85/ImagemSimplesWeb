@@ -42,7 +42,11 @@ namespace ImagemSimplesWeb.Cadastro
             }
 
             id = Convert.ToInt32(Request.QueryString["id"]);
-            PreencheTela();
+            if (!this.IsPostBack)
+            {
+                PreencheTela();
+            }
+
         }
 
         private void PreencheTela()
@@ -65,6 +69,7 @@ namespace ImagemSimplesWeb.Cadastro
             txtTelRes.Text = usuario.Tel2;
             txtTelCel.Text = usuario.Tel3;
             txtEmail.Text = usuario.Email;
+            chkAtivo.Checked = Convert.ToBoolean(usuario.ativo);
             if (!this.IsPostBack)
             {
                 GridAcessos.DataSource = usuario.Acessos;
@@ -100,16 +105,16 @@ namespace ImagemSimplesWeb.Cadastro
 
             var usuario = new User_CadastroViewModel(
                 Convert.ToInt32(String.IsNullOrWhiteSpace(lblidUsuario.Text) ? "0" : lblidUsuario.Text),
-                Request.Form["ctl00$CadUsuario$txtSenha"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtCodigo"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtNome"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtDepartamento"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtCadastro"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtDtInicio"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtTelefone"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtTelRes"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtTelCel"].ToString(),
-                Request.Form["ctl00$CadUsuario$txtEmail"].ToString(), true);
+                txtSenha.Text,
+                txtCodigo.Text,
+                txtNome.Text,
+                txtDepartamento.Text,
+                txtCadastro.Text,
+                txtDtInicio.Text,
+                txtTelefone.Text,
+                txtTelRes.Text,
+                txtTelCel.Text,
+                txtEmail.Text, chkAtivo.Checked);
 
             if (Request.Form["ctl00$CadUsuario$chkUsuarios"] != null)
             {
@@ -162,7 +167,7 @@ namespace ImagemSimplesWeb.Cadastro
 
         protected void BtnExcluir_Click(object sender, ImageClickEventArgs e)
         {
-            RemontaTela();
+            //RemontaTela();
             ImageButton button = sender as ImageButton;
             var idoper = Convert.ToInt32(button.CommandArgument);
             var acessos = new List<AcessosViewModel>();
@@ -187,14 +192,14 @@ namespace ImagemSimplesWeb.Cadastro
                 var id = (Label)row.Cells[0].Controls[1];
                 var desc = (Label)row.Cells[1].Controls[1];
                 var nivel = (Label)row.Cells[2].Controls[1];
-                var item = new AcessosViewModel(Convert.ToInt32(id.Text),desc.Text.TrimEnd(),nivel.Text);
+                var item = new AcessosViewModel(Convert.ToInt32(id.Text), desc.Text.TrimEnd(), nivel.Text);
                 cat.Add(item);
             }
             return cat;
         }
 
         private void RemontaTela()
-        {
+           {
             //ddlMenus.SelectedIndex = 0;
 
             txtSenha.Text = Request.Form["ctl00$CadUsuario$txtSenha"].ToString();
@@ -212,7 +217,7 @@ namespace ImagemSimplesWeb.Cadastro
 
         protected void BtnAdd_Click(object sender, EventArgs e)
         {
-            RemontaTela();
+            // RemontaTela();
             var acessos = RetornaListaAcessos();
 
             if (ddlMenus.SelectedIndex > 0)

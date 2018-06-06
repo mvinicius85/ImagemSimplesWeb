@@ -80,6 +80,11 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             {
                 return false;
             }
+            var usuario = _cadastrorepository.Buscar(x => x.nome.ToUpper() == user.nome.ToUpper() && x.senha == user.senha).FirstOrDefault();
+            if (!usuario.ativo)
+            {
+                return false;
+            }
             return true;
         }
     }

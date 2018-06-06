@@ -9,6 +9,7 @@
 .IndexarPanelPdf {
     float: left;
     width: 60%;
+    box-shadow: 0px 0px 6px 3px black;
 }
 
     .IndexarPanelPdf iframe {
