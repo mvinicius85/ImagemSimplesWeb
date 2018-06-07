@@ -9,7 +9,7 @@
             <div id="criamenu">
                 <nav>
                     <ol class="tree">
-                        <%foreach (var item in CriaMenu())
+                        <%foreach (var item in CriaMenu().Where(x => x.ind_ativo).ToList())
                             { %>
                         <li>
                             <% if (item.ExisteMDB.Trim().ToUpper() == "SIM")
@@ -30,7 +30,7 @@
                                 {%>
                             <ol>
 
-                                <% foreach (var subitem in item.submenu)
+                                <% foreach (var subitem in item.submenu.Where(y => y.ind_ativo).ToList())
                                     {%>
 
                                 <li>
@@ -54,7 +54,7 @@
                                     <%if (subitem.submenu.Count > 0)
                                         {%>
                                     <ol>
-                                        <% foreach (var cat in subitem.submenu)
+                                        <% foreach (var cat in subitem.submenu.Where(z => z.ind_ativo).ToList())
                                             {%>
 
                                         <li>

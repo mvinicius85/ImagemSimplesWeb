@@ -17,15 +17,15 @@
                 </tr>
                 <tr>
                     <td class="tdText">
-                        <asp:Label runat="server" >Descrição:</asp:Label>
+                        <asp:Label runat="server">Descrição:</asp:Label>
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="txtDescricao"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td  class="tdText">
-                        <asp:Label runat="server" >Armazena Imagens:</asp:Label>
+                    <td class="tdText">
+                        <asp:Label runat="server">Armazena Imagens:</asp:Label>
                     </td>
                     <td>
                         <asp:DropDownList runat="server" ID="ddlArmazenaImagens" />
@@ -81,6 +81,12 @@
                     <ItemTemplate>
                         <asp:Label ID="PATHIMAGENS" runat="server"
                             Text='<%# Bind("PATHIMAGENS") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="ativo" SortExpression="FirstName">
+                    <ItemTemplate>
+                        <asp:CheckBox ID="ativo" runat="server" Enabled="false"
+                            Checked='<%# Bind("ind_ativo") %>'></asp:CheckBox>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-Width="40">

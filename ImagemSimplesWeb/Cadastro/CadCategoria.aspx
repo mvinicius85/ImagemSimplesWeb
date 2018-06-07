@@ -27,9 +27,9 @@
     </script>
 
     <div class="divcadcategoria">
-         <div class="MsgErro">
-        <asp:label runat="server" id="lblMsgErro" Visible="false" />
-             </div>
+        <div class="MsgErro">
+            <asp:Label runat="server" ID="lblMsgErro" Visible="false" />
+        </div>
         <div>
             <table>
                 <tr>
@@ -84,7 +84,7 @@
                     </td>
                     <td>
 
-                        <asp:DropDownList runat="server" ID="ddlTipoArquivo" ></asp:DropDownList>
+                        <asp:DropDownList runat="server" ID="ddlTipoArquivo"></asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -117,6 +117,14 @@
                         <asp:TextBox runat="server" ID="txtPathImagens"></asp:TextBox>
                     </td>
                 </tr>
+                <tr>
+                    <td class="cadCategoriaLabel">
+                        <asp:Label runat="server" Text="Ativo: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:CheckBox runat="server" ID="chkAtivo" />
+                    </td>
+                </tr>
             </table>
         </div>
         <div>
@@ -146,7 +154,7 @@
                                 Text='<%# Bind("TituloAtributo") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField SortExpression="FirstName"   >
+                    <asp:TemplateField SortExpression="FirstName">
                         <ItemTemplate>
                             <asp:ImageButton runat="server" ToolTip="Excluir" ImageUrl="~/Imagens/icons8-cancel-16.png" ID="btnExcluirAtrib" OnClick="Unnamed_Click" CommandArgument='<%# Bind("NomeAtributo") %>' />
                         </ItemTemplate>

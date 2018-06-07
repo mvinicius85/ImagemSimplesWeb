@@ -10,7 +10,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
     public class User_MenuViewModel
     {
         public User_MenuViewModel(int _idop, int _iddep, string _nome, string _desc, 
-            string _nivel, string _mdb, string _path, int _idtparquivo)
+            string _nivel, string _mdb, string _path, int _idtparquivo, bool _ativo)
         {
 
             id_Oper = _idop;
@@ -21,6 +21,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
             ExisteMDB = _mdb;
             PATHIMAGENS = _path;
             id_tipo_arquivo = _idtparquivo;
+            ind_ativo =_ativo;
         }
         public User_MenuViewModel()
         {
@@ -53,6 +54,7 @@ namespace ImagemSimplesWeb.Application.ViewModels
         public string link { get { return "Documento.aspx?idoper=" + this.id_Oper.ToString();  }}
         public string DescNivel { get { return Nivel + " - " +  Descricao.TrimEnd(); } }
         public Nullable<int> id_tipo_arquivo { get; set; }
+        public bool ind_ativo { get; set; }
         public bool PossuiDocumentos { get; set; }
     }
 }

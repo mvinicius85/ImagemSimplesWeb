@@ -45,6 +45,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.EntityConfig
             this.Property(t => t.pathimagens).HasColumnName("pathimagens");
             this.Property(t => t.nome).HasColumnName("nome");
             this.Property(t => t.id_tipo_arquivo).HasColumnName("id_tipo_arquivo");
+            this.Property(t => t.ind_ativo).HasColumnName("ind_ativo");
         }
     }
 }

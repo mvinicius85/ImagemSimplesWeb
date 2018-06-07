@@ -62,6 +62,7 @@ body select {
 .GridCadastro {
     background-color: #F0F4F5;
     color: black;
+    margin: 5px;
 }
 
     .GridCadastro table, th, td {

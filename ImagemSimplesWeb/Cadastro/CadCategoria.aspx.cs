@@ -34,7 +34,10 @@ namespace ImagemSimplesWeb.Cadastro
             }
             id = Convert.ToInt32(Request.QueryString["id"]);
             MontaTela();
-            PreencheTela();
+            if (!this.IsPostBack)
+            {
+                PreencheTela();
+            }
         }
 
         private void PreencheTela()
@@ -53,6 +56,7 @@ namespace ImagemSimplesWeb.Cadastro
             txtNome.Text = cat.Nome.ToString();
             txtNivel.Text = cat.Nivel;
             ddlTipoArquivo.SelectedValue = cat.id_tipo_arquivo == null ? "0" : cat.id_tipo_arquivo.ToString();
+            chkAtivo.Checked = cat.ind_ativo;
             if (!String.IsNullOrEmpty(cat.ExisteMDB))
             {
                 chkExisteMDB.Checked = cat.ExisteMDB.ToString().Trim() == "SIM" ? true : false;
@@ -62,12 +66,11 @@ namespace ImagemSimplesWeb.Cadastro
                 chkExisteMDB.Checked = false;
             }
             txtPathImagens.Text = cat.PATHIMAGENS != null ? cat.PATHIMAGENS : "";
-            if (!this.IsPostBack)
-            {
-                atributos = cat.Atributos;
-                gridAtributos.DataSource = cat.Atributos;
-                gridAtributos.DataBind();
-            }
+
+            atributos = cat.Atributos;
+            gridAtributos.DataSource = cat.Atributos;
+            gridAtributos.DataBind();
+
 
             if (cat.PossuiDocumentos)
             {
@@ -116,12 +119,13 @@ namespace ImagemSimplesWeb.Cadastro
             var cat = new User_MenuViewModel(
                 Convert.ToInt32(lblidCategoria.Text == "" ? "0" : lblidCategoria.Text),
                 Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlMenus"]),
-                Request.Form["ctl00$CadCategoria$txtNome"].ToString(),
-                Request.Form["ctl00$CadCategoria$txtDescricao"].ToString(),
-                Request.Form["ctl00$CadCategoria$txtNivel"].ToString(),
-                Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? "SIM" : "NÃO",
-                Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString(),
-                Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlTipoArquivo"])
+                txtNome.Text,
+                txtDescricao.Text,
+                txtNivel.Text,
+                chkExisteMDB.Checked ? "SIM" : "NAO",
+                txtPathImagens.Text,
+                Convert.ToInt32(Request.Form["ctl00$CadCategoria$ddlTipoArquivo"]),
+                chkAtivo.Checked
                 );
 
             //cat.Atributos = RetornaListaAtrib();
@@ -148,7 +152,7 @@ namespace ImagemSimplesWeb.Cadastro
 
         protected void Unnamed_Click(object sender, ImageClickEventArgs e)
         {
-            RemontaTela();
+            //RemontaTela();
             ImageButton button = sender as ImageButton;
             var nomeatrib = button.CommandArgument;
             //foreach (GridViewRow row in gridAtributos.Rows)
@@ -167,7 +171,7 @@ namespace ImagemSimplesWeb.Cadastro
 
         protected void BtnAdd_Click(object sender, EventArgs e)
         {
-            RemontaTela();
+            //RemontaTela();
             //var cat = RetornaListaAtrib();
 
             var y = atributos.Where(x => x.NomeAtributo == txtNomeAtrib.Text).FirstOrDefault();
@@ -199,16 +203,16 @@ namespace ImagemSimplesWeb.Cadastro
             return cat;
         }
 
-        private void RemontaTela()
-        {
-            ddlMenus.SelectedValue = Request.Form["ctl00$CadCategoria$ddlMenus"].ToString().TrimEnd();
-            txtNome.Text = Request.Form["ctl00$CadCategoria$txtNome"].ToString().TrimEnd();
-            txtDescricao.Text = Request.Form["ctl00$CadCategoria$txtDescricao"].ToString().TrimEnd();
-            txtNivel.Text = Request.Form["ctl00$CadCategoria$txtNivel"].ToString().TrimEnd();
-            chkExisteMDB.Checked = Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? true : false;
-            txtPathImagens.Text = Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd();
-            ddlTipoArquivo.SelectedValue = Request.Form["ctl00$CadCategoria$ddlTipoArquivo"].ToString().TrimEnd();
-        }
+        //private void RemontaTela()
+        //{
+        //    ddlMenus.SelectedValue = Request.Form["ctl00$CadCategoria$ddlMenus"].ToString().TrimEnd();
+        //    txtNome.Text = Request.Form["ctl00$CadCategoria$txtNome"].ToString().TrimEnd();
+        //    txtDescricao.Text = Request.Form["ctl00$CadCategoria$txtDescricao"].ToString().TrimEnd();
+        //    txtNivel.Text = Request.Form["ctl00$CadCategoria$txtNivel"].ToString().TrimEnd();
+        //    chkExisteMDB.Checked = Request.Form["ctl00$CadCategoria$chkExisteMDB"] == "on" ? true : false;
+        //    txtPathImagens.Text = Request.Form["ctl00$CadCategoria$txtPathImagens"].ToString().TrimEnd();
+        //    ddlTipoArquivo.SelectedValue = Request.Form["ctl00$CadCategoria$ddlTipoArquivo"].ToString().TrimEnd();
+        //}
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {

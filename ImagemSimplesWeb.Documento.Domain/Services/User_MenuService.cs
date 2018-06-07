@@ -36,6 +36,7 @@ namespace ImagemSimplesWeb.Documento.Domain.Services
             cat1.existemdb = cat.existemdb;
             cat1.pathimagens = cat.pathimagens;
             cat1.id_tipo_arquivo = cat.id_tipo_arquivo;
+            cat1.ind_ativo = cat.ind_ativo;
             _menurepository.Atualizar(cat1);
 
             var at = _documentorepository.Buscar(x => x.id_categoria == cat1.id_oper).ToList();
