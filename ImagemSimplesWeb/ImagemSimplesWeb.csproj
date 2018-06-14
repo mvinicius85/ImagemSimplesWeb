@@ -266,10 +266,6 @@
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\68_94.PDF" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\Base.xxx" />
     <Content Include="Files\Camara Municipal de Itapevi\Documentos 1994\Secretaria Executiva\Processo Legislativo\Thumbs.db" />
-    <Content Include="Files\Indexar\Kodak Pro x SeSuite.pdf" />
-    <Content Include="Files\Indexar\Peridodizacao_referencias_Brasil_historia %281%29.pdf" />
-    <Content Include="Files\Indexar\Politica_de_valorizacao_do_cafe.pdf" />
-    <Content Include="Files\Indexar\Vargas_medidas_sintese.pdf" />
     <Content Include="Files\Repositorio\Vargas_medidas_sintese.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="javascript\menudocumentos.js" />
@@ -437,6 +433,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\Camara Municipal de Itapevi\Documentos 1994\Processo Legislativo\" />
+    <Folder Include="Files\Indexar\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

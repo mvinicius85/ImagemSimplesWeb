@@ -105,7 +105,7 @@
                 </div>
                 <div class="divDocumentos">
                     <asp:GridView runat="server" ID="griddocumentos" OnRowCreated="griddocumento_RowCreated"
-                        OnSelectedIndexChanged="OnSelectedIndexChanged" AllowPaging="True"
+                        OnSelectedIndexChanged="OnSelectedIndexChanged" AllowPaging="True" CssClass="GridDocumentos"
                         AutoGenerateColumns="false" OnPageIndexChanging="griddocumentos_PageIndexChanging">
                     </asp:GridView>
                 </div>

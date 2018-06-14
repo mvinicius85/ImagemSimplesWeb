@@ -1,16 +1,21 @@
 ﻿.body {
     background-color: #FFFFFF;
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    min-width: 1200px;
+    min-height: 800px;
 }
+
+
 
 .header {
     position: relative;
     top: -50px;
+    max-height: 90px;
 }
 
 .mainclass {
     position: relative;
-    top: -54px;
+    top: -35px;
     left: 15%;
     width: 90%;
 }
@@ -18,10 +23,12 @@
 .MasterHeader {
     position: relative;
     background-color: #0098A6;
+    max-height: 90px;
 }
 
     .MasterHeader img {
-        width: 6.5%;
+        max-width: 6.5%;
+        max-height: 90px;
         margin-left: 15px;
         margin-bottom: 5px;
         margin-top: 5px;
@@ -57,25 +64,11 @@
             border-bottom: 3px;
         }
 
-/*.modalcategoria {
-    position: absolute;
-    left: 50px;
-    top: 100px;
-    right: 50px;
-    bottom: 0;
-    width: auto;
-    height: auto;
-}*/
 
-/*.divcategoria {
-    position: relative;
-    top: 100px;
-}*/
 
-/*.menuDocumentos {
-    position: absolute;
-    left: 3%;
-}*/
+.GridDocumentos {
+    background-color: #F0F4F5;
+}
 
 .divDocumentos {
     position: relative;
@@ -85,7 +78,6 @@
 
     .divDocumentos table, th, td {
         border: hidden;
-        background-color: #F0F4F5;
     }
 
         .divDocumentos table th {
@@ -182,7 +174,7 @@ ol.tree {
     #criamenu li input:checked + ol {
         background: url(../Imagens/toggle-small.png) 40px 0 no-repeat;
         margin: -1.50em 0 0 -44px; /* 20px */
-        padding: 1.563em 0 0 80px;
+        padding: 1.563em 0 0 65px;
         height: auto;
     }
 
@@ -196,16 +188,6 @@ ol.tree {
             }
 
 
-/*.StaticMenuStyle {
-    border: solid;
-    border-color: darkolivegreen;
-    border-left: thick;
-    border-right: groove;
-}
-
-    .StaticMenuStyle a.static.highlighted {
-        color: red !important;
-    }*/
 
 .PanelPesquisa {
     position: relative;
@@ -236,7 +218,7 @@ ol.tree {
 
 .btnShowDiv {
     position: relative;
-    left: 90%;
+    left: 70%;
     border-bottom-left-radius: 5px;
     height: 20px;
     font-size: smaller;
