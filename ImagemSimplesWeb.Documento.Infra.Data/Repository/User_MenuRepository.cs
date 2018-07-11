@@ -23,9 +23,9 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
             var con = Db.Database.Connection;
 
             var sql = @"INSERT INTO dbo.user_menu1 (id_oper, dependencia, descricao, nivel, 
-                            datainclusao,  operincluiu, operalterou, existemdb, pathimagens, nome, id_tipo_arquivo)
+                            datainclusao,  operincluiu, operalterou, existemdb, pathimagens, nome, id_tipo_arquivo, ind_ativo)
                     VALUES (@id_oper, @dependencia, @descricao, @nivel, @datainclusao, @operincluiu, @operalterou,
-                        @existemdb, @pathimagens, @nome, @id_tipo_arquivo)";
+                        @existemdb, @pathimagens, @nome, @id_tipo_arquivo, @ind_ativo)";
 
 
 
@@ -58,9 +58,8 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
         {
             var con = Db.Database.Connection;
 
-            var sql = @"Select max(id_oper) + 1 from dbo.user_menu1";
+            var sql = @"Select COALESCE(max(id_oper),0) + 1 from dbo.user_menu1";
             var id = con.Query<int>(sql).FirstOrDefault();
-
             return id;
         }
     }
