@@ -2,7 +2,9 @@
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using ImagemSimplesWeb.Application.Interface;
+using ImagemSimplesWeb.Application.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ImagemSimplesWeb.Application.Tests
@@ -65,6 +67,35 @@ namespace ImagemSimplesWeb.Application.Tests
                 }
             }
             var final = teste2.Where(x => x.Dependencia == 0).OrderBy(y => y.id_Oper).ToList();
+        }
+
+        [TestMethod]
+        public async void TestApi()
+        {
+            string param1 = "user";
+            string param2 = "senha";
+            var endpoint = $"http://192.168.1.32/Decrypt/api/Encrypt/{param1},{param2}";
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync(endpoint);
+                if (!response.IsSuccessStatusCode)
+                {
+                    
+                }
+                else
+                {
+                    //await context.PostAsync("Aguarde um momento por favor.");
+                    var json = await response.Content.ReadAsStringAsync();
+                    var resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(json);
+                    //await context.PostAsync("Encontrei os seguintes itens para voce:");
+
+                    //var cotacoes = resultado.Cotacoes?.Select(c => $"{c.Nome" : {c.Valor}");
+                    //await context.PostAsync($"{string.Join(", ",cotacores.toArray())});
+                    //await context.PostAsync("Seguem os dados do produto solicitado: Nome" + resultado.Nome + ", Valor: " + resultado.Preco);
+                }
+
+
+            }
         }
     }
 }

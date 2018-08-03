@@ -31,6 +31,13 @@
                     <td>
 
                         <asp:TextBox runat="server" ID="txtSenha"></asp:TextBox>
+                        <asp:RegularExpressionValidator runat="server"
+                            ID="RegexSenha" ErrorMessage="Apenas letras e números e ao minimo 4 caracteres."
+                            ValidationExpression="^(?!.* ).{4,15}[a-zA-Z0-9]+$"
+                            ControlToValidate="txtSenha"
+                            ForeColor="Red">
+
+                        </asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                             ControlToValidate="txtSenha"
                             ErrorMessage="*Campo Obrigatório."
@@ -45,6 +52,13 @@
                     <td>
 
                         <asp:TextBox runat="server" ID="txtNome"></asp:TextBox>
+                        <asp:RegularExpressionValidator runat="server"
+                            ID="RegexNome" ErrorMessage="Apenas letras e números e ao minimo 4 caracteres."
+                            ValidationExpression="^(?!.* ).{4,15}[a-zA-Z0-9]+$"
+                            ControlToValidate="txtNome"
+                            ForeColor="Red">
+
+                        </asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                             ControlToValidate="txtNome"
                             ErrorMessage="*Campo Obrigatório."

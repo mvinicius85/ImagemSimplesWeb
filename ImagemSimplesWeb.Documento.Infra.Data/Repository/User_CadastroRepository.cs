@@ -21,7 +21,7 @@ namespace ImagemSimplesWeb.Documento.Infra.Data.Repository
         {
             var con = Db.Database.Connection;
 
-            var sql = @"Select * from USER_CADASTRO " + filtro.MontaSwhere();
+            var sql = @"Select * from dbo.USER_CADASTRO " + filtro.MontaSwhere();
             var nfes = con.Query<user_cadastro>(sql, filtro).ToList();
 
             return nfes.OrderBy(x => x.id_user).ToList();
